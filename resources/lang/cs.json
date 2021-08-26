@@ -1,0 +1,16 @@
+{
+    "Hello!": "Dobrý den,",
+    "Reset Password Notification": "Žádost o změnu hesla",
+    "You are receiving this email because we received a password reset request for your account.": "obdrželi jsme žádost o změnu vašeho hesla. Pro změnu hesla klikněte na tlačítko níže.",
+    "Reset Password": "Změnit heslo",
+    "This password reset link will expire in :count minutes.": "Platnost odkazu pro změnu hesla vyprší za :count minut.",
+    "Please click the button below to verify your email address.": "Abychom mohli dokončit registraci vašeho účtu, potřebujeme si ověřit, že je tato e-mailová adresa vaše. Kliknutím na tlačítko níže ověříte svou e-mailovou adresu.",
+    "Verify Email Address": "Ověřit e-mailovou adresu",
+    "If you did not request a password reset, no further action is required.": "Pokud jste o změnu nežádali, tak tento e-mail ignorujte.",
+    "If you did not create an account, no further action is required.": "Pokud jste žádnou registraci neprováděli, tak tento e-mail ignorujte.",
+    "Regards": "S pozdravem",
+    "Not Found": "Stránka nenalezena",
+    "This action is unauthorized.": "Přístup zamítnut",
+    "Page Expired": "Platnost stránky vypršela",
+    "Unauthorized": "Přístup zamítnut"
+}
