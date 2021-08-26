@@ -13,7 +13,8 @@ return [
     |
     */
 
-    'failed' => 'Chybně zadaný email nebo heslo.',
-    'password' => 'The provided password is incorrect.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'failed' => 'Zadané jméno nebo heslo je nesprávné.',
+    'password' => 'Zadané heslo je nesprávné.',
+    'throttle' => 'Příliš mnoho pokusů o přihlášení. Zkuste to za :seconds s.',
+
 ];

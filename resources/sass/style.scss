@@ -219,6 +219,7 @@ section {
     }
 }
 
+#reset-password,
 #verify-nick,
 #forgot-password,
 #login,
@@ -268,6 +269,10 @@ section {
 
     .invalid-feedback {
         margin: .45rem 0 0 2px;
+    }
+
+    .alert {
+        margin-top: .5rem;
     }
 }
 

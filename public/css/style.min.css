@@ -523,6 +523,7 @@ section {
   }
 }
 
+#reset-password .container,
 #verify-nick .container,
 #forgot-password .container,
 #login .container,
@@ -530,6 +531,7 @@ section {
   display: flex;
   justify-content: center;
 }
+#reset-password .form-container,
 #verify-nick .form-container,
 #forgot-password .form-container,
 #login .form-container,
@@ -537,12 +539,14 @@ section {
   max-width: 800px;
   width: 100%;
 }
+#reset-password .form-floating,
 #verify-nick .form-floating,
 #forgot-password .form-floating,
 #login .form-floating,
 #register .form-floating {
   margin-bottom: 0.5rem;
 }
+#reset-password .form-footer,
 #verify-nick .form-footer,
 #forgot-password .form-footer,
 #login .form-footer,
@@ -552,7 +556,8 @@ section {
   align-items: center;
 }
 @media (max-width: 576px) {
-  #verify-nick .form-footer,
+  #reset-password .form-footer,
+#verify-nick .form-footer,
 #forgot-password .form-footer,
 #login .form-footer,
 #register .form-footer {
@@ -561,36 +566,48 @@ section {
   }
 }
 @media (max-width: 576px) {
-  #verify-nick .links,
+  #reset-password .links,
+#verify-nick .links,
 #forgot-password .links,
 #login .links,
 #register .links {
     margin-top: 0.5rem;
   }
 }
+#reset-password .code,
 #verify-nick .code,
 #forgot-password .code,
 #login .code,
 #register .code {
   margin-bottom: 0.5rem;
 }
+#reset-password a,
 #verify-nick a,
 #forgot-password a,
 #login a,
 #register a {
   color: #20648b;
 }
+#reset-password span,
 #verify-nick span,
 #forgot-password span,
 #login span,
 #register span {
   margin: 0 0.5rem;
 }
+#reset-password .invalid-feedback,
 #verify-nick .invalid-feedback,
 #forgot-password .invalid-feedback,
 #login .invalid-feedback,
 #register .invalid-feedback {
   margin: 0.45rem 0 0 2px;
+}
+#reset-password .alert,
+#verify-nick .alert,
+#forgot-password .alert,
+#login .alert,
+#register .alert {
+  margin-top: 0.5rem;
 }
 
 #not-found .container {
