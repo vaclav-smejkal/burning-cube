@@ -9,8 +9,8 @@ class VerifyNickController extends Controller
 {
     public function index()
     {
-        $randomString = Auth::user()->random_string;
+        $verifyToken = Auth::user()->verify_token;
 
-        return view("verify-nick", ["randomString" => $randomString]);
+        return view("verify-nick", ["verifyToken" => $verifyToken]);
     }
 }

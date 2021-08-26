@@ -39,7 +39,7 @@ class CreateNewUser implements CreatesNewUsers
         return User::create([
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
-            'random_string' => substr(Str::uuid(), 0, 8),
+            'verify_token' => substr(Str::uuid(), 0, 8),
         ]);
     }
 }

@@ -118,7 +118,7 @@ section {
 #navbar {
     background-color: $primary-color;
     font-size: $menu-size;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
     min-height: 56px;
 
     .navbar-brand {
@@ -290,5 +290,5 @@ section {
     display: flex;
     justify-content: center;
     padding: 1rem;
-    box-shadow: 0 -1px 3px 0 rgba(0, 0, 0, 0.1), 0 -1px 2px 0 rgba(0, 0, 0, 0.06);
+    box-shadow: 0 -1px 3px 0 rgba(0, 0, 0, .1), 0 -1px 2px 0 rgba(0, 0, 0, .06);
 }

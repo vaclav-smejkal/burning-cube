@@ -21,7 +21,7 @@ class User extends Authenticatable
         'nick',
         'email',
         'password',
-        'random_string'
+        'verify_token'
     ];
 
     /**

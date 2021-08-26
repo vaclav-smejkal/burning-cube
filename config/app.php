@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Burning cube'),
+    'name' => env('APP_NAME', 'Burning Cube'),
 
     /*
     |--------------------------------------------------------------------------
