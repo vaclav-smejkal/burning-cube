@@ -7,8 +7,9 @@
             @foreach ($questions as $question)
                 @if (count($questions) / 2 > $loop->index)
                     <div class="question">
-                        <a class="btn" data-bs-toggle="collapse" href="#question-collapse-{{ $loop->index }}"
-                            role="button" aria-expanded="false" aria-controls="question-collapse-{{ $loop->index }}">
+                        <a class="btn collapsed" data-bs-toggle="collapse"
+                            href="#question-collapse-{{ $loop->index }}" role="button" aria-expanded="false"
+                            aria-controls="question-collapse-{{ $loop->index }}">
                             {{ $question->question }}
                             <i class="fas fa-chevron-down"></i>
                         </a>
@@ -25,8 +26,9 @@
             @foreach ($questions as $question)
                 @if (count($questions) / 2 <= $loop->index)
                     <div class="question">
-                        <a class="btn" data-bs-toggle="collapse" href="#question-collapse-{{ $loop->index }}"
-                            role="button" aria-expanded="false" aria-controls="question-collapse-{{ $loop->index }}">
+                        <a class="btn collapsed" data-bs-toggle="collapse"
+                            href="#question-collapse-{{ $loop->index }}" role="button" aria-expanded="false"
+                            aria-controls="question-collapse-{{ $loop->index }}">
                             {{ $question->question }}
                             <i class="fas fa-chevron-down"></i>
                         </a>
