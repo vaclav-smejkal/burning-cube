@@ -68,7 +68,65 @@
     </nav>
     @yield('content')
     <footer id="footer">
-        2021 © Burning cube
+        <div class="container">
+            <div class="footer-grid">
+                <div class="grid-item flex-group">
+                    <div class="logo">
+                        <img src="{{ asset('img/logo.png') }}" alt="Logo">
+                    </div>
+                    <div class="social">
+                        <a href="#" class="link">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="link">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="link">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                        <a href="#" class="link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <div class="item-title">Server hosting</div>
+                    <ul class="list">
+                        <li class="list-item"><a href="#">Hytale Server Hosting</a></li>
+                        <li class="list-item"><a href="#">Hytale Server Hosting</a></li>
+                        <li class="list-item"><a href="#">Hytale Server Hosting</a></li>
+                        <li class="list-item"><a href="#">Hytale Server Hosting</a></li>
+                    </ul>
+                </div>
+                <div class="grid-item">
+                    <div class="item-title">Company</div>
+                    <ul class="list">
+                        <li class="list-item"><a href="#">About Us</a></li>
+                        <li class="list-item"><a href="#">Contact Us</a></li>
+                        <li class="list-item"><a href="#">Terms of Service</a></li>
+                        <li class="list-item"><a href="#">Privacy Policy</a></li>
+                        <li class="list-item"><a href="#">Partners</a></li>
+                        <li class="list-item"><a href="#">Earn Money</a></li>
+                        <li class="list-item"><a href="#">Jobs</a></li>
+                        <li class="list-item"><a href="#">SUPPORT</a></li>
+
+                    </ul>
+                </div>
+                <div class="grid-item">
+                    <div class="item-title">Support</div>
+                    <ul class="list">
+                        <li class="list-item"><a href="#">Submit a Ticket</a></li>
+                        <li class="list-item"><a href="#">Knowledgebase</a></li>
+                        <li class="list-item"><a href="#">Server Status</a></li>
+                        <li class="list-item"><a href="#">Support Center</a></li>
+                        <li class="list-item"><a href="#">LATEST TWEET</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            2021 © Burning cube
+        </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">

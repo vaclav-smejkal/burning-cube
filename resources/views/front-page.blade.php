@@ -6,7 +6,7 @@
         <section id="front-page">
             <div class="container">
                 <div>
-                    Hlavní stránka
+                    Balíčky
                 </div>
                 @include('questions')
             </div>
