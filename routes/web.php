@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SeedController;
 use App\Http\Controllers\VerifyNickController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,3 +20,4 @@ Route::get('/', function () {
 });
 
 Route::get('/verify-nick', [VerifyNickController::class, "index"]);
+Route::get('/seed', [SeedController::class, "index"]);

@@ -23,7 +23,7 @@ class QuestionFactory extends Factory
     {
         return [
             'question' => str_replace(".", "", $this->faker->sentence(5)) . "?",
-            'answer' => $this->faker->paragraph(3),
+            'answer' => $this->faker->paragraph(2),
         ];
     }
 }

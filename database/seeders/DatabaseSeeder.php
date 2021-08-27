@@ -7,7 +7,6 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
-
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -22,6 +21,7 @@ class DatabaseSeeder extends Seeder
 
         $admin = User::create([
             'email' => 'admin@gmail.com',
+            'verify_token' => substr(Str::uuid(), 0, 8),
             'email_verified_at' => now(),
             'password' => Hash::make('123'),
             'remember_token' => Str::random(10),
