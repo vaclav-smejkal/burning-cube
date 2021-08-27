@@ -14,7 +14,7 @@
                         </div>
                         <div class="code">
                             Kód pro ověření:
-                            {{ $randomString }}
+                            {{ $verifyToken }}
                         </div>
                         <button type="submit" class="btn btn-primary">
                             Ověřit

@@ -361,15 +361,18 @@ textarea {
 }
 
 body {
-  font-family: "Roboto", "Helvetica";
+  font-family: "Montserrat", "Helvetica";
   font-size: 18px;
-  line-height: 1.35em;
+  line-height: 1.4em;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background-color: #333333;
+  color: #fff;
+  letter-spacing: 0.1px;
 }
 body main {
-  padding-top: 56px;
+  padding-top: 86px;
   flex: 1;
 }
 
@@ -377,6 +380,18 @@ a {
   text-decoration: none;
   outline: none !important;
   transition: 0.2s ease-in-out;
+}
+
+textarea:hover,
+textarea:focus,
+input:hover,
+input:focus {
+  border-color: #76c665;
+}
+
+textarea:focus,
+input:focus {
+  box-shadow: 0 0 0 0.15rem rgba(118, 198, 101, 0.5) !important;
 }
 
 img {
@@ -392,16 +407,19 @@ img {
   padding: 0.5rem 0.7rem;
   box-shadow: none;
 }
+.btn:hover, .btn:focus {
+  box-shadow: none;
+}
 
 .btn-primary {
   color: #fff;
-  background-color: #20648b;
+  background-color: #76c665;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .btn-primary:focus, .btn-primary:hover {
-  background-color: #1c587a;
+  background-color: #69c056;
 }
 .btn-primary i {
   color: #fff;
@@ -410,16 +428,16 @@ img {
 .title {
   font-size: 1.6em;
   padding: 0 0 0.5rem;
-  margin: 0 0 0.5rem;
+  margin: 0 0 1rem;
 }
 .title span {
-  color: #d91f29;
+  color: #333333;
   margin-left: 0.5rem;
 }
 
 .subtitle {
   font-size: 1.3em;
-  line-height: 1.35em;
+  line-height: 1.4em;
   margin-bottom: 1rem;
 }
 
@@ -429,7 +447,7 @@ h3,
 h4,
 h5,
 h6 {
-  line-height: 1.35em;
+  line-height: 1.4em;
 }
 
 section {
@@ -442,7 +460,7 @@ section {
 }
 
 #navbar {
-  background-color: #20648b;
+  background-color: #76c665;
   font-size: 1.05em;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   min-height: 56px;
@@ -460,6 +478,10 @@ section {
 }
 #navbar .navbar-brand i.fa-times-circle {
   color: #ff2a34;
+}
+#navbar .navbar-brand .logo {
+  width: 60px;
+  margin-right: 1rem;
 }
 #navbar a {
   color: #fff;
@@ -546,6 +568,13 @@ section {
 #register .form-floating {
   margin-bottom: 0.5rem;
 }
+#reset-password .form-floating label,
+#verify-nick .form-floating label,
+#forgot-password .form-floating label,
+#login .form-floating label,
+#register .form-floating label {
+  color: #000;
+}
 #reset-password .form-footer,
 #verify-nick .form-footer,
 #forgot-password .form-footer,
@@ -586,7 +615,7 @@ section {
 #forgot-password a,
 #login a,
 #register a {
-  color: #20648b;
+  color: #76c665;
 }
 #reset-password span,
 #verify-nick span,
@@ -610,6 +639,47 @@ section {
   margin-top: 0.5rem;
 }
 
+#questions {
+  margin-top: 3rem;
+}
+#questions .grid-questions {
+  display: flex;
+}
+@media (max-width: 992px) {
+  #questions .grid-questions {
+    flex-direction: column;
+  }
+}
+#questions .question {
+  background-color: #464646;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1rem;
+}
+#questions .question i {
+  color: #76c665;
+  font-size: 1.4em;
+  margin-left: 1rem;
+  transition: 0.2s ease-in-out;
+}
+#questions .question .btn {
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  width: 100%;
+  padding: 0;
+  font-weight: 500;
+}
+#questions .question .btn:not(.collapsed) i {
+  transform: rotate(-180deg);
+}
+#questions .question .card {
+  background-color: #464646;
+  border: 0;
+  padding: 1rem 0 0;
+}
+
 #not-found .container {
   display: flex;
   flex-direction: column;
@@ -617,7 +687,7 @@ section {
 }
 
 #footer {
-  background-color: #20648b;
+  background-color: #76c665;
   color: #fff;
   display: flex;
   justify-content: center;

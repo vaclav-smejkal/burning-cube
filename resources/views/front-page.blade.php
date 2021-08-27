@@ -5,7 +5,10 @@
     <main>
         <section id="front-page">
             <div class="container">
-                Hlavní stránka
+                <div>
+                    Hlavní stránka
+                </div>
+                @include('questions')
             </div>
         </section>
     </main>
