@@ -551,7 +551,8 @@ section {
 #login .container,
 #register .container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 #reset-password .form-container,
 #verify-nick .form-container,
@@ -640,13 +641,18 @@ section {
 }
 
 #questions {
-  margin-top: 3rem;
+  margin-top: 5rem;
 }
-#questions .grid-questions {
+@media (max-width: 992px) {
+  #questions {
+    margin-top: 3rem;
+  }
+}
+#questions .flex-questions {
   display: flex;
 }
 @media (max-width: 992px) {
-  #questions .grid-questions {
+  #questions .flex-questions {
     flex-direction: column;
   }
 }
@@ -678,6 +684,17 @@ section {
   background-color: #464646;
   border: 0;
   padding: 1rem 0 0;
+}
+#questions .column {
+  flex: 1;
+}
+#questions .column:nth-child(2) {
+  margin-left: 2rem;
+}
+@media (max-width: 992px) {
+  #questions .column:nth-child(2) {
+    margin: 0;
+  }
 }
 
 #not-found .container {

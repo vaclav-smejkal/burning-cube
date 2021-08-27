@@ -3,9 +3,9 @@
         Časté dotazy
     </h2>
     <div class="flex-questions">
-        @foreach ($questions as $question)
-            @if (count($questions) / 2 > $loop->index)
-                <div class="column">
+        <div class="column">
+            @foreach ($questions as $question)
+                @if (count($questions) / 2 > $loop->index)
                     <div class="question">
                         <a class="btn" data-bs-toggle="collapse" href="#question-collapse-{{ $loop->index }}"
                             role="button" aria-expanded="false" aria-controls="question-collapse-{{ $loop->index }}">
@@ -18,9 +18,12 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            @else
-                <div class="column">
+                @endif
+            @endforeach
+        </div>
+        <div class="column">
+            @foreach ($questions as $question)
+                @if (count($questions) / 2 <= $loop->index)
                     <div class="question">
                         <a class="btn" data-bs-toggle="collapse" href="#question-collapse-{{ $loop->index }}"
                             role="button" aria-expanded="false" aria-controls="question-collapse-{{ $loop->index }}">
@@ -33,8 +36,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            @endif
-        @endforeach
+                @endif
+            @endforeach
+        </div>
     </div>
 </div>

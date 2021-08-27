@@ -47,6 +47,7 @@
                         @endif
                     </form>
                 </div>
+                @include('questions')
             </div>
         </section>
     </main>

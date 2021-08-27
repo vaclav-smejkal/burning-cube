@@ -252,7 +252,8 @@ section {
 #register {
     .container {
         display: flex;
-        justify-content: center;
+        flex-direction: column;
+        align-items: center;
     }
 
     .form-container {
@@ -307,9 +308,13 @@ section {
 }
 
 #questions {
-    margin-top: 3rem;
+    margin-top: 5rem;
 
-    .grid-questions {
+    @media (max-width: $lg) {
+        margin-top: 3rem;
+    }
+
+    .flex-questions {
         display: flex;
 
         @media (max-width: $lg) {
@@ -350,6 +355,18 @@ section {
             background-color: $secondary-color-lighter;
             border: 0;
             padding: 1rem 0 0;
+        }
+    }
+
+    .column {
+        flex: 1;
+
+        &:nth-child(2) {
+            margin-left: 2rem;
+
+            @media (max-width: $lg) {
+                margin: 0;
+            }
         }
     }
 }
