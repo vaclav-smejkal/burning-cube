@@ -408,7 +408,7 @@ img {
   box-shadow: none;
 }
 .btn:hover, .btn:focus {
-  box-shadow: none;
+  box-shadow: none !important;
 }
 
 .btn-primary {
@@ -419,16 +419,21 @@ img {
   align-items: center;
 }
 .btn-primary:focus, .btn-primary:hover {
-  background-color: #69c056;
+  background-color: #4ea23c;
 }
 .btn-primary i {
   color: #fff;
 }
 
 .title {
-  font-size: 1.6em;
+  font-size: 2.3em;
   padding: 0 0 0.5rem;
   margin: 0 0 1rem;
+}
+@media (max-width: 992px) {
+  .title {
+    font-size: 1.8em;
+  }
 }
 .title span {
   color: #333333;
@@ -545,6 +550,11 @@ section {
   }
 }
 
+.form-container {
+  max-width: 800px;
+  width: 100%;
+}
+
 #reset-password .container,
 #verify-nick .container,
 #forgot-password .container,
@@ -553,14 +563,6 @@ section {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-#reset-password .form-container,
-#verify-nick .form-container,
-#forgot-password .form-container,
-#login .form-container,
-#register .form-container {
-  max-width: 800px;
-  width: 100%;
 }
 #reset-password .form-floating,
 #verify-nick .form-floating,
@@ -642,6 +644,7 @@ section {
 
 #questions {
   margin-top: 5rem;
+  width: 100%;
 }
 @media (max-width: 992px) {
   #questions {
@@ -700,11 +703,114 @@ section {
     margin: 0;
   }
 }
+#questions .contact {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#questions .contact i {
+  margin-left: 0.75rem;
+}
+
+#front-page .title {
+  text-align: center;
+}
+
+#contact-modal .modal-content {
+  background-color: #333333;
+}
+#contact-modal .modal-header {
+  border: 0;
+  padding-bottom: 0;
+}
+#contact-modal .modal-header .modal-title {
+  font-size: 1.3em;
+}
+#contact-modal .modal-header .btn {
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+#contact-modal .modal-header .btn:hover i {
+  color: #eee;
+}
+#contact-modal .modal-header i {
+  transition: 0.2s ease-in-out;
+  color: #fff;
+  font-size: 1.3em;
+}
+#contact-modal .modal-body .btn {
+  margin-left: auto;
+}
+#contact-modal .modal-body textarea {
+  min-height: 150px;
+}
+#contact-modal .form-floating {
+  margin-bottom: 0.5rem;
+}
+#contact-modal label {
+  color: #000;
+}
 
 #not-found .container {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+#packages .grid-packages {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+@media (max-width: 1200px) {
+  #packages .grid-packages {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  #packages .grid-packages {
+    gap: 1rem;
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+#packages .package {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #464646;
+  padding: 2rem 0;
+}
+#packages .package .subtitle {
+  margin-bottom: 2rem;
+  padding: 0 1.5rem;
+  text-align: center;
+}
+#packages .package .desc {
+  text-align: center;
+  padding: 1.5rem 1.5rem 0;
+}
+#packages .package .price {
+  background-color: #528d45;
+  width: calc(100% + .6rem);
+  padding: 1.5rem 0;
+  text-align: center;
+  position: relative;
+  font-size: 2em;
+  z-index: 10;
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.1), 0 0 2px 0 rgba(0, 0, 0, 0.06);
+}
+#packages .package .btn {
+  border-radius: 0;
+  padding: 0.5rem 1.5rem;
+  position: relative;
+  top: -0.25rem;
+  transition: 0.2s ease-in-out;
+}
+#packages .package .btn:focus, #packages .package .btn:hover {
+  background-color: #76c665;
+  top: 0;
 }
 
 #footer {

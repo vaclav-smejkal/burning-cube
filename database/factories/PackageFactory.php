@@ -22,7 +22,7 @@ class PackageFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name(),
+            'name' => $this->faker->sentence(2),
             'comment' => $this->faker->paragraph(2),
             'price' => $this->faker->randomFloat(2, 1, 20000),
             'is_one_time' => rand(0, 1),

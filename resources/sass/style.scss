@@ -8,12 +8,13 @@ $gray: #989898;
 $black: #000;
 $primary-color: #76c665;
 $primary-color-darker: #65a856;
+$primary-color-darkest:#528d45;
 $secondary-color: #333333;
 $secondary-color-lighter: #464646;
 $secondary-color-lightest: #555555;
 
 // Font Sizes
-$title-size: 1.6em;
+$title-size: 2.3em;
 $subtitle-size: 1.3em;
 $menu-size: 1.05em;
 $price-size: 1.2em;
@@ -82,7 +83,7 @@ img {
 
     &:hover,
     &:focus {
-        box-shadow: none;
+        box-shadow: none !important;
     }
 }
 
@@ -95,7 +96,7 @@ img {
 
     &:focus,
     &:hover {
-        background-color: darken($primary-color, 4%);
+        background-color: darken($primary-color, 15%);
     }
 
     i {
@@ -107,6 +108,10 @@ img {
     font-size: $title-size;
     padding: 0 0 .5rem;
     margin: 0 0 1rem;
+
+    @media (max-width: $lg) {
+        font-size: 1.8em;
+    }
 
     span {
         color: $secondary-color;
@@ -246,6 +251,11 @@ section {
     }
 }
 
+.form-container {
+    max-width: 800px;
+    width: 100%;
+}
+
 #reset-password,
 #verify-nick,
 #forgot-password,
@@ -255,11 +265,6 @@ section {
         display: flex;
         flex-direction: column;
         align-items: center;
-    }
-
-    .form-container {
-        max-width: 800px;
-        width: 100%;
     }
 
     .form-floating {
@@ -310,6 +315,7 @@ section {
 
 #questions {
     margin-top: 5rem;
+    width: 100%;
 
     @media (max-width: $lg) {
         margin-top: 3rem;
@@ -375,6 +381,74 @@ section {
             }
         }
     }
+
+    .contact {
+        margin-top: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        i {
+            margin-left: .75rem;
+        }
+    }
+}
+
+#front-page {
+    .title {
+        text-align: center;
+    }
+}
+
+#contact-modal {
+    .modal-content {
+        background-color: $secondary-color;
+    }
+
+    .modal-header {
+        border: 0;
+        padding-bottom: 0;
+
+        .modal-title {
+            font-size: $subtitle-size;
+        }
+
+        .btn {
+            padding: 0;
+            display: flex;
+            align-items: center;
+
+            &:hover {
+                i {
+                    color: $white-darker;
+                }
+            }
+        }
+
+        i {
+            transition: .2s ease-in-out;
+            color: $white;
+            font-size: 1.3em;
+        }
+    }
+
+    .modal-body {
+        .btn {
+            margin-left: auto;
+        }
+
+        textarea {
+            min-height: 150px;
+        }
+    }
+
+    .form-floating {
+        margin-bottom: .5rem;
+    }
+
+    label {
+        color: $black;
+    }
 }
 
 #not-found {
@@ -382,6 +456,67 @@ section {
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+}
+
+#packages {
+    .grid-packages {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+
+        @media (max-width: $xl) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media (max-width: $md) {
+            gap: 1rem;
+            grid-template-columns: repeat(1, 1fr);
+        }
+    }
+
+    .package {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: $secondary-color-lighter;
+        padding: 2rem 0;
+
+        .subtitle {
+            margin-bottom: 2rem;
+            padding: 0 1.5rem;
+            text-align: center;
+        }
+
+        .desc {
+            text-align: center;
+            padding: 1.5rem 1.5rem 0;
+        }
+
+        .price {
+            background-color: $primary-color-darkest;
+            width: calc(100% + .6rem);
+            padding: 1.5rem 0;
+            text-align: center;
+            position: relative;
+            font-size: 2em;
+            z-index: 10;
+            box-shadow: 0 0 3px 0 rgba(0, 0, 0, .1), 0 0 2px 0 rgba(0, 0, 0, .06);
+        }
+
+        .btn {
+            border-radius: 0;
+            padding: .5rem 1.5rem;
+            position: relative;
+            top: -0.25rem;
+            transition: .2s ease-in-out;
+
+            &:focus,
+            &:hover {
+                background-color: $primary-color;
+                top: 0;
+            }
+        }
     }
 }
 

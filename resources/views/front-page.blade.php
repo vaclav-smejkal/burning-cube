@@ -5,9 +5,7 @@
     <main>
         <section id="front-page">
             <div class="container">
-                <div>
-                    Balíčky
-                </div>
+                @include('package-list')
                 @include('questions')
             </div>
         </section>
