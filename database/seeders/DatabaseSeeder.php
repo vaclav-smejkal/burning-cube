@@ -27,5 +27,8 @@ class DatabaseSeeder extends Seeder
             'remember_token' => Str::random(10),
         ]);
         $admin->assignRole("admin");
+
+        \App\Models\Server::factory(8)->create();
+        \App\Models\Package::factory(8)->create();
     }
 }

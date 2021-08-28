@@ -17,7 +17,7 @@ class CreatePackagesTable extends Migration
             $table->id();
             $table->string('name', 100);
             $table->text('comment');
-            $table->unsignedInteger("price");
+            $table->unsignedFloat("price");
             $table->integer("is_one_time");
         });
     }
