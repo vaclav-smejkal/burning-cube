@@ -9,7 +9,12 @@ class Package extends Model
 {
     public $timestamps = false;
 
-    public $fillable = ['name', 'comment', 'price', 'is_one_time'];
+    public $fillable = [
+        'name',
+        'comment',
+        'price',
+        'is_one_time'
+    ];
 
     use HasFactory;
 }

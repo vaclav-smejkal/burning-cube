@@ -28,12 +28,8 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
-        view()->composer("questions", function ($view) {
+        view()->composer("faq", function ($view) {
             $view->with('questions', Question::get());
-        });
-
-        view()->composer("package-list", function ($view) {
-            $view->with('packages', Package::get());
         });
     }
 }

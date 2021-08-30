@@ -9,7 +9,11 @@ class Server extends Model
 {
     public $timestamps = false;
 
-    public $fillable = ['name', 'ip_address', 'port'];
+    public $fillable = [
+        'name',
+        'ip_address',
+        'port'
+    ];
 
     use HasFactory;
 }

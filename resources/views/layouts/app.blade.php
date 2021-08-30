@@ -26,10 +26,14 @@
                 @auth
                     @if (Auth::user()->verified)
                         <div class="name">{{ Auth::user()->nick }}</div>
-                        <i class="fas fa-check-circle"></i>
+                        <div class="icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
                     @else
                         <a href="/verify-nick" class="name">Ověřit nick</a>
-                        <i class="fas fa-times-circle"></i>
+                        <div class="icon">
+                            <i class="fas fa-times-circle"></i>
+                        </div>
                     @endif
                 @endauth
             </div>
@@ -40,6 +44,11 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav right">
                     @auth
+                        @role('admin')
+                        <li class="nav-item">
+                            <a href="/admin" class="nav-link">Administrace</a>
+                        </li>
+                        @endrole
                         <li class="nav-item">
                             <a class="nav-link with-icon" href="{{ route('logout') }}"
                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -66,7 +75,16 @@
             </div>
         </div>
     </nav>
-    @yield('content')
+    <main>
+        @yield('content')
+        @if (Auth::check())
+            @if (!Auth::user()->hasRole('admin'))
+                @include('faq')
+            @endif
+        @else
+            @include('faq')
+        @endif
+    </main>
     <footer id="footer">
         <div class="container">
             <div class="footer-grid">
@@ -106,10 +124,6 @@
                         <li class="list-item"><a href="#">Terms of Service</a></li>
                         <li class="list-item"><a href="#">Privacy Policy</a></li>
                         <li class="list-item"><a href="#">Partners</a></li>
-                        <li class="list-item"><a href="#">Earn Money</a></li>
-                        <li class="list-item"><a href="#">Jobs</a></li>
-                        <li class="list-item"><a href="#">SUPPORT</a></li>
-
                     </ul>
                 </div>
                 <div class="grid-item">
@@ -125,7 +139,7 @@
             </div>
         </div>
         <div class="copyright">
-            2021 © Burning cube
+            {{ date('Y') }} &copy; Burning cube
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
