@@ -23,6 +23,7 @@ Route::group(['middleware' => ['role:admin']], function () {
         return redirect('/admin/dashboard');
     });
     Route::get('/admin/dashboard', [DashboardController::class, 'index']);
+    Route::resource('/admin/package', PackageController::class)->except('show');
 });
 
 Route::get('/', [HomeController::class, 'index']);

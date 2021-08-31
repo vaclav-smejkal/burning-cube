@@ -404,7 +404,7 @@ img {
 .btn {
   border: 0;
   font-size: 1.1em;
-  padding: 0.5rem 0.7rem;
+  padding: 0.5rem 1rem;
   box-shadow: none;
 }
 .btn:hover, .btn:focus {
@@ -787,6 +787,69 @@ section {
   text-align: center;
 }
 
+#admin-package .flex-group {
+  display: flex;
+}
+@media (max-width: 992px) {
+  #admin-package .flex-group {
+    flex-direction: column;
+  }
+}
+#admin-package .form-floating {
+  margin-bottom: 0.75rem;
+}
+#admin-package .form-floating label {
+  color: #000;
+}
+#admin-package .form-check {
+  margin: -0.25rem 0 0.75rem;
+  display: flex;
+  align-items: center;
+}
+#admin-package .form-check label {
+  margin: 0.3rem 0 0 0.75rem;
+}
+#admin-package .form-check input:checked {
+  background-color: #76c665;
+  border-color: #65a856;
+}
+#admin-package .form-group,
+#admin-package .list {
+  flex: 1;
+}
+#admin-package .list {
+  margin-left: 3rem;
+}
+@media (max-width: 992px) {
+  #admin-package .list {
+    margin: 3rem 0 0;
+  }
+}
+#admin-package textarea {
+  min-height: 150px;
+}
+#admin-package .grid-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.25rem;
+  padding: 0.5rem 1rem;
+  background-color: #464646;
+}
+#admin-package .grid-item .btn {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#admin-package .grid-item .btn-warning {
+  margin: 0 0.5rem 0 auto;
+  color: #fff;
+}
+#admin-package .grid-item .btn-warning:hover {
+  background-color: #dfa700;
+}
+
 #questions {
   width: 100%;
   background-color: #272727;
@@ -889,6 +952,46 @@ section {
 
 #front-page .title {
   text-align: center;
+}
+
+.admin-edit-form .container {
+  display: flex;
+  justify-content: center;
+}
+.admin-edit-form textarea {
+  min-height: 150px;
+}
+.admin-edit-form .form-floating {
+  margin-bottom: 0.75rem;
+}
+.admin-edit-form .form-floating label {
+  color: #000;
+}
+.admin-edit-form .form-check {
+  margin: -0.25rem 0 0.75rem;
+  display: flex;
+  align-items: center;
+}
+.admin-edit-form .form-check label {
+  margin: 0.3rem 0 0 0.75rem;
+}
+.admin-edit-form .form-check input:checked {
+  background-color: #76c665;
+  border-color: #65a856;
+}
+.admin-edit-form .btn-box {
+  display: flex;
+}
+.admin-edit-form .btn {
+  padding: 0;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.admin-edit-form .btn-success {
+  margin-right: 0.75rem;
 }
 
 #contact-modal .modal-content {

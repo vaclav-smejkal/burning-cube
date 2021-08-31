@@ -80,7 +80,7 @@ img {
 .btn {
     border: 0;
     font-size: $button-size;
-    padding: .5rem .7rem;
+    padding: .5rem 1rem;
     box-shadow: none;
 
     &:hover,
@@ -470,6 +470,83 @@ section {
     }
 }
 
+#admin-package {
+    .flex-group {
+        display: flex;
+
+        @media (max-width: $lg) {
+            flex-direction: column;
+        }
+    }
+
+    .form-floating {
+        margin-bottom: .75rem;
+
+        label {
+            color: $black;
+        }
+    }
+
+    .form-check {
+        margin: -0.25rem 0 .75rem;
+        display: flex;
+        align-items: center;
+
+        label {
+            margin: .3rem 0 0 .75rem;
+        }
+
+        input {
+            &:checked {
+                background-color: $primary-color;
+                border-color: $primary-color-darker;
+            }
+        }
+    }
+
+    .form-group,
+    .list {
+        flex: 1;
+    }
+
+    .list {
+        margin-left: 3rem;
+
+        @media (max-width: $lg) {
+            margin: 3rem 0 0;
+        }
+    }
+
+    textarea {
+        min-height: 150px;
+    }
+
+    .grid-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: .25rem;
+        padding: .5rem 1rem;
+        background-color: $secondary-color-lighter;
+
+        .btn {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-warning {
+            margin: 0 .5rem 0 auto;
+            color: $white;
+
+            &:hover {
+                background-color: #dfa700;
+            }
+        }
+    }
+}
+
 #questions {
     width: 100%;
     background-color: $secondary-color-darker;
@@ -583,6 +660,59 @@ section {
 #front-page {
     .title {
         text-align: center;
+    }
+}
+
+.admin-edit-form {
+    .container {
+        display: flex;
+        justify-content: center;
+    }
+
+    textarea {
+        min-height: 150px;
+    }
+
+    .form-floating {
+        margin-bottom: .75rem;
+
+        label {
+            color: $black;
+        }
+    }
+
+    .form-check {
+        margin: -0.25rem 0 .75rem;
+        display: flex;
+        align-items: center;
+
+        label {
+            margin: .3rem 0 0 .75rem;
+        }
+
+        input {
+            &:checked {
+                background-color: $primary-color;
+                border-color: $primary-color-darker;
+            }
+        }
+    }
+
+    .btn-box {
+        display: flex;
+    }
+
+    .btn {
+        padding: 0;
+        width: 45px;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .btn-success {
+        margin-right: .75rem;
     }
 }
 
