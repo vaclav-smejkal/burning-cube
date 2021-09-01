@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Package;
+use Illuminate\Support\Facades\Validator;
+use App\Helper\Helper;
 
 class PackageController extends Controller
 {
@@ -12,6 +14,14 @@ class PackageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public $package;
+
+    public function __construct()
+    {
+        $this->package = Package::class;
+    }
+
     public function index()
     {
         $packages = Package::get();
@@ -37,7 +47,41 @@ class PackageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make(
+            $request->all(),
+            $rules = [
+                'name' => [
+                    'required',
+                    'max:100',
+                ],
+                'comment' => [
+                    'required',
+                ],
+                'price' => [
+                    'required',
+                ],
+            ],
+            $messages = [
+                "name.required" => "Vyplňte prosím jméno balíčku",
+                "name.max" => "Maximální délka názvu balíčku je :max.",
+                "price.required" => "Vyplňte prosím cenu balíčku",
+            ]
+        )->validate();
+
+        if ($request->input('is-one-time')) {
+            $isOneTime = 1;
+        } else {
+            $isOneTime = 0;
+        }
+        $this->package::create([
+            'name' => $request->name,
+            'sanitized_name' => Helper::instance()->friendly_url($request->name),
+            'comment' => $request->comment,
+            'price' => $request->price,
+            'is_one_time' => $isOneTime,
+        ]);
+
+        return redirect('/admin/package')->with('message', 'Balíček byl vytvořen!');
     }
 
     /**
@@ -73,9 +117,46 @@ class PackageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Package $package)
     {
-        //
+        $validator = Validator::make(
+            $request->all(),
+            $rules = [
+                'name' => [
+                    'required',
+                    'max:100',
+                ],
+                'comment' => [
+                    'required',
+                ],
+                'price' => [
+                    'required',
+                    'numeric',
+                ],
+            ],
+            $messages = [
+                "name.required" => "Vyplňte prosím jméno balíčku",
+                "name.max" => "Maximální délka názvu balíčku je :max.",
+                "price.required" => "Vyplňte prosím cenu balíčku",
+                "price.numeric" => "Cena musí být v číslech",
+            ]
+        )->validate();
+
+        if ($request->input('is-one-time')) {
+            $isOneTime = 1;
+        } else {
+            $isOneTime = 0;
+        }
+
+        $package->name = $request->name;
+        $package->sanitized_name = Helper::instance()->friendly_url($request->name);
+        $package->comment = $request->comment;
+        $package->price = $request->price;
+        $package->is_one_time = $isOneTime;
+
+        $package->save();
+
+        return redirect('/admin/package')->with('message', 'Balíček byl vyeditován');
     }
 
     /**
@@ -84,8 +165,11 @@ class PackageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($sanitized_name)
     {
-        //
+        $package = $this->package::where('sanitized_name', $sanitized_name)->first();
+        $package->delete();
+
+        return redirect("/admin/package");
     }
 }

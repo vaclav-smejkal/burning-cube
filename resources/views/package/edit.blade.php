@@ -41,8 +41,8 @@
                         </span>
                     @enderror
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" @if ($package->is_one_time) checked @endif name="is-one-time"
-                            id="is-one-time">
+                        <input class="form-check-input" name="is-one-time" type="checkbox" @if ($package->is_one_time) checked @endif
+                            id="is-one-time" value="true">
                         <label class="form-check-label" for="is-one-time">
                             Jednorázový balíček
                         </label>
@@ -61,11 +61,6 @@
                         </a>
                     </div>
                 </form>
-                @error('name')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
             </div>
         </div>
     </section>

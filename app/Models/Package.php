@@ -11,6 +11,7 @@ class Package extends Model
 
     public $fillable = [
         'name',
+        'sanitized_name',
         'comment',
         'price',
         'is_one_time'
