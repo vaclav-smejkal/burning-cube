@@ -59,12 +59,11 @@ class PackageController extends Controller
                 ],
                 'price' => [
                     'required',
+                    'numeric'
                 ],
             ],
             $messages = [
-                "name.required" => "Vyplňte prosím jméno balíčku",
-                "name.max" => "Maximální délka názvu balíčku je :max.",
-                "price.required" => "Vyplňte prosím cenu balíčku",
+                "price.required" => "Vyplňte cenu.",
             ]
         )->validate();
 
@@ -81,7 +80,7 @@ class PackageController extends Controller
             'is_one_time' => $isOneTime,
         ]);
 
-        return redirect('/admin/package')->with('message', 'Balíček byl vytvořen!');
+        return redirect('/admin/package')->with('message', 'Balíček byl vytvořen.');
     }
 
     /**
@@ -135,10 +134,7 @@ class PackageController extends Controller
                 ],
             ],
             $messages = [
-                "name.required" => "Vyplňte prosím jméno balíčku",
-                "name.max" => "Maximální délka názvu balíčku je :max.",
-                "price.required" => "Vyplňte prosím cenu balíčku",
-                "price.numeric" => "Cena musí být v číslech",
+                "price.required" => "Vyplňte cenu.",
             ]
         )->validate();
 
@@ -156,7 +152,7 @@ class PackageController extends Controller
 
         $package->save();
 
-        return redirect('/admin/package')->with('message', 'Balíček byl vyeditován');
+        return redirect('/admin/package')->with('message', 'Balíček byl editován.');
     }
 
     /**

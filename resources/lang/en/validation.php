@@ -152,8 +152,10 @@ return [
         'email' => 'e-mail',
         'password' => 'heslo',
         'image' => 'obrázek',
-        "name" => 'název',
-        "duration" => "doba trvání",
-        "players" => "počet hráčů"
+        'name' => 'název',
+        'duration' => 'doba trvání',
+        'players' => 'počet hráčů',
+        'comment' => 'komentář',
+        'price' => 'cena'
     ],
 ];

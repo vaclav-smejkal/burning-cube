@@ -55,7 +55,7 @@
                             <button type="submit" class="btn btn-primary">Přidat</button>
                         </form>
                         @if (session()->has('message'))
-                            <div class="message success">
+                            <div class="alert alert-success" role="alert">
                                 {{ session()->get('message') }}
                             </div>
                         @endif

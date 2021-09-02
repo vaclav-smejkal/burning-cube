@@ -670,7 +670,7 @@ section {
 #forgot-password .alert,
 #login .alert,
 #register .alert {
-  margin-top: 0.5rem;
+  margin: 0.75rem 0 0;
 }
 
 #package-show .header {
@@ -794,6 +794,13 @@ section {
   #admin-package .flex-group {
     flex-direction: column;
   }
+}
+#admin-package .invalid-feedback {
+  margin: -0.5rem 0 0.5rem;
+  display: block;
+}
+#admin-package .alert {
+  margin: 0.75rem 0 0;
 }
 #admin-package .form-floating {
   margin-bottom: 0.75rem;
@@ -957,6 +964,13 @@ section {
 .admin-edit-form .container {
   display: flex;
   justify-content: center;
+}
+.admin-edit-form .invalid-feedback {
+  margin: -0.5rem 0 0.5rem;
+  display: block;
+}
+.admin-edit-form .alert {
+  margin: 0.75rem 0 0;
 }
 .admin-edit-form textarea {
   min-height: 150px;

@@ -341,7 +341,7 @@ section {
     }
 
     .alert {
-        margin-top: .5rem;
+        margin: .75rem 0 0;
     }
 }
 
@@ -477,6 +477,15 @@ section {
         @media (max-width: $lg) {
             flex-direction: column;
         }
+    }
+
+    .invalid-feedback {
+        margin: -0.5rem 0 .5rem;
+        display: block;
+    }
+
+    .alert {
+        margin: .75rem 0 0;
     }
 
     .form-floating {
@@ -667,6 +676,15 @@ section {
     .container {
         display: flex;
         justify-content: center;
+    }
+
+    .invalid-feedback {
+        margin: -0.5rem 0 .5rem;
+        display: block;
+    }
+
+    .alert {
+        margin: .75rem 0 0;
     }
 
     textarea {
