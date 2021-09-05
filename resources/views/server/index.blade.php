@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Burning cube | Balíčky')
+@section('title', 'Burning cube | Servery')
 
 @section('content')
     <section id="admin-package">
@@ -7,12 +7,12 @@
             <div class="flex-group">
                 <div class="form-group">
                     <div class="form">
-                        <h2 class="subtitle">Přidat nový balíček</h2>
-                        <form action="{{ route('package.store') }}" method="POST">
+                        <h2 class="subtitle">Přidat nový server</h2>
+                        <form action="{{ route('server.store') }}" method="POST">
                             @csrf
                             <div class="form-floating">
                                 <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}"
-                                    placeholder="Název kategorie">
+                                    placeholder="Název">
                                 <label for="name">Název</label>
                             </div>
                             @error('name')
@@ -21,33 +21,21 @@
                                 </span>
                             @enderror
                             <div class="form-floating">
-                                <input type="text" class="form-control" name="price" id="price"
-                                    value="{{ old('price') }}" placeholder="Cena">
-                                <label for="price">Cena</label>
+                                <input type="text" class="form-control" name="ip_address" id="ip_address"
+                                    value="{{ old('ip_address') }}" placeholder="Ip adresa">
+                                <label for="ip_address">Ip adresa</label>
                             </div>
-                            @error('price')
+                            @error('ip_address')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                             <div class="form-floating">
-                                <textarea class="form-control" placeholder="Poznámka" name="comment"
-                                    id="comment">{{ old('comment') }}</textarea>
-                                <label for="comment">Poznámka</label>
+                                <input type="text" class="form-control" name="port" id="port" value="{{ old('port') }}"
+                                    placeholder="Port">
+                                <label for="port">Port</label>
                             </div>
-                            @error('comment')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="is-one-time" id="is-one-time"
-                                    @if (old('is_one_time')) checked @endif>
-                                <label class="form-check-label" for="is-one-time">
-                                    Jednorázový balíček
-                                </label>
-                            </div>
-                            @error('is_one_time')
+                            @error('port')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -55,24 +43,24 @@
                             <button type="submit" class="btn btn-primary">Přidat</button>
                         </form>
                         @if (session()->has('message'))
-                            <div class="message success">
+                            <div class="alert alert-success">
                                 {{ session()->get('message') }}
                             </div>
                         @endif
                     </div>
                 </div>
                 <div class="list">
-                    <h2 class="subtitle">Seznam balíčků</h2>
+                    <h2 class="subtitle">Seznam serverů</h2>
                     <div class="grid-items">
-                        @foreach ($packages as $package)
+                        @foreach ($servers as $server)
                             <div class="grid-item">
                                 <div class="name">
-                                    {{ $package->name }}
+                                    {{ $server->name }}
                                 </div>
-                                <a href="{{ route('package.edit', $package->sanitized_name) }}" class="btn btn-warning">
+                                <a href="{{ route('server.edit', $server->sanitized_name) }}" class="btn btn-warning">
                                     <i class="fas fa-edit fa-fw"></i>
                                 </a>
-                                <form action="{{ route('package.destroy', $package->sanitized_name) }}" method="POST">
+                                <form action="{{ route('server.destroy', $server->sanitized_name) }}" method="POST">
                                     @csrf
                                     @method("delete")
                                     <button type="submit" class="btn btn-danger">
