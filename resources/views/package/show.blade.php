@@ -14,6 +14,7 @@
                     <div class="price">
                         {{ $package->price }} Kč
                     </div>
+                    <a href="#" class="btn btn-primary">Koupit</a>
                 </div>
                 <div class="image">
                     <img src="{{ asset('img/grass-block.png') }}" alt="Block">

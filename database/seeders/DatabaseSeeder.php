@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
 
         // Only for testing
         $admin = User::create([
+            'uuid' => Str::uuid(),
             'email' => 'admin@gmail.com',
             'verify_token' => substr(Str::uuid(), 0, 8),
             'email_verified_at' => now(),

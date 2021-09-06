@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AddNickController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SeedController;
@@ -27,7 +28,10 @@ Route::group(['middleware' => ['role:admin']], function () {
 });
 
 Route::get('/', [HomeController::class, 'index']);
-Route::get('/verify-nick', [VerifyNickController::class, 'index']);
+Route::group(['middleware' => ['auth']], function () {
+    Route::resource('/verify-nick', VerifyNickController::class)->only('index', 'update');
+    Route::resource('/add-nick', AddNickController::class)->only('index', 'update');
+});
 Route::get('/package/{sanitized_name}', [PackageController::class, 'show']);
 
 // Only for testing

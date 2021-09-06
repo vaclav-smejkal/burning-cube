@@ -30,10 +30,17 @@
                             <i class="fas fa-check-circle"></i>
                         </div>
                     @else
-                        <a href="/verify-nick" class="name">Ověřit nick</a>
-                        <div class="icon">
-                            <i class="fas fa-times-circle"></i>
-                        </div>
+                        @if (Auth::user()->nick)
+                            <a href="/verify-nick" class="name">Ověřit nick</a>
+                            <div class="icon">
+                                <i class="fas fa-times-circle"></i>
+                            </div>
+                        @else
+                            <a href="/add-nick" class="name">Přidat nick</a>
+                            <div class="icon">
+                                <i class="fas fa-times-circle"></i>
+                            </div>
+                        @endif
                     @endif
                 @endauth
             </div>
