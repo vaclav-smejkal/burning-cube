@@ -34,7 +34,7 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::resource('/admin/user', UserController::class)->except('show', 'create');
 });
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->middleware(['auth', 'has.nickname']);
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('/verify-nick', VerifyNickController::class)->only('index', 'update');
     Route::resource('/add-nick', AddNickController::class)->only('index', 'update');
