@@ -1,10 +1,10 @@
 <?php
 
-use App\Http\Controllers\AddNickController;
+use App\Http\Controllers\AddNicknameController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SeedController;
-use App\Http\Controllers\VerifyNickController;
+use App\Http\Controllers\VerifyNicknameController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PackageController;
 use App\Http\Controllers\ServerController;
@@ -36,8 +36,8 @@ Route::group(['middleware' => ['role:admin']], function () {
 
 Route::get('/', [HomeController::class, 'index'])->middleware(['auth', 'has.nickname']);
 Route::group(['middleware' => ['auth']], function () {
-    Route::resource('/verify-nick', VerifyNickController::class)->only('index', 'update');
-    Route::resource('/add-nick', AddNickController::class)->only('index', 'update');
+    Route::resource('/verify-nickname', VerifyNicknameController::class)->only('index', 'update');
+    Route::resource('/add-nickname', AddNicknameController::class)->only('index', 'update');
 });
 Route::get('/package/{sanitized_name}', [PackageController::class, 'show']);
 

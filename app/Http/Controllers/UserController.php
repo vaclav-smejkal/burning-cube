@@ -36,7 +36,7 @@ class UserController extends Controller
         $validator = Validator::make(
             $request->all(),
             $rules = [
-                'nick' => [
+                'nickname' => [
                     'required',
                     'max:100',
                 ],
@@ -48,12 +48,12 @@ class UserController extends Controller
             $messages = []
         )->validate();
 
-        $foundNick = $this->user::where('nick', $request->nick)->first();
+        $foundNickname = $this->user::where('nickname', $request->nickname)->first();
 
-        if ($foundNick && $foundNick->nick != $user->nick) {
-            throw ValidationException::withMessages(['nick' => 'Tento nick již existuje.']);
+        if ($foundNickname && $foundNickname->nickname != $user->nickname) {
+            throw ValidationException::withMessages(['nickname' => 'Tento nickname již existuje.']);
         } else {
-            $user->nick = $request->nick;
+            $user->nickname = $request->nickname;
             $user->email = $request->email;
 
             $user->save();

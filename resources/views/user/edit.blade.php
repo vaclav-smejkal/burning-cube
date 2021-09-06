@@ -13,16 +13,16 @@
                         <li class="breadcrumb-item active" aria-current="page">Editace</li>
                     </ol>
                 </nav>
-                <h2 class="subtitle">Editování uživatelů {{ $user->nick }}</h2>
+                <h2 class="subtitle">Editování uživatelů {{ $user->nickname }}</h2>
                 <form action="{{ route('user.update', $user) }}" method="POST">
                     @csrf
                     @method("PUT")
                     <div class="form-floating">
-                        <input type="text" class="form-control" name="nick" id="nick" value="{{ $user->nick }}"
-                            placeholder="Název uživatele">
+                        <input type="text" class="form-control" name="nickname" id="nickname"
+                            value="{{ $user->nickname }}" placeholder="Název uživatele">
                         <label for="name">Nick</label>
                     </div>
-                    @error('nick')
+                    @error('nickname')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>

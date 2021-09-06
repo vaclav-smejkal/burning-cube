@@ -8,7 +8,7 @@ use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
 
-class VerifyNickController extends Controller
+class VerifyNicknameController extends Controller
 {
     public function __construct()
     {
@@ -19,7 +19,7 @@ class VerifyNickController extends Controller
     {
         $verifyToken = Auth::user()->verify_token;
 
-        return view("verify-nick", ["verifyToken" => $verifyToken]);
+        return view("verify-nickname", ["verifyToken" => $verifyToken]);
     }
 
     public function update(Request $request, $uuid)
@@ -29,18 +29,18 @@ class VerifyNickController extends Controller
         $validator = Validator::make(
             $request->all(),
             $rules = [
-                'nick' => [
+                'nickname' => [
                     'required',
                     'max:100',
                 ],
             ],
         )->validate();
-        $foundUser = $this->user::where('nick', $user->nick)->first();
+        $foundUser = $this->user::where('nickname', $user->nickname)->first();
 
-        if ($request->nick != $foundUser->nick && $foundUser) {
-            throw ValidationException::withMessages(['nick' => 'Nick již existuje.']);
+        if ($request->nickname != $foundUser->nickname && $foundUser) {
+            throw ValidationException::withMessages(['nickname' => 'Nick již existuje.']);
         } else {
-            $user->nick = $request->nick;
+            $user->nickname = $request->nickname;
             $user->verified = 1;
             $user->save();
         }

@@ -25,18 +25,18 @@
                 </a>
                 @auth
                     @if (Auth::user()->verified)
-                        <div class="name">{{ Auth::user()->nick }}</div>
+                        <div class="name">{{ Auth::user()->nickname }}</div>
                         <div class="icon">
                             <i class="fas fa-check-circle"></i>
                         </div>
                     @else
-                        @if (Auth::user()->nick)
-                            <a href="/verify-nick" class="name">Ověřit nick</a>
+                        @if (Auth::user()->nickname)
+                            <a href="/verify-nickname" class="name">Ověřit nickname</a>
                             <div class="icon">
                                 <i class="fas fa-times-circle"></i>
                             </div>
                         @else
-                            <a href="/add-nick" class="name">Přidat nick</a>
+                            <a href="/add-nickname" class="name">Přidat nickname</a>
                             <div class="icon">
                                 <i class="fas fa-times-circle"></i>
                             </div>

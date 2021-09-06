@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 
-class AddNickController extends Controller
+class AddNicknameController extends Controller
 {
     public $user;
 
@@ -22,7 +22,7 @@ class AddNickController extends Controller
      */
     public function index()
     {
-        return view('add-nick');
+        return view('add-nickname');
     }
 
     /**
@@ -39,7 +39,7 @@ class AddNickController extends Controller
         $validator = Validator::make(
             $request->all(),
             $rules = [
-                'nick' => [
+                'nickname' => [
                     'required',
                     'max:100',
                     'unique:users'
@@ -47,7 +47,7 @@ class AddNickController extends Controller
             ],
         )->validate();
 
-        $user->nick = $request->nick;
+        $user->nickname = $request->nickname;
         $user->save();
 
         return redirect('/');

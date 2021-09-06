@@ -25,9 +25,9 @@
                                     <div>
                                         {{ $user->email }}
                                     </div>
-                                    @isset($user->nick)
+                                    @isset($user->nickname)
                                         <div>
-                                            {{ $user->nick }}
+                                            {{ $user->nickname }}
                                         </div>
                                     @endisset
                                 </div>

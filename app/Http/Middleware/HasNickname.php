@@ -17,10 +17,10 @@ class HasNickname
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user()->nick) {
+        if (Auth::user()->nickname) {
             return $next($request);
         } else {
-            return redirect('/add-nick')->with('error', 'Vyplňte Minecraft nick.');
+            return redirect('/add-nickname')->with('error', 'Vyplňte Minecraft nickname.');
         }
     }
 }
