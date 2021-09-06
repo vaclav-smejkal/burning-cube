@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,5 +17,18 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         \App\Models\User::factory(10)->create();
+        \App\Models\Question::factory(8)->create();
+        \App\Models\Server::factory(8)->create();
+        \App\Models\Package::factory(6)->create();
+
+        // Only for testing
+        $admin = User::create([
+            'email' => 'admin@gmail.com',
+            'verify_token' => substr(Str::uuid(), 0, 8),
+            'email_verified_at' => now(),
+            'password' => Hash::make('123'),
+            'remember_token' => Str::random(10),
+        ]);
+        $admin->assignRole("admin");
     }
 }
