@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Question;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class QuestionFactory extends Factory
 {
@@ -24,6 +25,7 @@ class QuestionFactory extends Factory
         return [
             'question' => str_replace(".", "", $this->faker->sentence(5)) . "?",
             'answer' => $this->faker->paragraph(2),
+            'uuid'  => Str::uuid(),
         ];
     }
 }

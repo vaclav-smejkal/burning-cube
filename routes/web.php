@@ -7,6 +7,10 @@ use App\Http\Controllers\SeedController;
 use App\Http\Controllers\VerifyNickController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PackageController;
+use App\Http\Controllers\ServerController;
+use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\UserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +29,9 @@ Route::group(['middleware' => ['role:admin']], function () {
     });
     Route::get('/admin/dashboard', [DashboardController::class, 'index']);
     Route::resource('/admin/package', PackageController::class)->except('show');
+    Route::resource('/admin/server', ServerController::class)->except('show');
+    Route::resource('/admin/question', QuestionController::class)->except('show');
+    Route::resource('/admin/user', UserController::class)->except('show');
 });
 
 Route::get('/', [HomeController::class, 'index']);

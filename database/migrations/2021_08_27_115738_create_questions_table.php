@@ -17,6 +17,7 @@ class CreateQuestionsTable extends Migration
             $table->id();
             $table->string('question');
             $table->text("answer");
+            $table->uuid('uuid');
             $table->timestamps();
         });
     }

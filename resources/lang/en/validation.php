@@ -156,6 +156,9 @@ return [
         'duration' => 'doba trvání',
         'players' => 'počet hráčů',
         'comment' => 'komentář',
-        'price' => 'cena'
+        'price' => 'cena',
+        'ip_address' => 'ip adresa',
+        'question' => 'otázka',
+        'answer' => 'odpověď',
     ],
 ];

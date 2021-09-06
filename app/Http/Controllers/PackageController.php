@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Package;
 use Illuminate\Support\Facades\Validator;
 use App\Helper\Helper;
+use Illuminate\Validation\ValidationException;
 
 class PackageController extends Controller
 {
@@ -53,6 +54,7 @@ class PackageController extends Controller
                 'name' => [
                     'required',
                     'max:100',
+                    'unique:packages',
                 ],
                 'comment' => [
                     'required',
@@ -104,7 +106,7 @@ class PackageController extends Controller
      */
     public function edit($sanitized_name)
     {
-        $package = Package::where('sanitized_name', $sanitized_name)->first();
+        $package = $this->package::where('sanitized_name', $sanitized_name)->first();
 
         return view('package.edit', ['package' => $package]);
     }
@@ -144,15 +146,23 @@ class PackageController extends Controller
             $isOneTime = 0;
         }
 
-        $package->name = $request->name;
-        $package->sanitized_name = Helper::instance()->friendly_url($request->name);
-        $package->comment = $request->comment;
-        $package->price = $request->price;
-        $package->is_one_time = $isOneTime;
+        $sanitizedName = Helper::instance()->friendly_url($request->name);
 
-        $package->save();
+        $foundPackage = $this->package::where('sanitized_name', $sanitizedName)->first();
 
-        return redirect('/admin/package')->with('message', 'Balíček byl editován.');
+        if ($foundPackage && $foundPackage->name != $package->name) {
+            throw ValidationException::withMessages(['name' => 'Tento balíček již existuje.']);
+        } else {
+            $package->name = $request->name;
+            $package->sanitized_name = Helper::instance()->friendly_url($request->name);
+            $package->comment = $request->comment;
+            $package->price = $request->price;
+            $package->is_one_time = $isOneTime;
+
+            $package->save();
+
+            return redirect('/admin/package')->with('message', 'Balíček byl editován.');
+        }
     }
 
     /**

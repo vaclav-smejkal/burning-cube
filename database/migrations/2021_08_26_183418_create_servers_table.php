@@ -16,6 +16,7 @@ class CreateServersTable extends Migration
         Schema::create('servers', function (Blueprint $table) {
             $table->id();
             $table->string('name', 100);
+            $table->string('sanitized_name', 100);
             $table->string("ip_address");
             $table->unsignedInteger("port");
         });

@@ -24,7 +24,8 @@ class User extends Authenticatable
         'nick',
         'email',
         'password',
-        'verify_token'
+        'verify_token',
+        'uuid'
     ];
 
     /**
