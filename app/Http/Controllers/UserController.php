@@ -23,6 +23,7 @@ class UserController extends Controller
 
         return view("user.index", ["users" => $users]);
     }
+
     public function edit($uuid)
     {
         $user = $this->user::where('uuid', $uuid)->first();
@@ -66,6 +67,6 @@ class UserController extends Controller
         $user = $this->user::where('uuid', $uuid)->first();
         $user->delete();
 
-        return redirect("/admin/user");
+        return redirect("/admin/user")->with('message', 'Uživatel byl smazán.');
     }
 }

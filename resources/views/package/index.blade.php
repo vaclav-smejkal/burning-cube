@@ -4,6 +4,12 @@
 @section('content')
     <section id="admin-package">
         <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/admin"><i class="fas fa-home"></i></a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Balíčky</li>
+                </ol>
+            </nav>
             <div class="flex-group">
                 <div class="form-group">
                     <div class="form">
@@ -69,16 +75,20 @@
                                 <div class="name">
                                     {{ $package->name }}
                                 </div>
-                                <a href="{{ route('package.edit', $package->sanitized_name) }}" class="btn btn-warning">
-                                    <i class="fas fa-edit fa-fw"></i>
-                                </a>
-                                <form action="{{ route('package.destroy', $package->sanitized_name) }}" method="POST">
-                                    @csrf
-                                    @method("delete")
-                                    <button type="submit" class="btn btn-danger">
-                                        <i class="fas fa-trash fa-fw"></i>
-                                    </button>
-                                </form>
+                                <div class="btn-box">
+                                    <a href="{{ route('package.edit', $package->sanitized_name) }}"
+                                        class="btn btn-warning">
+                                        <i class="fas fa-edit fa-fw"></i>
+                                    </a>
+                                    <form action="{{ route('package.destroy', $package->sanitized_name) }}"
+                                        method="POST">
+                                        @csrf
+                                        @method("delete")
+                                        <button type="submit" class="btn btn-danger">
+                                            <i class="fas fa-trash fa-fw"></i>
+                                        </button>
+                                    </form>
+                                </div>
                             </div>
                         @endforeach
                     </div>

@@ -24,6 +24,7 @@ class QuestionController extends Controller
 
         return view("question.index", ["questions" => $questions]);
     }
+
     public function store(Request $request)
     {
         $validator = Validator::make(
@@ -50,6 +51,7 @@ class QuestionController extends Controller
 
         return redirect('/admin/question')->with('message', 'Otázka byla vytvořena.');
     }
+
     public function edit($uuid)
     {
         $question = $this->question::where('uuid', $uuid)->first();
@@ -75,6 +77,7 @@ class QuestionController extends Controller
         )->validate();
 
         $foundQuestion = $this->question::where('question', $request->question)->first();
+
         if ($foundQuestion) {
             throw ValidationException::withMessages(['question' => 'Tato otázka již existuje.']);
         } else {

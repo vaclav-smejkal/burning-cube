@@ -6,6 +6,13 @@
     <section id="admin-package-edit" class="admin-edit-form">
         <div class="container">
             <div class="form-container">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/admin"><i class="fas fa-home"></i></a></li>
+                        <li class="breadcrumb-item"><a href="/admin/user">Uživatelé</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Editace</li>
+                    </ol>
+                </nav>
                 <h2 class="subtitle">Editování uživatelů {{ $user->nick }}</h2>
                 <form action="{{ route('user.update', $user) }}" method="POST">
                     @csrf

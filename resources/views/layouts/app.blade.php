@@ -85,7 +85,7 @@
     <main>
         @yield('content')
         @if (Auth::check())
-            @if (!Auth::user()->hasRole('admin'))
+            @if (!Auth::user()->hasRole('admin') || !str_contains(url()->current(), 'admin'))
                 @include('faq')
             @endif
         @else
