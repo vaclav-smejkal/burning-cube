@@ -1,11 +1,16 @@
 <?php
 
+use App\Http\Controllers\AddNicknameController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SeedController;
-use App\Http\Controllers\VerifyNickController;
+use App\Http\Controllers\VerifyNicknameController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PackageController;
+use App\Http\Controllers\ServerController;
+use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\UserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -23,10 +28,17 @@ Route::group(['middleware' => ['role:admin']], function () {
         return redirect('/admin/dashboard');
     });
     Route::get('/admin/dashboard', [DashboardController::class, 'index']);
+    Route::resource('/admin/package', PackageController::class)->except('show', 'create');
+    Route::resource('/admin/server', ServerController::class)->except('show', 'create');
+    Route::resource('/admin/question', QuestionController::class)->except('show', 'create');
+    Route::resource('/admin/user', UserController::class)->except('show', 'create');
 });
 
-Route::get('/', [HomeController::class, 'index']);
-Route::get('/verify-nick', [VerifyNickController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->middleware(['auth', 'has.nickname']);
+Route::group(['middleware' => ['auth']], function () {
+    Route::resource('/verify-nickname', VerifyNicknameController::class)->only('index', 'update');
+    Route::resource('/add-nickname', AddNicknameController::class)->only('index', 'update');
+});
 Route::get('/package/{sanitized_name}', [PackageController::class, 'show']);
 
 // Only for testing

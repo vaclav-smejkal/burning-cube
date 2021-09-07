@@ -12,7 +12,7 @@
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Non voluptates esse mollitia, id, libero
                         iusto eveniet.
                     </p>
-                    <a href="#" class="btn btn-primary">Editovat</a>
+                    <a href="/admin/package" class="btn btn-primary">Editovat</a>
                 </div>
                 <div class="item">
                     <div class="subtitle">Servery</div>
@@ -20,7 +20,7 @@
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Non voluptates esse mollitia, id, libero
                         iusto eveniet.
                     </p>
-                    <a href="#" class="btn btn-primary">Editovat</a>
+                    <a href="/admin/server" class="btn btn-primary">Editovat</a>
                 </div>
                 <div class="item">
                     <div class="subtitle">FAQ</div>
@@ -28,7 +28,7 @@
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Non voluptates esse mollitia, id, libero
                         iusto eveniet.
                     </p>
-                    <a href="#" class="btn btn-primary">Editovat</a>
+                    <a href="/admin/question" class="btn btn-primary">Editovat</a>
                 </div>
                 <div class="item">
                     <div class="subtitle">Uživatelé</div>
@@ -36,7 +36,7 @@
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Non voluptates esse mollitia, id, libero
                         iusto eveniet.
                     </p>
-                    <a href="#" class="btn btn-primary">Editovat</a>
+                    <a href="/admin/user" class="btn btn-primary">Editovat</a>
                 </div>
             </div>
         </div>

@@ -23,11 +23,13 @@ class DatabaseSeeder extends Seeder
 
         // Only for testing
         $admin = User::create([
+            'uuid' => Str::uuid(),
             'email' => 'admin@gmail.com',
             'verify_token' => substr(Str::uuid(), 0, 8),
             'email_verified_at' => now(),
             'password' => Hash::make('123'),
             'remember_token' => Str::random(10),
+            'uuid' => Str::uuid(),
         ]);
         $admin->assignRole("admin");
     }

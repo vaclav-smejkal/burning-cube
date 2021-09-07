@@ -25,15 +25,22 @@
                 </a>
                 @auth
                     @if (Auth::user()->verified)
-                        <div class="name">{{ Auth::user()->nick }}</div>
+                        <div class="name">{{ Auth::user()->nickname }}</div>
                         <div class="icon">
                             <i class="fas fa-check-circle"></i>
                         </div>
                     @else
-                        <a href="/verify-nick" class="name">Ověřit nick</a>
-                        <div class="icon">
-                            <i class="fas fa-times-circle"></i>
-                        </div>
+                        @if (Auth::user()->nickname)
+                            <a href="/verify-nickname" class="name">Ověřit nickname</a>
+                            <div class="icon">
+                                <i class="fas fa-times-circle"></i>
+                            </div>
+                        @else
+                            <a href="/add-nickname" class="name">Přidat nickname</a>
+                            <div class="icon">
+                                <i class="fas fa-times-circle"></i>
+                            </div>
+                        @endif
                     @endif
                 @endauth
             </div>
@@ -78,7 +85,7 @@
     <main>
         @yield('content')
         @if (Auth::check())
-            @if (!Auth::user()->hasRole('admin'))
+            @if (!Auth::user()->hasRole('admin') || !str_contains(url()->current(), 'admin'))
                 @include('faq')
             @endif
         @else

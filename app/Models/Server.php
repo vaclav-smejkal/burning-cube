@@ -11,6 +11,7 @@ class Server extends Model
 
     public $fillable = [
         'name',
+        'sanitized_name',
         'ip_address',
         'port'
     ];
