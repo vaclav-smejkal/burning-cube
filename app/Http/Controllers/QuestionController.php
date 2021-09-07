@@ -39,7 +39,7 @@ class QuestionController extends Controller
                 ],
             ],
             $messages = [
-                "question.required" => "Vyplňte otázku.",
+                "question.required" => "Zadejte otázku.",
             ]
         )->validate();
 
@@ -49,7 +49,7 @@ class QuestionController extends Controller
             'uuid' => Str::uuid(),
         ]);
 
-        return redirect('/admin/question')->with('message', 'Otázka byla vytvořena.');
+        return redirect('/admin/question')->with('message', 'Otázka byla úspěšně vytvořena.');
     }
 
     public function edit($uuid)
@@ -72,7 +72,7 @@ class QuestionController extends Controller
                 ],
             ],
             $messages = [
-                "question.required" => "Vyplňte otázku.",
+                "question.required" => "Zadejte otázku.",
             ]
         )->validate();
 
@@ -86,7 +86,7 @@ class QuestionController extends Controller
 
             $question->save();
 
-            return redirect('/admin/question')->with('message', 'Otázka byla editována.');
+            return redirect('/admin/question')->with('message', 'Otázka byla úspěšně editována.');
         }
     }
 

@@ -58,7 +58,7 @@ class UserController extends Controller
 
             $user->save();
 
-            return redirect('/admin/user')->with('message', 'Uživatel byl editován.');
+            return redirect('/admin/user')->with('message', 'Uživatel byl úspěšně editován.');
         }
     }
 
@@ -67,6 +67,6 @@ class UserController extends Controller
         $user = $this->user::where('uuid', $uuid)->first();
         $user->delete();
 
-        return redirect("/admin/user")->with('message', 'Uživatel byl smazán.');
+        return redirect("/admin/user")->with('message', 'Uživatel byl úspěšně smazán.');
     }
 }

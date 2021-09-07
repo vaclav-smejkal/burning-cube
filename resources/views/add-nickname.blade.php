@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Burning cube | Přidání nicknamu')
+@section('title', 'Burning cube | Přidat nickname')
 
 @section('content')
     <section id="add-nick">

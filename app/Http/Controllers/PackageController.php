@@ -55,7 +55,7 @@ class PackageController extends Controller
                 ],
             ],
             $messages = [
-                "price.required" => "Vyplňte cenu.",
+                "price.required" => "Zadejte cenu.",
             ]
         )->validate();
 
@@ -72,7 +72,7 @@ class PackageController extends Controller
             'is_one_time' => $isOneTime,
         ]);
 
-        return redirect('/admin/package')->with('message', 'Balíček byl vytvořen.');
+        return redirect('/admin/package')->with('message', 'Balíček byl úspěšně vytvořen.');
     }
 
     /**
@@ -126,7 +126,7 @@ class PackageController extends Controller
                 ],
             ],
             $messages = [
-                "price.required" => "Vyplňte cenu.",
+                "price.required" => "Zadejte cenu.",
             ]
         )->validate();
 
@@ -151,7 +151,7 @@ class PackageController extends Controller
 
             $package->save();
 
-            return redirect('/admin/package')->with('message', 'Balíček byl editován.');
+            return redirect('/admin/package')->with('message', 'Balíček byl úspěšně editován.');
         }
     }
 

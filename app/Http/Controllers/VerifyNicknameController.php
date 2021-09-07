@@ -38,7 +38,7 @@ class VerifyNicknameController extends Controller
         $foundUser = $this->user::where('nickname', $user->nickname)->first();
 
         if ($request->nickname != $foundUser->nickname && $foundUser) {
-            throw ValidationException::withMessages(['nickname' => 'Nick již existuje.']);
+            throw ValidationException::withMessages(['nickname' => 'Tento nickname již existuje.']);
         } else {
             $user->nickname = $request->nickname;
             $user->verified = 1;

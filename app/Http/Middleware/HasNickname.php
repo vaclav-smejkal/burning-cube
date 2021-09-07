@@ -20,7 +20,7 @@ class HasNickname
         if (Auth::user()->nickname) {
             return $next($request);
         } else {
-            return redirect('/add-nickname')->with('error', 'Vyplňte Minecraft nickname.');
+            return redirect('/add-nickname')->with('error', 'Zadejte Minecraft nickname.');
         }
     }
 }

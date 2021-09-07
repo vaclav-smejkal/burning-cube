@@ -45,8 +45,8 @@ class ServerController extends Controller
                 ],
             ],
             $messages = [
-                "ip_address.required" => "Vyplňte ip adresu.",
-                "ip_address.ip" => "Vyplňte správně ip adresu"
+                "ip_address.required" => "Zadejte ip adresu.",
+                "ip_address.ip" => "Zadejte Ip adresu ve správném formátu."
             ]
         )->validate();
 
@@ -57,7 +57,7 @@ class ServerController extends Controller
             'port' => $request->port,
         ]);
 
-        return redirect('/admin/server')->with('message', 'Server byl vytvořen.');
+        return redirect('/admin/server')->with('message', 'Server byl úspěšně vytvořen.');
     }
 
     public function edit($sanitized_name)
@@ -86,8 +86,8 @@ class ServerController extends Controller
                 ],
             ],
             $messages = [
-                "ip_address.required" => "Vyplňte ip adresu.",
-                "ip_address.ip" => "Vyplňte správně ip adresu"
+                "ip_address.required" => "Zadejte Ip adresu.",
+                "ip_address.ip" => "Zadejte Ip adresu ve správném formátu."
             ]
         )->validate();
 
@@ -105,7 +105,7 @@ class ServerController extends Controller
 
             $server->save();
 
-            return redirect('/admin/server')->with('message', 'Server byl editován.');
+            return redirect('/admin/server')->with('message', 'Server byl úspěšně editován.');
         }
     }
 
