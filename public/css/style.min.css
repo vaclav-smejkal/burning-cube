@@ -1298,3 +1298,23 @@ section {
   text-align: center;
   padding: 1rem;
 }
+
+article .subtitle {
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+article .subtitle::after {
+  position: absolute;
+  content: "";
+  background-color: #76c665;
+  bottom: -1px;
+  left: 0;
+  height: 2px;
+  width: 60px;
+}
+article p {
+  margin-bottom: 0.75rem;
+}
+article a:hover {
+  color: #65a856 !important;
+}

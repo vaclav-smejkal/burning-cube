@@ -1056,3 +1056,30 @@ section {
         padding: 1rem;
     }
 }
+
+article {
+    .subtitle {
+        position: relative;
+        padding-bottom: .5rem;
+
+        &::after {
+            position: absolute;
+            content: "";
+            background-color: $primary-color;
+            bottom: -1px;
+            left: 0;
+            height: 2px;
+            width: 60px;
+        }
+    }
+
+    p {
+        margin-bottom: .75rem;
+    }
+
+    a {
+        &:hover {
+            color: $primary-color-darker !important;
+        }
+    }
+}

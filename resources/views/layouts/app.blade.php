@@ -115,15 +115,6 @@
                     </div>
                 </div>
                 <div class="grid-item">
-                    <div class="item-title">Server hosting</div>
-                    <ul class="list">
-                        <li class="list-item"><a href="#">Hytale Server Hosting</a></li>
-                        <li class="list-item"><a href="#">Hytale Server Hosting</a></li>
-                        <li class="list-item"><a href="#">Hytale Server Hosting</a></li>
-                        <li class="list-item"><a href="#">Hytale Server Hosting</a></li>
-                    </ul>
-                </div>
-                <div class="grid-item">
                     <div class="item-title">Company</div>
                     <ul class="list">
                         <li class="list-item"><a href="#">About Us</a></li>
@@ -141,6 +132,12 @@
                         <li class="list-item"><a href="#">Server Status</a></li>
                         <li class="list-item"><a href="#">Support Center</a></li>
                         <li class="list-item"><a href="#">LATEST TWEET</a></li>
+                    </ul>
+                </div>
+                <div class="grid-item">
+                    <div class="item-title">Odkazy</div>
+                    <ul class="list">
+                        <li class="list-item"><a href="/vop">VOP</a></li>
                     </ul>
                 </div>
             </div>

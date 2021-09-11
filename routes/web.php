@@ -35,6 +35,9 @@ Route::group(['middleware' => ['role:admin']], function () {
 });
 
 Route::get('/', [HomeController::class, 'index']);
+Route::get('/vop', function () {
+    return view('vop');
+});
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('/verify-nickname', VerifyNicknameController::class)->only('index', 'update');
     Route::resource('/add-nickname', AddNicknameController::class)->only('index', 'update');
