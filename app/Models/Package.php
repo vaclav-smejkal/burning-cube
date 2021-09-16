@@ -14,7 +14,9 @@ class Package extends Model
         'sanitized_name',
         'comment',
         'price',
-        'is_one_time'
+        'is_one_time',
+        'color',
+        'image'
     ];
 
     use HasFactory;

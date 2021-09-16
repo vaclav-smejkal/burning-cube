@@ -14,7 +14,7 @@
                     </ol>
                 </nav>
                 <h2 class="subtitle">Editování balíčku {{ $package->name }}</h2>
-                <form action="{{ route('package.update', $package) }}" method="POST">
+                <form action="{{ route('package.update', $package) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method("PUT")
                     <div class="form-floating">
@@ -47,6 +47,23 @@
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
+                    <div class="form-floating">
+                        <input type="color" class="form-control" name="color" id="color" value="{{ $package->color }}"
+                            placeholder="color">
+                        <label for="color">Barva</label>
+                    </div>
+                    @error('color')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                    <label for="image" class="form-label">Náhledový obrázek</label>
+                    <input class="form-control" type="file" id="image" name="image">
+                    @error('image')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                     <div class="form-check">
                         <input class="form-check-input" name="is-one-time" type="checkbox" @if ($package->is_one_time) checked @endif
                             id="is-one-time" value="true">
@@ -67,6 +84,7 @@
                             <i class="fas fa-times"></i>
                         </a>
                     </div>
+
                 </form>
             </div>
         </div>
