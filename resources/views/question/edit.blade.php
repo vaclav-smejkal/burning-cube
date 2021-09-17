@@ -28,10 +28,10 @@
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
-                    <div class="form-floating">
-                        <input type="text" class="form-control" name="answer" id="answer"
-                            value="{{ $question->answer }}" placeholder="Odpověď">
-                        <label for="ip_address">Odpověď</label>
+                    <div class="form-floating textarea-floating">
+                        <textarea class="form-control" placeholder="Odpověď" name="answer"
+                            id="answer">{{ $question->answer }}</textarea>
+                        <label for="answer">Odpověď</label>
                     </div>
                     @error('answer')
                         <span class="invalid-feedback" role="alert">

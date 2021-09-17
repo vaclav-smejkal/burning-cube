@@ -31,17 +31,19 @@
                         <input type="text" class="form-control" name="price" id="price" value="{{ $package->price }}"
                             placeholder="Cena">
                         <label for="price">Cena</label>
+                        <div class="currency">
+                            Kč
+                        </div>
                     </div>
                     @error('price')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
-                    <div class="form-floating">
-                        <textarea class="form-control" placeholder="Poznámka" name="comment"
-                            id="comment">{{ $package->comment }}</textarea>
-                        <label for="comment">Poznámka</label>
+                    <div id="editor">
+                        {!! $package->comment !!}
                     </div>
+                    <input type="hidden" id="editor-input" name="comment">
                     @error('comment')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

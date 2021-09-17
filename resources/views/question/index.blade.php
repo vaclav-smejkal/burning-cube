@@ -26,7 +26,7 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
-                            <div class="form-floating">
+                            <div class="form-floating textarea-floating">
                                 <textarea class="form-control" placeholder="Odpověď" name="answer"
                                     id="answer">{{ old('answer') }}</textarea>
                                 <label for="answer">Odpověď</label>

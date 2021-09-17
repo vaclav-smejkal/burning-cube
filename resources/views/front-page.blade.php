@@ -27,7 +27,7 @@
                             <div class="price">{{ $package->price }} Kč</div>
                             <a href="{{ url('package', $package->sanitized_name) }}" class="btn btn-primary">Zobrazit
                                 více</a>
-                            <div class="desc">{{ $package->comment }}</div>
+                            <article class="desc">{!! $package->comment !!}</article>
                         </div>
                     @endforeach
                 </div>
