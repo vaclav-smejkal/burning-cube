@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\Question::factory(8)->create();
         \App\Models\Server::factory(8)->create();
         \App\Models\Package::factory(6)->create();
+        \App\Models\PageTexts::factory(2)->create();
 
         // Only for testing
         $admin = User::create([

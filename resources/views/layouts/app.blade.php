@@ -159,6 +159,10 @@
                 theme: "snow",
             });
 
+            window.addEventListener('load', function(delta, oldDelta, source) {
+                document.getElementById("editor-input").value = quill.root.innerHTML;
+            });
+
             quill.on('text-change', function(delta, oldDelta, source) {
                 document.getElementById("editor-input").value = quill.root.innerHTML;
             });

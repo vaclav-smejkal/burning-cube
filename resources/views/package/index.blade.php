@@ -48,16 +48,14 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
-                            <div class="form-floating">
-                                @if (old('color'))
-                                    <input type="color" class="form-control" name="color" id="color"
-                                        value="{{ old('color') }}" placeholder="color">
-                                @else
-                                    <input type="color" class="form-control" name="color" id="color" value="#fd7e14"
-                                        placeholder="color">
-                                @endif
-                                <label for="color">Barva</label>
-                            </div>
+                            <label for="color" class="form-label">Barva</label>
+                            @if (old('color'))
+                                <input type="color" class="form-control form-control-color" name="color" id="color"
+                                    value="{{ old('color') }}" title="Vyber barvu">
+                            @else
+                                <input type="color" class="form-control form-control-color" name="color" id="color"
+                                    value="#fd7e14" title="Vyber barvu">
+                            @endif
                             @error('color')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

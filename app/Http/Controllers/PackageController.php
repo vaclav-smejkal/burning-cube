@@ -141,7 +141,6 @@ class PackageController extends Controller
                     'numeric',
                 ],
                 'image' => [
-                    'required',
                     'mimes:jpg,png,jpeg',
                     'max:5048'
                 ],

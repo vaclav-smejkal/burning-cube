@@ -49,18 +49,23 @@
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
-                    <div class="form-floating">
-                        <input type="color" class="form-control" name="color" id="color" value="{{ $package->color }}"
-                            placeholder="color">
-                        <label for="color">Barva</label>
-                    </div>
+                    <label for="color" class="form-label">Barva</label>
+                    <input type="color" class="form-control form-control-color" name="color" id="color"
+                        value="{{ $package->color }}" title="Vyber barvu">
                     @error('color')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
-                    <label for="image" class="form-label">Náhledový obrázek</label>
-                    <input class="form-control" type="file" id="image" name="image">
+                    <div class="file-group">
+                        <div class="file-input">
+                            <label for="image" class="form-label">Náhledový obrázek</label>
+                            <input class="form-control" type="file" id="image" name="image">
+                        </div>
+                        <div class="image">
+                            <img src="/{{ $package->image }}" alt="{{ $package->name }}">
+                        </div>
+                    </div>
                     @error('image')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

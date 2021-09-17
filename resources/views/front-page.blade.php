@@ -7,11 +7,9 @@
         <div class="container">
             <div id="banner">
                 <h1 class="title">Burning Cube</h1>
-                <p class="desc">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod nihil cumque ab odit voluptas doloribus
-                    ipsa, suscipit, error magni nemo officia cupiditate nostrum facere asperiores hic, temporibus
-                    perspiciatis! Vitae, quidem.
-                </p>
+                <article class="desc">
+                    {!! $pageText->text !!}
+                </article>
             </div>
             <div id="packages">
                 <h2 class="title">
@@ -24,7 +22,8 @@
                                 <img src="{{ $package->image }}" alt="Block">
                             </div>
                             <div class="subtitle">{{ $package->name }}</div>
-                            <div class="price">{{ $package->price }} Kč</div>
+                            <div class="price" style="background: {{ $package->color }}">{{ $package->price }}
+                                Kč</div>
                             <a href="{{ url('package', $package->sanitized_name) }}" class="btn btn-primary">Zobrazit
                                 více</a>
                             <article class="desc">{!! $package->comment !!}</article>

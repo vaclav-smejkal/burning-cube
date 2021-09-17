@@ -44,7 +44,7 @@
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Non voluptates esse mollitia, id, libero
                         iusto eveniet.
                     </p>
-                    <a href="/admin/page" class="btn btn-primary">Editovat</a>
+                    <a href="/admin/page-texts" class="btn btn-primary">Editovat</a>
                 </div>
             </div>
         </div>

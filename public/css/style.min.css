@@ -893,7 +893,7 @@ article #package-show .header h1 {
   }
 }
 #admin-package .list-users {
-  margin: 0;
+  margin: 0 !important;
 }
 #admin-package .list-users .alert {
   margin-bottom: 1rem;
@@ -918,6 +918,10 @@ article #package-show .header h1 {
 }
 #admin-package .alert {
   margin: 0.75rem 0 0;
+}
+#admin-package .form-control-color,
+#admin-package input[type=file] {
+  margin-bottom: 0.75rem;
 }
 #admin-package .form-floating {
   margin-bottom: 0.75rem;
@@ -1151,6 +1155,22 @@ article #front-page h1 {
   position: absolute;
   width: calc(100% - 2px);
   height: 2.1rem;
+}
+.admin-edit-form .form-control-color,
+.admin-edit-form input[type=file] {
+  margin-bottom: 0.75rem;
+}
+.admin-edit-form .file-group {
+  display: flex;
+  align-items: center;
+}
+.admin-edit-form .file-group .file-input {
+  flex: 1;
+}
+.admin-edit-form .file-group .image {
+  width: 75px;
+  height: 75px;
+  margin-left: 2rem;
 }
 .admin-edit-form .form-floating {
   margin-bottom: 0.75rem;

@@ -7,10 +7,11 @@ use App\Http\Controllers\SeedController;
 use App\Http\Controllers\VerifyNicknameController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PackageController;
+use App\Http\Controllers\PageTextsController;
 use App\Http\Controllers\ServerController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\UserController;
-
+use App\Http\Controllers\VOPController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,12 +33,11 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::resource('/admin/server', ServerController::class)->except('show', 'create');
     Route::resource('/admin/question', QuestionController::class)->except('show', 'create');
     Route::resource('/admin/user', UserController::class)->except('show', 'create');
+    Route::resource('/admin/page-texts', PageTextsController::class)->except('show', 'create', 'destroy', 'store');
 });
 
 Route::get('/', [HomeController::class, 'index']);
-Route::get('/vop', function () {
-    return view('vop');
-});
+Route::get('/vop', [VOPController::class, 'index']);
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('/verify-nickname', VerifyNicknameController::class)->only('index', 'update');
     Route::resource('/add-nickname', AddNicknameController::class)->only('index', 'update');

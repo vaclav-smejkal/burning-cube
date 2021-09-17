@@ -564,7 +564,7 @@ section {
     }
 
     .list-users {
-        margin: 0;
+        margin: 0 !important;
 
         .alert {
             margin-bottom: 1rem;
@@ -593,6 +593,11 @@ section {
 
     .alert {
         margin: .75rem 0 0;
+    }
+
+    .form-control-color,
+    input[type=file] {
+        margin-bottom: .75rem;
     }
 
     .form-floating {
@@ -855,6 +860,26 @@ section {
             position: absolute;
             width: calc(100% - 2px);
             height: 2.1rem;
+        }
+    }
+
+    .form-control-color,
+    input[type=file] {
+        margin-bottom: .75rem;
+    }
+
+    .file-group {
+        display: flex;
+        align-items: center;
+
+        .file-input {
+            flex: 1;
+        }
+
+        .image {
+            width: 75px;
+            height: 75px;
+            margin-left: 2rem;
         }
     }
 
