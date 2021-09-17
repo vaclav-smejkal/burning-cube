@@ -14,7 +14,7 @@
                 <div class="form-group">
                     <div class="form">
                         <h2 class="subtitle">Přidat nový balíček</h2>
-                        <form action="{{ route('package.store') }}" method="POST">
+                        <form action="{{ route('package.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-floating">
                                 <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}"
@@ -44,6 +44,28 @@
                             </div>
                             <input type="hidden" id="editor-input" name="comment">
                             @error('comment')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                            <div class="form-floating">
+                                @if (old('color'))
+                                    <input type="color" class="form-control" name="color" id="color"
+                                        value="{{ old('color') }}" placeholder="color">
+                                @else
+                                    <input type="color" class="form-control" name="color" id="color" value="#fd7e14"
+                                        placeholder="color">
+                                @endif
+                                <label for="color">Barva</label>
+                            </div>
+                            @error('color')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                            <label for="image" class="form-label">Náhledový obrázek</label>
+                            <input class="form-control" type="file" id="image" name="image">
+                            @error('image')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

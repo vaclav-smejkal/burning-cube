@@ -20,6 +20,8 @@ class CreatePackagesTable extends Migration
             $table->text('comment');
             $table->unsignedFloat("price");
             $table->integer("is_one_time");
+            $table->char("color")->default('#fd7e14');
+            $table->string('image')->default('img/grass-block.png');
         });
     }
 

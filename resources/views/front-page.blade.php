@@ -21,7 +21,7 @@
                     @foreach ($packages as $package)
                         <div class="package">
                             <div class="block">
-                                <img src="{{ asset('img/grass-block.png') }}" alt="Block">
+                                <img src="{{ $package->image }}" alt="Block">
                             </div>
                             <div class="subtitle">{{ $package->name }}</div>
                             <div class="price">{{ $package->price }} Kč</div>
