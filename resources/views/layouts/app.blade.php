@@ -7,6 +7,7 @@
     <title>@yield('title')</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <link rel="shortcut icon" href="{{ asset('img/logo.png') }}" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -59,6 +60,7 @@
                         <li class="nav-item">
                             <a class="nav-link with-icon" href="{{ route('logout') }}"
                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                Odhlásit se
                                 <i class="fas fa-sign-out-alt"></i>
                             </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST">
@@ -115,15 +117,6 @@
                     </div>
                 </div>
                 <div class="grid-item">
-                    <div class="item-title">Server hosting</div>
-                    <ul class="list">
-                        <li class="list-item"><a href="#">Hytale Server Hosting</a></li>
-                        <li class="list-item"><a href="#">Hytale Server Hosting</a></li>
-                        <li class="list-item"><a href="#">Hytale Server Hosting</a></li>
-                        <li class="list-item"><a href="#">Hytale Server Hosting</a></li>
-                    </ul>
-                </div>
-                <div class="grid-item">
                     <div class="item-title">Company</div>
                     <ul class="list">
                         <li class="list-item"><a href="#">About Us</a></li>
@@ -143,6 +136,12 @@
                         <li class="list-item"><a href="#">LATEST TWEET</a></li>
                     </ul>
                 </div>
+                <div class="grid-item">
+                    <div class="item-title">Odkazy</div>
+                    <ul class="list">
+                        <li class="list-item"><a href="/vop">VOP</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
         <div class="copyright">
@@ -151,6 +150,23 @@
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script>
+        let quill = document.querySelector("#editor");
+        if (quill) {
+            quill = new Quill("#editor", {
+                theme: "snow",
+            });
+
+            window.addEventListener('load', function(delta, oldDelta, source) {
+                document.getElementById("editor-input").value = quill.root.innerHTML;
+            });
+
+            quill.on('text-change', function(delta, oldDelta, source) {
+                document.getElementById("editor-input").value = quill.root.innerHTML;
+            });
+        }
     </script>
     <link href="{{ asset('js/app.js') }}" rel="stylesheet">
 </body>

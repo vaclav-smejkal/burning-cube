@@ -14,7 +14,7 @@
                 <div class="form-group">
                     <div class="form">
                         <h2 class="subtitle">Přidat nový balíček</h2>
-                        <form action="{{ route('package.store') }}" method="POST">
+                        <form action="{{ route('package.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-floating">
                                 <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}"
@@ -30,18 +30,40 @@
                                 <input type="text" class="form-control" name="price" id="price"
                                     value="{{ old('price') }}" placeholder="Cena">
                                 <label for="price">Cena</label>
+                                <div class="currency">
+                                    Kč
+                                </div>
                             </div>
                             @error('price')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
-                            <div class="form-floating">
-                                <textarea class="form-control" placeholder="Poznámka" name="comment"
-                                    id="comment">{{ old('comment') }}</textarea>
-                                <label for="comment">Poznámka</label>
+                            <div id="editor">
+                                {{ old('comment') }}
                             </div>
+                            <input type="hidden" id="editor-input" name="comment">
                             @error('comment')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                            <label for="color" class="form-label">Barva</label>
+                            @if (old('color'))
+                                <input type="color" class="form-control form-control-color" name="color" id="color"
+                                    value="{{ old('color') }}" title="Vyber barvu">
+                            @else
+                                <input type="color" class="form-control form-control-color" name="color" id="color"
+                                    value="#fd7e14" title="Vyber barvu">
+                            @endif
+                            @error('color')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                            <label for="image" class="form-label">Náhledový obrázek</label>
+                            <input class="form-control" type="file" id="image" name="image">
+                            @error('image')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

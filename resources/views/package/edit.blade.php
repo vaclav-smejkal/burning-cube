@@ -14,7 +14,7 @@
                     </ol>
                 </nav>
                 <h2 class="subtitle">Editování balíčku {{ $package->name }}</h2>
-                <form action="{{ route('package.update', $package) }}" method="POST">
+                <form action="{{ route('package.update', $package) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method("PUT")
                     <div class="form-floating">
@@ -31,18 +31,42 @@
                         <input type="text" class="form-control" name="price" id="price" value="{{ $package->price }}"
                             placeholder="Cena">
                         <label for="price">Cena</label>
+                        <div class="currency">
+                            Kč
+                        </div>
                     </div>
                     @error('price')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
-                    <div class="form-floating">
-                        <textarea class="form-control" placeholder="Poznámka" name="comment"
-                            id="comment">{{ $package->comment }}</textarea>
-                        <label for="comment">Poznámka</label>
+                    <div id="editor">
+                        {!! $package->comment !!}
                     </div>
+                    <input type="hidden" id="editor-input" name="comment">
                     @error('comment')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                    <label for="color" class="form-label">Barva</label>
+                    <input type="color" class="form-control form-control-color" name="color" id="color"
+                        value="{{ $package->color }}" title="Vyber barvu">
+                    @error('color')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                    <div class="file-group">
+                        <div class="file-input">
+                            <label for="image" class="form-label">Náhledový obrázek</label>
+                            <input class="form-control" type="file" id="image" name="image">
+                        </div>
+                        <div class="image">
+                            <img src="/{{ $package->image }}" alt="{{ $package->name }}">
+                        </div>
+                    </div>
+                    @error('image')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -67,6 +91,7 @@
                             <i class="fas fa-times"></i>
                         </a>
                     </div>
+
                 </form>
             </div>
         </div>
