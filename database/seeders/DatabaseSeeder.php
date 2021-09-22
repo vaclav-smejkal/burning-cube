@@ -3,9 +3,11 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\PageTexts;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Faker\Factory as Faker;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,7 +22,16 @@ class DatabaseSeeder extends Seeder
         \App\Models\Question::factory(8)->create();
         \App\Models\Server::factory(8)->create();
         \App\Models\Package::factory(6)->create();
-        \App\Models\PageTexts::factory(2)->create();
+
+        $this->faker = Faker::create();
+        PageTexts::create([
+            'name' => 'Úvodní stránka',
+            'text' => $this->faker->paragraph(2),
+        ]);
+        PageTexts::create([
+            'name' => 'VOP',
+            'text' => $this->faker->paragraph(2),
+        ]);
 
         // Only for testing
         $admin = User::create([

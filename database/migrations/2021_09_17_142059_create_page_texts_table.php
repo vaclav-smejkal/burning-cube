@@ -15,9 +15,8 @@ class CreatePageTextsTable extends Migration
     {
         Schema::create('page_texts', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 100);
+            $table->string('name', 100)->unique();
             $table->text('text');
-            $table->uuid('uuid');
         });
     }
 

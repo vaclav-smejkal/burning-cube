@@ -8,21 +8,21 @@
             <div class="header">
                 <div class="content">
                     <h1 class="title">{{ $package->name }}</h1>
-                    <p class="desc">
-                        {{ $package->comment }}
-                    </p>
+                    <article class="desc">
+                        {!! $package->comment !!}
+                    </article>
                     <div class="flex-price">
-                        <a href="#" class="btn btn-primary">Koupit</a>
+                        <a href="/order/{{ $package->sanitized_name }}" class="btn btn-primary">Koupit</a>
                         <div class="price">
                             {{ $package->price }} Kč
                         </div>
                     </div>
                 </div>
                 <div class="image">
-                    <img src="{{ asset('img/grass-block.png') }}" alt="Block">
+                    <img src="/{{ $package->image }}" alt="Block">
                 </div>
             </div>
-            <div class="body">
+            {{-- <div class="body">
                 <div class="grid-list">
                     <div class="list-group">
                         <h2 class="subtitle">
@@ -75,7 +75,7 @@
                     distinctio amet aut. Possimus ipsum velit, ut pariatur dignissimos id vero! Laudantium, eligendi
                     suscipit. Qui, exercitationem?
                 </p>
-            </div>
+            </div> --}}
         </div>
     </section>
 @endsection

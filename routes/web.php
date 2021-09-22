@@ -3,6 +3,7 @@
 use App\Http\Controllers\AddNicknameController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SeedController;
 use App\Http\Controllers\VerifyNicknameController;
 use Illuminate\Support\Facades\Route;
@@ -34,6 +35,10 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::resource('/admin/question', QuestionController::class)->except('show', 'create');
     Route::resource('/admin/user', UserController::class)->except('show', 'create');
     Route::resource('/admin/page-texts', PageTextsController::class)->except('show', 'create', 'destroy', 'store');
+});
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/order/{sanitized_name}', [OrderController::class, 'show']);
 });
 
 Route::get('/', [HomeController::class, 'index']);

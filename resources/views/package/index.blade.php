@@ -40,7 +40,7 @@
                                 </span>
                             @enderror
                             <div id="editor">
-                                {{ old('comment') }}
+                                {!! old('comment') !!}
                             </div>
                             <input type="hidden" id="editor-input" name="comment">
                             @error('comment')

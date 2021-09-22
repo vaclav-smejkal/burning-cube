@@ -48,6 +48,7 @@ class AddNicknameController extends Controller
         )->validate();
 
         $user->nickname = $request->nickname;
+        $user->verified = 1;
         $user->save();
 
         return redirect('/');
