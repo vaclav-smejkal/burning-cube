@@ -3,6 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Str;
+
 
 class CreatePageTextsTable extends Migration
 {
@@ -17,6 +19,7 @@ class CreatePageTextsTable extends Migration
             $table->id();
             $table->string('name', 100)->unique();
             $table->text('text');
+            $table->uuid('uuid');
         });
     }
 

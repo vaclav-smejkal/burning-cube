@@ -18,7 +18,6 @@ class PageTextsController extends Controller
     public function index()
     {
         $pageTexts = $this->pageTexts::get();
-
         return view('page-texts.index', ['pageTexts' => $pageTexts]);
     }
 

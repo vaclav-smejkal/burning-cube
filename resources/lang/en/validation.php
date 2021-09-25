@@ -160,5 +160,8 @@ return [
         'ip_address' => 'ip adresa',
         'question' => 'otázka',
         'answer' => 'odpověď',
+        'psc' => 'PSČ',
+        'place' => 'bydliště',
+        'name_surname' => 'jméno a přijmení',
     ],
 ];

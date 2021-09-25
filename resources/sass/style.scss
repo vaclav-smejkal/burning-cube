@@ -1249,6 +1249,10 @@ article {
         }
     }
 
+    .invalid-feedback{
+        display: flex;
+    }
+
     .order-info,
     .order-form {
         flex: 1;

@@ -39,6 +39,7 @@ Route::group(['middleware' => ['role:admin']], function () {
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/order/{sanitized_name}', [OrderController::class, 'show']);
+    Route::resource('/order', OrderController::class)->except('show', 'create', 'destroy');
 });
 
 Route::get('/', [HomeController::class, 'index']);

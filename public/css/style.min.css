@@ -1490,6 +1490,9 @@ article a:hover {
     flex-direction: column;
   }
 }
+#order-show .invalid-feedback {
+  display: flex;
+}
 #order-show .order-info,
 #order-show .order-form {
   flex: 1;

@@ -13,5 +13,6 @@ class PageTexts extends Model
     protected $fillable = [
         'name',
         'text',
+        'uuid',
     ];
 }
