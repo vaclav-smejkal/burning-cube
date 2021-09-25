@@ -71,12 +71,12 @@
                                 <input type="text" class="form-control @error('nickname') is-invalid @enderror" name="nickname"
                                     id="nickname" value="{{ old('nickname') }}" placeholder="Nickname">
                                 <label for="nickname">Nickname</label>
-                                @error('nickname')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
                             </div>
+                            @error('nickname')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         @endif
                     @endauth
                     <div class="form-floating">
