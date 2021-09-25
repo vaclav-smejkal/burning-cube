@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
 
         $this->faker = Faker::create();
         PageTexts::create([
-            'name' => 'Úvodní stránka',
+            'name' => 'HomePage',
             'text' => $this->faker->paragraph(2),
             'uuid' => Str::uuid(),
         ]);

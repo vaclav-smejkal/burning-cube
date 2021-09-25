@@ -11,7 +11,7 @@ class HomeController extends Controller
     public function index()
     {
         $packages = Package::get();
-        $pageText = PageTexts::where('name', 'Úvodní stránka')->first();
+        $pageText = PageTexts::where('name', 'HomePage')->first();
 
         return view("front-page", ["packages" => $packages, 'pageText' => $pageText]);
     }
