@@ -85,8 +85,8 @@ return [
     'mimes' => 'Soubor musí být ve správném formátu.',
     'mimetypes' => 'Soubor musí být ve správném formátu.',
     'min' => [
-        'numeric' => 'The :attribute must be at least :min.',
-        'file' => 'The :attribute must be at least :min kilobytes.',
+        'numeric' => ':Attribute musí být alespoň :min znaky dlouhé.',
+        'file' => ':Attribute musí být alespoň :min znaky dlouhé.',
         'string' => ':Attribute musí být alespoň :min znaky dlouhé.',
         'array' => 'The :attribute must have at least :min items.',
     ],
@@ -108,7 +108,7 @@ return [
     'size' => [
         'numeric' => 'The :attribute must be :size.',
         'file' => 'The :attribute must be :size kilobytes.',
-        'string' => 'The :attribute must be :size characters.',
+        'string' => ':Attribute musí mít alespoň :size znaků.',
         'array' => 'The :attribute must contain :size items.',
     ],
     'starts_with' => 'The :attribute must start with one of the following: :values.',

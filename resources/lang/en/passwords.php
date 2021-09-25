@@ -18,5 +18,4 @@ return [
     'throttled' => 'Prosím vyčkejte.',
     'token' => 'Odkaz pro změnu hesla je neplatný.',
     'user' => "Uživatelský účet s touto e-mailovou adresou neexistuje.",
-
 ];
