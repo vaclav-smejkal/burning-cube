@@ -1249,8 +1249,44 @@ article {
         }
     }
 
+    .desc {
+        margin-bottom: .75rem;
+
+        a {
+            color: $primary-color;
+        }
+    }
+
+    .form-check {
+        margin-bottom: .75rem;
+
+        label {
+            color: $white;
+            position: relative;
+            top: .1rem;
+        }
+
+        input:checked {
+            background-color: $primary-color;
+            border-color: $primary-color;
+        }
+
+        a {
+            color: $primary-color;
+        }
+    }
+
     .invalid-feedback {
         display: flex;
+        margin: -0.5rem 0 .35rem;
+    }
+
+    .alert {
+        margin-top: .75rem;
+    }
+
+    #password-confirm {
+        margin-bottom: 2rem;
     }
 
     .order-info,
@@ -1280,7 +1316,7 @@ article {
 
     textarea {
         min-height: 120px;
-        margin-bottom: 1.5rem;
+        margin: 0 0 1.5rem;
     }
 
     .form-floating {

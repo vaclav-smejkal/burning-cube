@@ -116,7 +116,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="grid-item">
+                {{-- <div class="grid-item">
                     <div class="item-title">Company</div>
                     <ul class="list">
                         <li class="list-item"><a href="#">About Us</a></li>
@@ -135,7 +135,7 @@
                         <li class="list-item"><a href="#">Support Center</a></li>
                         <li class="list-item"><a href="#">LATEST TWEET</a></li>
                     </ul>
-                </div>
+                </div> --}}
                 <div class="grid-item">
                     <div class="item-title">Odkazy</div>
                     <ul class="list">
