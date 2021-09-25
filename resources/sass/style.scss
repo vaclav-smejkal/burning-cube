@@ -379,10 +379,6 @@ section {
 
         .desc {
             max-width: 700px;
-
-            @media (max-width: $lg) {
-                text-align: center;
-            }
         }
 
         .price {
@@ -415,11 +411,13 @@ section {
         }
 
         .image {
-            width: 200px;
+            width: 300px;
+            height: 300px;
             margin-left: 3rem;
 
             @media (max-width: $lg) {
                 width: 125px;
+                height: 125px;
                 margin: 0 0 1rem;
             }
         }
@@ -1239,5 +1237,53 @@ article {
         &:hover {
             color: $primary-color-darker !important;
         }
+    }
+}
+
+#order-show {
+    .flex-group {
+        display: flex;
+
+        @media (max-width: $lg) {
+            flex-direction: column;
+        }
+    }
+
+    .invalid-feedback {
+        display: flex;
+    }
+
+    .order-info,
+    .order-form {
+        flex: 1;
+    }
+
+    .order-form {
+        margin-left: 3rem;
+
+        @media (max-width: $lg) {
+            margin: 3rem 0 0;
+        }
+    }
+
+    .info-list {
+        li {
+            font-size: 1.1em;
+            font-weight: 500;
+            margin-bottom: .5rem;
+        }
+    }
+
+    label {
+        color: $black;
+    }
+
+    textarea {
+        min-height: 120px;
+        margin-bottom: 1.5rem;
+    }
+
+    .form-floating {
+        margin-bottom: .75rem;
     }
 }

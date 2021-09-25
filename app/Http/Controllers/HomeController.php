@@ -11,7 +11,7 @@ class HomeController extends Controller
     public function index()
     {
         $packages = Package::get();
-        $pageText = PageTexts::where('uuid', 'c1caebee-0896-48dd-9b06-6600cd68f961')->first();
+        $pageText = PageTexts::where('name', 'HomePage')->first();
 
         return view("front-page", ["packages" => $packages, 'pageText' => $pageText]);
     }
