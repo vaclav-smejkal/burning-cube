@@ -101,25 +101,25 @@
                     <img src="{{ asset('/img/gopay/gopay.png') }}" alt="Gopay">
                 </div>
                 <div class="logo">
-                    <img src="{{ asset('/img/gopay/verified-by-visa.png') }}" alt="Gopay">
+                    <img src="{{ asset('/img/gopay/verified-by-visa.png') }}" alt="Verified by VISA">
                 </div>
                 <div class="logo">
-                    <img src="{{ asset('/img/gopay/mastercard-secure-code.png') }}" alt="Gopay">
+                    <img src="{{ asset('/img/gopay/mastercard-secure-code.png') }}" alt="MasterCard Secure Code">
                 </div>
                 <div class="logo">
-                    <img src="{{ asset('/img/gopay/visa.png') }}" alt="Gopay">
+                    <img src="{{ asset('/img/gopay/visa.png') }}" alt="VISA">
                 </div>
                 <div class="logo">
-                    <img src="{{ asset('/img/gopay/visa-electron.png') }}" alt="Gopay">
+                    <img src="{{ asset('/img/gopay/visa-electron.png') }}" alt="VISA Electron">
                 </div>
                 <div class="logo">
-                    <img src="{{ asset('/img/gopay/mastercard.png') }}" alt="Gopay">
+                    <img src="{{ asset('/img/gopay/mastercard.png') }}" alt="MasterCard">
                 </div>
                 <div class="logo">
-                    <img src="{{ asset('/img/gopay/mastercard-electron.png') }}" alt="Gopay">
+                    <img src="{{ asset('/img/gopay/mastercard-electron.png') }}" alt="MasterCard Electronic">
                 </div>
                 <div class="logo">
-                    <img src="{{ asset('/img/gopay/maestro.png') }}" alt="Gopay">
+                    <img src="{{ asset('/img/gopay/maestro.png') }}" alt="Maestro">
                 </div>
             </div>
         </div>
