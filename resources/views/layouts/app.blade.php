@@ -95,6 +95,34 @@
         @endif
     </main>
     <footer id="footer">
+        <div class="logo-container">
+            <div class="logo-grid">
+                <div class="logo">
+                    <img src="{{ asset('/img/gopay/gopay.png') }}" alt="Gopay">
+                </div>
+                <div class="logo">
+                    <img src="{{ asset('/img/gopay/verified-by-visa.png') }}" alt="Gopay">
+                </div>
+                <div class="logo">
+                    <img src="{{ asset('/img/gopay/mastercard-secure-code.png') }}" alt="Gopay">
+                </div>
+                <div class="logo">
+                    <img src="{{ asset('/img/gopay/visa.png') }}" alt="Gopay">
+                </div>
+                <div class="logo">
+                    <img src="{{ asset('/img/gopay/visa-electron.png') }}" alt="Gopay">
+                </div>
+                <div class="logo">
+                    <img src="{{ asset('/img/gopay/mastercard.png') }}" alt="Gopay">
+                </div>
+                <div class="logo">
+                    <img src="{{ asset('/img/gopay/mastercard-electron.png') }}" alt="Gopay">
+                </div>
+                <div class="logo">
+                    <img src="{{ asset('/img/gopay/maestro.png') }}" alt="Gopay">
+                </div>
+            </div>
+        </div>
         <div class="container">
             <div class="footer-grid">
                 <div class="grid-item flex-group">
@@ -116,26 +144,23 @@
                         </a>
                     </div>
                 </div>
-                {{-- <div class="grid-item">
-                    <div class="item-title">Company</div>
+                <div class="grid-item">
+                    <div class="item-title">Kontakt</div>
                     <ul class="list">
-                        <li class="list-item"><a href="#">About Us</a></li>
-                        <li class="list-item"><a href="#">Contact Us</a></li>
-                        <li class="list-item"><a href="#">Terms of Service</a></li>
-                        <li class="list-item"><a href="#">Privacy Policy</a></li>
-                        <li class="list-item"><a href="#">Partners</a></li>
+                        <li class="list-item">
+                            <a href="tel:+420 514 514 596">
+                                <i class="fas fa-phone-alt"></i>
+                                +420 514 514 596
+                            </a>
+                        </li>
+                        <li class="list-item">
+                            <a href="mailTo:kontakt@after-life.cz">
+                                <i class="fas fa-envelope"></i>
+                                kontakt@after-life.cz
+                            </a>
+                        </li>
                     </ul>
                 </div>
-                <div class="grid-item">
-                    <div class="item-title">Support</div>
-                    <ul class="list">
-                        <li class="list-item"><a href="#">Submit a Ticket</a></li>
-                        <li class="list-item"><a href="#">Knowledgebase</a></li>
-                        <li class="list-item"><a href="#">Server Status</a></li>
-                        <li class="list-item"><a href="#">Support Center</a></li>
-                        <li class="list-item"><a href="#">LATEST TWEET</a></li>
-                    </ul>
-                </div> --}}
                 <div class="grid-item">
                     <div class="item-title">Odkazy</div>
                     <ul class="list">

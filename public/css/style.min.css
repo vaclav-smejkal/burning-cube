@@ -1090,6 +1090,15 @@ article #package-show .header h1 {
   flex-direction: column;
   align-items: center;
 }
+#banner.thanks {
+  margin: 5rem 0;
+}
+#banner.thanks .title, #banner.thanks .ql-editor h1, .ql-editor #banner.thanks h1,
+#banner.thanks article h1,
+article #banner.thanks h1 {
+  padding: 0;
+  margin: 0;
+}
 #banner .title, #banner .ql-editor h1, .ql-editor #banner h1,
 #banner article h1,
 article #banner h1 {
@@ -1392,6 +1401,10 @@ article #front-page h1 {
 #footer .grid-item .list-item {
   margin-bottom: 0.5rem;
 }
+#footer .grid-item .list-item i {
+  font-size: 1.1em;
+  margin-right: 0.75rem;
+}
 @media (max-width: 576px) {
   #footer .grid-item .list-item {
     text-align: center;
@@ -1402,6 +1415,33 @@ article #front-page h1 {
 }
 #footer a:hover {
   color: #76c665;
+}
+#footer .logo-container {
+  background-color: #76c665;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+#footer .logo-grid {
+  padding: 0.75rem;
+  display: grid;
+  grid-template-columns: repeat(8, 100px);
+  place-items: center;
+  gap: 1rem;
+}
+@media (max-width: 992px) {
+  #footer .logo-grid {
+    grid-template-columns: repeat(4, 100px);
+  }
+}
+@media (max-width: 576px) {
+  #footer .logo-grid {
+    grid-template-columns: repeat(2, 120px);
+  }
+}
+#footer .logo-grid .logo {
+  height: 40px;
+  width: 120px;
 }
 #footer .copyright {
   border-top: 1px solid #76c665;

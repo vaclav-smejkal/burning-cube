@@ -168,6 +168,7 @@ class OrderController extends Controller
             'user_id' => Auth::user()->id,
         ]);
 
-        return redirect()->back()->with('message', 'Byla vytvořena objednávka.');
+        // return redirect()->back()->with('message', 'Byla vytvořena objednávka.');
+        return redirect('thanks');
     }
 }
