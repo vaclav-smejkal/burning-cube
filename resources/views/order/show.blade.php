@@ -131,7 +131,7 @@
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
-                    <button type="submit" class="btn btn-primary">Odeslat</button>
+                    <button type="submit" class="btn btn-primary">Objednat a zaplatit</button>
                     @if (session()->has('message'))
                         <div class="alert alert-success" role="alert">
                             {{ session()->get('message') }}

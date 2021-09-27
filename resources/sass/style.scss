@@ -794,6 +794,15 @@ section {
     flex-direction: column;
     align-items: center;
 
+    &.thanks {
+        margin: 5rem 0;
+
+        .title {
+            padding: 0;
+            margin: 0;
+        }
+    }
+
     .title {
         text-transform: uppercase;
         font-size: 3em;
@@ -1144,6 +1153,11 @@ section {
         .list-item {
             margin-bottom: .5rem;
 
+            i {
+                font-size: 1.1em;
+                margin-right: .75rem;
+            }
+
             @media (max-width: $sm) {
                 text-align: center;
             }
@@ -1155,6 +1169,34 @@ section {
 
         &:hover {
             color: $primary-color;
+        }
+    }
+
+    .logo-container {
+        background-color: $primary-color;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .logo-grid {
+        padding: .75rem;
+        display: grid;
+        grid-template-columns: repeat(8, 100px);
+        place-items: center;
+        gap: 1rem;
+
+        @media (max-width: $lg) {
+            grid-template-columns: repeat(4, 100px);
+        }
+
+        @media (max-width: $sm) {
+            grid-template-columns: repeat(2, 120px);
+        }
+
+        .logo {
+            height: 40px;
+            width: 120px;
         }
     }
 

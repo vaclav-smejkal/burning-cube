@@ -38,6 +38,9 @@ Route::group(['middleware' => ['role:admin']], function () {
 });
 
 Route::resource('/order', OrderController::class)->except('create', 'destroy');
+Route::get('/thanks', function () {
+    return view('thanks');
+});
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/vop', [VOPController::class, 'index']);
