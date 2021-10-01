@@ -15,7 +15,6 @@ class Order extends Model
         'place',
         'psc',
         'uuid',
-        'user_id',
     ];
     use HasFactory;
 

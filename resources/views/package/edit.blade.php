@@ -63,7 +63,7 @@
                             <input class="form-control" type="file" id="image" name="image">
                         </div>
                         <div class="image">
-                            <img src="/{{ $package->image }}" alt="{{ $package->name }}">
+                            <img src="{{ asset($package->image) }}" alt="{{ $package->name }}">
                         </div>
                     </div>
                     @error('image')

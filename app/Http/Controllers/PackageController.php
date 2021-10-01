@@ -6,9 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Package;
 use Illuminate\Support\Facades\Validator;
 use App\Helper\Helper;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
-use Image;
-use File;
 
 class PackageController extends Controller
 {
@@ -66,12 +65,18 @@ class PackageController extends Controller
             ]
         )->validate();
 
-        $image = $request->file('image');
-        $imgName = $input['imagename'] = time() . '.' . $image->extension();
-        $destinationPath = public_path('img\package-images');
+        // $image = $request->file('image');
+        // $imgName = $input['imagename'] = time() . '.' . $image->extension();
+        // $destinationPath = public_path('img\package-images');
 
-        $img = Image::make($image->path());
-        $img->save($destinationPath . '/' . $imgName);
+        // $img = Image::make($image->path());
+        // $img->save($destinationPath . '/' . $imgName);
+        // $path = Storage::putFileAs(
+        //     'img',
+        //     $request->image,
+        //     time() . '.' . $request->image->extension(),
+        // );
+        $path = $request->file('image')->storeAs('img/package-images',  time() . '.' . $request->image->extension(),  'public');
 
         if ($request->input('is-one-time')) {
             $isOneTime = 1;
@@ -85,7 +90,7 @@ class PackageController extends Controller
             'price' => $request->price,
             'is_one_time' => $isOneTime,
             'color' => $request->color,
-            'image' => 'img/package-images/' . $imgName,
+            'image' =>  '/storage/' . $path,
         ]);
 
         return redirect('/admin/package')->with('message', 'Balíček byl úspěšně vytvořen.');
@@ -157,9 +162,7 @@ class PackageController extends Controller
         }
 
         $sanitizedName = Helper::instance()->friendly_url($request->name);
-
         $foundPackage = $this->package::where('sanitized_name', $sanitizedName)->first();
-
 
         if ($foundPackage && $foundPackage->name != $package->name) {
             throw ValidationException::withMessages(['name' => 'Tento balíček již existuje.']);
@@ -171,9 +174,12 @@ class PackageController extends Controller
             $package->is_one_time = $isOneTime;
             $package->color = $request->color;
             if ($request->hasFile('image')) {
-                $newImageName = time() . '.' . $request->image->extension();
-                $request->image->move(public_path() . '\img\package-images', $newImageName);
-                $package->image = 'img/package-images/' . $newImageName;
+                $oldPath = str_replace('storage', 'public', $package->image);
+                if (Storage::exists($oldPath)) {
+                    Storage::delete($oldPath);
+                }
+                $path = $request->file('image')->storeAs('img/package-images',  time() . '.' . $request->image->extension(),  'public');
+                $package->image = '/storage/' . $path;
             }
             $package->save();
 
@@ -190,9 +196,9 @@ class PackageController extends Controller
     public function destroy($sanitized_name)
     {
         $package = $this->package::where('sanitized_name', $sanitized_name)->first();
-        $image_path = $package->image;
-        if (File::exists($image_path)) {
-            File::delete($image_path);
+        $oldPath = str_replace('storage', 'public', $package->image);
+        if (Storage::exists($oldPath)) {
+            Storage::delete($oldPath);
         }
         $package->delete();
 
