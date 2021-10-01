@@ -19,7 +19,7 @@
                     </div>
                 </div>
                 <div class="image">
-                    <img src="/{{ $package->image }}" alt="Block">
+                    <img src="{{ asset($package->image) }}" alt="Block">
                 </div>
             </div>
             {{-- <div class="body">

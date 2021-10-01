@@ -19,7 +19,7 @@
                     @foreach ($packages as $package)
                         <div class="package">
                             <div class="block">
-                                <img src="{{ $package->image }}" alt="Block">
+                                <img src="{{ asset($package->image) }}" alt="Block">
                             </div>
                             <div class="subtitle">{{ $package->name }}</div>
                             <div class="price" style="background: {{ $package->color }}">{{ $package->price }}

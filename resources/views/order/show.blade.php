@@ -44,26 +44,6 @@
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
-                        <div class="form-floating">
-                            <input type="password" class="form-control @error('password') is-invalid @enderror" name="password"
-                                id="password" placeholder="Heslo">
-                            <label for="password">Heslo</label>
-                        </div>
-                        @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                        <div class="form-floating">
-                            <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror"
-                                id="password-confirm" name="password_confirmation" placeholder="Heslo">
-                            <label for="password-confirm">Heslo znovu</label>
-                        </div>
-                        @error('password_confirmation')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
                     @endguest
                     @auth
                         @if (!Auth::user()->nickname)

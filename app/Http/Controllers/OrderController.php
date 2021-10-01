@@ -5,12 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Package;
 use App\Models\User;
 use App\Models\Order;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
-use Laravel\Fortify\Rules\Password;
 use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
@@ -38,12 +36,6 @@ class OrderController extends Controller
                     'max:255',
                     Rule::unique(User::class),
                 ],
-                'password' => [
-                    'required',
-                    'string',
-                    new Password,
-                    'confirmed'
-                ],
                 'nickname' => [
                     'required',
                     'max:100',
@@ -67,7 +59,6 @@ class OrderController extends Controller
             $messages = [
                 "email.unique" => "Tento :attribute už někdo používá.",
                 "email.email" => "Zadaný :attribute není platný.",
-                "password.confirmed" => "Hesla se neshodují.",
                 "psc.regex" => "Zadejte správný formát PSČ",
                 "terms.required" => "Musíte souhlasit s všeobecnými obchodními podmínkami.",
             ];
@@ -77,16 +68,6 @@ class OrderController extends Controller
                 $rules,
                 $messages,
             )->validate();
-
-            $user = User::create([
-                'uuid' => Str::uuid(),
-                'email' => $request->email,
-                'nickname' => $request->nickname,
-                'password' => Hash::make($request->password),
-                'verify_token' => substr(Str::uuid(), 0, 8),
-            ]);
-
-            Auth::login($user);
         } else {
             if (!Auth::user()->nickname) {
                 $rules = [
