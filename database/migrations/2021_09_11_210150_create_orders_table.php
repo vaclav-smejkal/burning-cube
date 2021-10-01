@@ -22,7 +22,6 @@ class CreateOrdersTable extends Migration
             $table->string('place');
             $table->string('psc');
             $table->uuid('uuid');
-            $table->foreignId('user_id')->constrained("users");
             $table->timestamps();
         });
     }

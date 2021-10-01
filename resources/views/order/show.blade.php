@@ -69,7 +69,7 @@
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
-                    <h2 class="subtitle">Fakturační údaje</h2>
+                    {{-- <h2 class="subtitle">Fakturační údaje</h2>
                     <div class="form-floating">
                         <input type="text" class="form-control" name="name_surname" id="name_surname"
                             placeholder="Jméno a příjmení" value="{{ old('name_surname') }}">
@@ -99,7 +99,7 @@
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
-                    @enderror
+                    @enderror --}}
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" name="terms" id="terms">
                         <label class="form-check-label" for="terms">

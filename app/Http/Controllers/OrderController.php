@@ -41,17 +41,17 @@ class OrderController extends Controller
                     'max:100',
                     'unique:users'
                 ],
-                'name_surname' => [
-                    'max:100',
-                    'required',
-                ],
-                'place' => [
-                    'required',
-                ],
-                'psc' => [
-                    'required',
-                    'regex:/(^[0-9]{3}(\s)[0-9]{2}|[0-9]{5}$)/'
-                ],
+                // 'name_surname' => [
+                //     'max:100',
+                //     'required',
+                // ],
+                // 'place' => [
+                //     'required',
+                // ],
+                // 'psc' => [
+                //     'required',
+                //     'regex:/(^[0-9]{3}(\s)[0-9]{2}|[0-9]{5}$)/'
+                // ],
                 'terms' => [
                     'required',
                 ],
@@ -76,17 +76,17 @@ class OrderController extends Controller
                         'required',
                         'unique:users',
                     ],
-                    'name_surname' => [
-                        'max:100',
-                        'required',
-                    ],
-                    'place' => [
-                        'required',
-                    ],
-                    'psc' => [
-                        'required',
-                        'regex:/(^[0-9]{3}(\s)[0-9]{2}|[0-9]{5}$)/'
-                    ],
+                    // 'name_surname' => [
+                    //     'max:100',
+                    //     'required',
+                    // ],
+                    // 'place' => [
+                    //     'required',
+                    // ],
+                    // 'psc' => [
+                    //     'required',
+                    //     'regex:/(^[0-9]{3}(\s)[0-9]{2}|[0-9]{5}$)/'
+                    // ],
                     'terms' => [
                         'required',
                     ],
@@ -107,17 +107,17 @@ class OrderController extends Controller
                 $user->save();
             } else {
                 $rules = [
-                    'name_surname' => [
-                        'max:100',
-                        'required',
-                    ],
-                    'place' => [
-                        'required',
-                    ],
-                    'psc' => [
-                        'required',
-                        'regex:/(^[0-9]{3}(\s)[0-9]{2}|[0-9]{5}$)/'
-                    ],
+                    // 'name_surname' => [
+                    //     'max:100',
+                    //     'required',
+                    // ],
+                    // 'place' => [
+                    //     'required',
+                    // ],
+                    // 'psc' => [
+                    //     'required',
+                    //     'regex:/(^[0-9]{3}(\s)[0-9]{2}|[0-9]{5}$)/'
+                    // ],
                     'terms' => [
                         'required',
                     ],
@@ -142,11 +142,13 @@ class OrderController extends Controller
             'email' => $request->email,
             'nickname' => $request->nickname,
             'comment' => $request->comment,
-            'name_surname' => $request->name_surname,
-            'place' => $request->place,
-            'psc' => $request->psc,
+            'name_surname' => "null",
+            'place' => "null",
+            'psc' => "null",
+            // 'name_surname' => $request->name_surname,
+            // 'place' => $request->place,
+            // 'psc' => $request->psc,
             'uuid' => Str::uuid(),
-            'user_id' => Auth::user()->id,
         ]);
 
         // return redirect()->back()->with('message', 'Byla vytvořena objednávka.');
