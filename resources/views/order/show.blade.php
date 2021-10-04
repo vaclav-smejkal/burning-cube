@@ -22,7 +22,7 @@
                     <h2 class="subtitle">Formulář</h2>
                     @guest
                         <p class="desc">
-                            Vyplňte prosím údaje, nebo se <a href="/login">přihlaste</a>
+                            Vyplňte prosím údaje nebo se <a href="/login">přihlaste</a>
                         </p>
                         <div class="form-floating">
                             <input type="text" class="form-control @error('nickname') is-invalid @enderror" name="nickname"
