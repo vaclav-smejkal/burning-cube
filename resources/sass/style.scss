@@ -14,6 +14,7 @@ $secondary-color-lighter: #464646;
 $secondary-color-darker: #272727;
 $secondary-color-lightest: #555555;
 $orange: #ff8000;
+$red: #dc3545;
 
 // Font Sizes
 $title-size: 2.3em;
@@ -1354,11 +1355,15 @@ article {
 
     label {
         color: $black;
+
+        span {
+            color: $red;
+        }
     }
 
     textarea {
         min-height: 120px;
-        margin: 0 0 1.5rem;
+        margin: 2rem 0 0;
     }
 
     .form-floating {

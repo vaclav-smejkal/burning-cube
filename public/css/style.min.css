@@ -1581,9 +1581,12 @@ article a:hover {
 #order-show label {
   color: #000;
 }
+#order-show label span {
+  color: #dc3545;
+}
 #order-show textarea {
   min-height: 120px;
-  margin: 0 0 1.5rem;
+  margin: 2rem 0 0;
 }
 #order-show .form-floating {
   margin-bottom: 0.75rem;

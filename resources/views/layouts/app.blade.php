@@ -165,6 +165,7 @@
                     <div class="item-title">Odkazy</div>
                     <ul class="list">
                         <li class="list-item"><a href="/vop">VOP</a></li>
+                        <li class="list-item"><a href="/contact">Kontakty</a></li>
                     </ul>
                 </div>
             </div>

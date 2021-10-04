@@ -22,12 +22,12 @@
                     <h2 class="subtitle">Formulář</h2>
                     @guest
                         <p class="desc">
-                            Prosím <a href="/login">přihlaste se</a> nebo zaregistrujte:
+                            Vyplňte prosím údaje, nebo se <a href="/login">přihlaste</a>
                         </p>
                         <div class="form-floating">
                             <input type="text" class="form-control @error('nickname') is-invalid @enderror" name="nickname"
                                 id="nickname" value="{{ old('nickname') }}" placeholder="Nickname">
-                            <label for="nickname">Nickname</label>
+                            <label for="nickname">Nickname <span>*</span></label>
                         </div>
                         @error('nickname')
                             <span class="invalid-feedback" role="alert">
@@ -37,7 +37,7 @@
                         <div class="form-floating">
                             <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" id="email"
                                 value="{{ old('email') }}" placeholder="E-mail">
-                            <label for="email">E-mail</label>
+                            <label for="email">E-mail <span>*</span></label>
                         </div>
                         @error('email')
                             <span class="invalid-feedback" role="alert">
@@ -51,7 +51,7 @@
                             <div class="form-floating">
                                 <input type="text" class="form-control @error('nickname') is-invalid @enderror" name="nickname"
                                     id="nickname" value="{{ old('nickname') }}" placeholder="Nickname">
-                                <label for="nickname">Nickname</label>
+                                <label for="nickname">Nickname <span>*</span></label>
                             </div>
                             @error('nickname')
                                 <span class="invalid-feedback" role="alert">
@@ -70,7 +70,22 @@
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
-                    <h2 class="subtitle">Fakturační údaje</h2>
+                    @error('name_surname')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                    @error('place')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                    @error('psc')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                    {{-- <h2 class="subtitle">Fakturační údaje</h2>
                     <div class="form-floating">
                         <input type="text" class="form-control" name="name_surname" id="name_surname"
                             placeholder="Jméno a příjmení" value="{{ old('name_surname') }}">
@@ -100,7 +115,7 @@
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
-                    @enderror
+                    @enderror --}}
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" name="terms" id="terms">
                         <label class="form-check-label" for="terms">
