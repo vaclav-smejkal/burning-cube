@@ -40,7 +40,7 @@ class DatabaseSeeder extends Seeder
             'uuid' => Str::uuid(),
         ]);
         PageTexts::create([
-            'name' => 'Jak na to?',
+            'name' => 'JakNaTo?',
             'text' => $this->faker->paragraph(2),
             'uuid' => Str::uuid(),
         ]);

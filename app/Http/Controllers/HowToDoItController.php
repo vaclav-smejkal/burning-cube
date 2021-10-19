@@ -9,7 +9,7 @@ class HowToDoItController extends Controller
 {
     public function index()
     {
-        $pageText = PageTexts::where('name', 'Jak na to?')->first();
+        $pageText = PageTexts::where('name', 'JakNaTo?')->first();
 
         return view("how-to-do-it", ["pageText" => $pageText]);
     }
