@@ -4,6 +4,7 @@ use App\Http\Controllers\AddNicknameController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\HowToDoItController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SeedController;
 use App\Http\Controllers\VerifyNicknameController;
@@ -46,6 +47,7 @@ Route::get('/thanks', function () {
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/vop', [VOPController::class, 'index']);
 Route::get('/contact', [ContactController::class, 'index']);
+Route::get('/how-to-do-it', [HowToDoItController::class, 'index']);
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('/verify-nickname', VerifyNicknameController::class)->only('index', 'update');
     Route::resource('/add-nickname', AddNicknameController::class)->only('index', 'update');
