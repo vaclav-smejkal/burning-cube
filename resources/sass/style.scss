@@ -831,6 +831,20 @@ section {
     .title {
         text-align: center;
     }
+
+    .link-box {
+        display: flex;
+        justify-content: center;
+    }
+
+    .link {
+        color: $primary-color;
+        font-size: 1.2em;
+
+        &:hover {
+            color: $primary-color-darker;
+        }
+    }
 }
 
 .admin-edit-form {
@@ -1003,7 +1017,7 @@ section {
 
 #packages {
     .grid-packages {
-        margin-top: 4rem;
+        margin-top: 5.5rem;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 5.5rem 2rem;
