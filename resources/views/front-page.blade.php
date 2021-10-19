@@ -15,6 +15,9 @@
                 <h2 class="title">
                     Balíčky
                 </h2>
+                <div class="link-box">
+                    <a href="/how-to-do-it" class="link">Jak se připojím a aktivuji balíček?</a>
+                </div>
                 <div class="grid-packages">
                     @foreach ($packages as $package)
                         <div class="package">

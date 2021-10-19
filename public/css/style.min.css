@@ -1131,6 +1131,17 @@ article #banner h1 {
 article #front-page h1 {
   text-align: center;
 }
+#front-page .link-box {
+  display: flex;
+  justify-content: center;
+}
+#front-page .link {
+  color: #76c665;
+  font-size: 1.2em;
+}
+#front-page .link:hover {
+  color: #65a856;
+}
 
 .admin-edit-form .container {
   display: flex;
@@ -1261,7 +1272,7 @@ article #front-page h1 {
 }
 
 #packages .grid-packages {
-  margin-top: 4rem;
+  margin-top: 5.5rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 5.5rem 2rem;
