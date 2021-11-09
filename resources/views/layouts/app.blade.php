@@ -53,9 +53,9 @@
                 <ul class="navbar-nav right">
                     @auth
                         @role('admin')
-                        <li class="nav-item">
-                            <a href="/admin" class="nav-link">Administrace</a>
-                        </li>
+                            <li class="nav-item">
+                                <a href="/admin" class="nav-link">Administrace</a>
+                            </li>
                         @endrole
                         <li class="nav-item">
                             <a class="nav-link with-icon" href="{{ route('logout') }}"
@@ -165,7 +165,7 @@
                     <div class="item-title">Odkazy</div>
                     <ul class="list">
                         <li class="list-item"><a href="/vop">VOP</a></li>
-                        <li class="list-item"><a href="/contact">Kontakty</a></li>
+                        <li class="list-item"><a href="/kontakt">Kontakty</a></li>
                     </ul>
                 </div>
             </div>

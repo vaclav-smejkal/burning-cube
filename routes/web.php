@@ -46,7 +46,7 @@ Route::get('/thanks', function () {
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/vop', [VOPController::class, 'index']);
-Route::get('/contact', [ContactController::class, 'index']);
+Route::get('/kontakt', [ContactController::class, 'index']);
 Route::get('/how-to-do-it', [HowToDoItController::class, 'index']);
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('/verify-nickname', VerifyNicknameController::class)->only('index', 'update');
