@@ -13,20 +13,10 @@
                         <li class="breadcrumb-item active" aria-current="page">Editace</li>
                     </ol>
                 </nav>
-                <h2 class="subtitle">Editování stránky</h2>
+                <h2 class="subtitle">Editování stránky - {{ $pageText->name }}</h2>
                 <form action="{{ route('page-texts.update', $pageText) }}" method="POST">
                     @csrf
                     @method("PUT")
-                    <div class="form-floating">
-                        <input type="text" class="form-control" name="name" id="name" value="{{ $pageText->name }}"
-                            placeholder="Název">
-                        <label for="name">Název</label>
-                    </div>
-                    @error('name')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
                     <div id="editor">
                         {!! $pageText->text !!}
                     </div>
