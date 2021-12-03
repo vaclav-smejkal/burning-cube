@@ -44,6 +44,11 @@ class DatabaseSeeder extends Seeder
             'text' => $this->faker->paragraph(2),
             'uuid' => Str::uuid(),
         ]);
+        PageTexts::create([
+            'name' => 'ONas',
+            'text' => $this->faker->paragraph(2),
+            'uuid' => Str::uuid(),
+        ]);
 
         // Only for testing
         $admin = User::create([

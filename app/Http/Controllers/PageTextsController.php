@@ -33,18 +33,12 @@ class PageTextsController extends Controller
         $validator = Validator::make(
             $request->all(),
             $rules = [
-                'name' => [
-                    'required',
-                    'max:100',
-                ],
                 'text' => [
                     'required',
                 ],
             ],
         )->validate();
 
-
-        $pageText->name = $request->name;
         $pageText->text = $request->text;
 
         $pageText->save();

@@ -166,6 +166,7 @@
                     <ul class="list">
                         <li class="list-item"><a href="/vop">VOP</a></li>
                         <li class="list-item"><a href="/kontakt">Kontakty</a></li>
+                        <li class="list-item"><a href="/o-nas">O nás</a></li>
                     </ul>
                 </div>
             </div>

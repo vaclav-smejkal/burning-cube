@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AddNicknameController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
@@ -47,6 +48,7 @@ Route::get('/thanks', function () {
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/vop', [VOPController::class, 'index']);
 Route::get('/kontakt', [ContactController::class, 'index']);
+Route::get('/o-nas', [AboutController::class, 'index']);
 Route::get('/how-to-do-it', [HowToDoItController::class, 'index']);
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('/verify-nickname', VerifyNicknameController::class)->only('index', 'update');
