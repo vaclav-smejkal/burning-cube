@@ -199,7 +199,6 @@ class OrderController extends Controller
             'amount' => $package->price * 100,
             'currency' => Currency::CZECH_CROWNS,
             'order_number' => $newOrder->uuid,
-            'order_description' => 'obuv',
             'items' => [
                 [
                     'type' => 'ITEM',
