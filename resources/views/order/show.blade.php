@@ -20,6 +20,12 @@
                 <form class="order-form" action="{{ route('order.store') }}" method="POST">
                     @csrf
                     <h2 class="subtitle">Formulář</h2>
+                    <input type="hidden" name="package_sanitized_name" value="{{ $package->sanitized_name }}">
+                    @error('package_sanitized_name')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                     @guest
                         <p class="desc">
                             Vyplňte prosím údaje nebo se <a href="/login">přihlaste</a>

@@ -2,14 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use GoPay\Definition\Language;
+use GoPay\Definition\Payment\Currency;
+use GoPay\Definition\Payment\PaymentInstrument;
+use GoPay\Definition\Payment\BankSwiftCode;
+use GoPay\Definition\Payment\VatRate;
+use GoPay\Definition\Payment\PaymentItemType;
 use App\Models\Package;
 use App\Models\User;
 use App\Models\Order;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
+use GoPay;
+use Illuminate\Support\Env;
 
 class OrderController extends Controller
 {
@@ -55,6 +65,9 @@ class OrderController extends Controller
                 'terms' => [
                     'required',
                 ],
+                'package_sanitized_name' => [
+                    'required'
+                ]
             ];
             $messages = [
                 "email.unique" => "Tento :attribute už někdo používá.",
@@ -90,6 +103,9 @@ class OrderController extends Controller
                     'terms' => [
                         'required',
                     ],
+                    'package_sanitized_name' => [
+                        'required'
+                    ]
                 ];
                 $messages = [
                     "psc.regex" => "Zadejte správný formát PSČ",
@@ -121,6 +137,9 @@ class OrderController extends Controller
                     'terms' => [
                         'required',
                     ],
+                    'package_sanitized_name' => [
+                        'required'
+                    ]
                 ];
                 $messages = [
                     "psc.regex" => "Zadejte správný formát PSČ",
@@ -138,7 +157,13 @@ class OrderController extends Controller
             $request->email = Auth::user()->email;
         }
 
-        $this->order::create([
+        $package = Package::where("sanitized_name", $request->package_sanitized_name)->first();
+
+        if (!$package) {
+            throw ValidationException::withMessages(['package_sanitized_name' => "Tento balíček neexistuje."]);
+        }
+
+        $newOrder = $this->order::create([
             'email' => $request->email,
             'nickname' => $request->nickname,
             'comment' => $request->comment,
@@ -149,9 +174,50 @@ class OrderController extends Controller
             'place' => "null",
             'psc' => "null",
             'uuid' => Str::uuid(),
+            'package_id' => $package->id
+        ]);
+
+        $gopay =  GoPay\payments([
+            'goid' => env('GOID'),
+            'clientId' => env('CLIENT_ID'),
+            'clientSecret' => env('CLIENT_SECRET'),
+            'gatewayUrl' => 'https://gw.sandbox.gopay.com/',
+            'scope' => GoPay\Definition\TokenScope::ALL,
+            'language' => GoPay\Definition\Language::CZECH,
+            'timeout' => 30
+        ]);
+
+        $response = $gopay->createPayment([
+            'payer' => [
+                'default_payment_instrument' => PaymentInstrument::BANK_ACCOUNT,
+                'allowed_payment_instruments' => [PaymentInstrument::BANK_ACCOUNT],
+                'default_swift' => BankSwiftCode::FIO_BANKA,
+                'allowed_swifts' => [BankSwiftCode::FIO_BANKA, BankSwiftCode::MBANK],
+                'contact' => [
+                    'email' => $request->email,
+                ]
+            ],
+            'amount' => $package->price * 100,
+            'currency' => Currency::CZECH_CROWNS,
+            'order_number' => $newOrder->uuid,
+            'items' => [
+                [
+                    'type' => 'ITEM',
+                    'name' => $package->name,
+                    'amount' => $package->price * 100,
+                    'count' => 1,
+                    'vat_rate' => VatRate::RATE_4
+                ],
+            ],
+            'callback' => [
+                'return_url' => 'https://after-life.cz/order/' . $package->sanitized_name,
+                'notification_url' => 'https://after-life.cz/thanks'
+            ],
+            'lang' => Language::CZECH
         ]);
 
         // return redirect()->back()->with('message', 'Byla vytvořena objednávka.');
-        return redirect('thanks');
+        return redirect($response->json["gw_url"]);
+        //return view('thanks');
     }
 }

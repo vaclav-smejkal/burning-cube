@@ -163,5 +163,6 @@ return [
         'psc' => 'PSČ',
         'place' => 'bydliště',
         'name_surname' => 'jméno a přijmení',
+        'package_sanitized_name' => 'balíček'
     ],
 ];

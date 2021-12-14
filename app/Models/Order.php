@@ -15,11 +15,17 @@ class Order extends Model
         'place',
         'psc',
         'uuid',
+        'package_id'
     ];
     use HasFactory;
 
     public function users()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function package()
+    {
+        return $this->hasOne(Package::class);
     }
 }
