@@ -189,10 +189,7 @@ class OrderController extends Controller
 
         $response = $gopay->createPayment([
             'payer' => [
-                'default_payment_instrument' => PaymentInstrument::BANK_ACCOUNT,
-                'allowed_payment_instruments' => [PaymentInstrument::BANK_ACCOUNT],
-                'default_swift' => BankSwiftCode::FIO_BANKA,
-                'allowed_swifts' => [BankSwiftCode::FIO_BANKA, BankSwiftCode::MBANK],
+                'allowed_payment_instruments' => [PaymentInstrument::PAYMENT_CARD, PaymentInstrument::BANK_ACCOUNT, PaymentInstrument::GPAY, PaymentInstrument::APPLE_PAY, PaymentInstrument::GOPAY, PaymentInstrument::MPAYMENT, PaymentInstrument::PAYSAFECARD, PaymentInstrument::BITCOIN],
                 'contact' => [
                     'email' => $request->email,
                 ]
