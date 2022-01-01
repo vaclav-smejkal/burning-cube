@@ -15,7 +15,8 @@ class Order extends Model
         'place',
         'psc',
         'uuid',
-        'package_id'
+        'package_id',
+        'state'
     ];
     use HasFactory;
 

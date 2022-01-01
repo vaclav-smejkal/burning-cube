@@ -5,9 +5,7 @@ namespace App\Http\Controllers;
 use GoPay\Definition\Language;
 use GoPay\Definition\Payment\Currency;
 use GoPay\Definition\Payment\PaymentInstrument;
-use GoPay\Definition\Payment\BankSwiftCode;
 use GoPay\Definition\Payment\VatRate;
-use GoPay\Definition\Payment\PaymentItemType;
 use App\Models\Package;
 use App\Models\User;
 use App\Models\Order;
@@ -29,12 +27,46 @@ class OrderController extends Controller
         $this->order = Order::class;
     }
 
-    public function show($sanitized_name)
+    public function show($sanitized_name, Request $request)
     {
         $package = Package::where('sanitized_name', $sanitized_name)->first();
 
-        return view('order.show', ['package' => $package]);
+        $gopay =  GoPay\payments([
+            'goid' => config('gopay.goid'),
+            'clientId' => config('gopay.client_id'),
+            'clientSecret' => config('gopay.client_secret'),
+            'gatewayUrl' => 'https://gw.sandbox.gopay.com/',
+            'scope' => GoPay\Definition\TokenScope::ALL,
+            'language' => GoPay\Definition\Language::CZECH,
+            'timeout' => 30
+        ]);
+
+        $message = "";
+        $success = false;
+        $params = $request->all();
+
+        if (!empty($params)) {
+            $response = $gopay->getStatus(($params['id']));
+
+            if (isset($response->json['errors'])) {
+                $message = $response->json['errors'][0]['message'];
+            } elseif (isset($response->json['state'])) {
+                switch ($response->json['state']) {
+                    case 'PAID':
+                        $success = true;
+                        $message = 'Objednávka je zaplacena.';
+                        break;
+                    case 'CREATED':
+                        $success = true;
+                        $message = 'Objednávka je vytvořena, ale není zaplacena.';
+                        break;
+                }
+            }
+        }
+
+        return view('order.show', ['package' => $package, 'message' => $message, 'success' => $success]);
     }
+
     public function store(Request $request)
     {
         if (!Auth::user()) {
@@ -163,20 +195,6 @@ class OrderController extends Controller
             throw ValidationException::withMessages(['package_sanitized_name' => "Tento balíček neexistuje."]);
         }
 
-        $newOrder = $this->order::create([
-            'email' => $request->email,
-            'nickname' => $request->nickname,
-            'comment' => $request->comment,
-            // 'name_surname' => $request->name_surname,
-            // 'place' => $request->place,
-            // 'psc' => $request->psc,
-            'name_surname' => "null",
-            'place' => "null",
-            'psc' => "null",
-            'uuid' => Str::uuid(),
-            'package_id' => $package->id
-        ]);
-
         $gopay =  GoPay\payments([
             'goid' => config('gopay.goid'),
             'clientId' => config('gopay.client_id'),
@@ -189,14 +207,14 @@ class OrderController extends Controller
 
         $response = $gopay->createPayment([
             'payer' => [
-                'allowed_payment_instruments' => [PaymentInstrument::PAYMENT_CARD, PaymentInstrument::BANK_ACCOUNT, PaymentInstrument::GPAY, PaymentInstrument::APPLE_PAY, PaymentInstrument::GOPAY, PaymentInstrument::MPAYMENT, PaymentInstrument::PAYSAFECARD, PaymentInstrument::BITCOIN],
+                'allowed_payment_instruments' => [PaymentInstrument::PAYMENT_CARD, PaymentInstrument::BANK_ACCOUNT, PaymentInstrument::PREMIUM_SMS, PaymentInstrument::GPAY, PaymentInstrument::APPLE_PAY, PaymentInstrument::GOPAY, PaymentInstrument::MPAYMENT, PaymentInstrument::PAYSAFECARD, PaymentInstrument::BITCOIN],
                 'contact' => [
                     'email' => $request->email,
                 ]
             ],
             'amount' => $package->price * 100,
             'currency' => Currency::CZECH_CROWNS,
-            'order_number' => $newOrder->uuid,
+            'order_number' => Str::uuid(),
             'items' => [
                 [
                     'type' => 'ITEM',
@@ -213,7 +231,22 @@ class OrderController extends Controller
             'lang' => Language::CZECH
         ]);
 
+        $newOrder = $this->order::create([
+            'email' => $request->email,
+            'nickname' => $request->nickname,
+            'comment' => $request->comment,
+            'state' => $response->json['state'],
+            // 'name_surname' => $request->name_surname,
+            // 'place' => $request->place,
+            // 'psc' => $request->psc,
+            'name_surname' => 'null',
+            'place' => 'null',
+            'psc' => 'null',
+            'uuid' => $response->json['order_number'],
+            'package_id' => $package->id
+        ]);
+
         //return dd($response->json);
-        return redirect($response->json["gw_url"]);
+        return redirect($response->json['gw_url']);
     }
 }

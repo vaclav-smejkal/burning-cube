@@ -134,6 +134,11 @@
                         </span>
                     @enderror
                     <button type="submit" class="btn btn-primary">Objednat a zaplatit</button>
+                    @if (!empty($message))
+                        <div class="alert @if ($success)alert-success @else alert-danger @endif" role="alert">
+                            {{ $message }}
+                        </div>
+                    @endif
                     @if (session()->has('message'))
                         <div class="alert alert-success" role="alert">
                             {{ session()->get('message') }}
