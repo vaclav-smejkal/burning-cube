@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use GoPay;
 use Illuminate\Support\Env;
+use Config;
 
 class OrderController extends Controller
 {
@@ -177,9 +178,9 @@ class OrderController extends Controller
         ]);
 
         $gopay =  GoPay\payments([
-            'goid' => env('GOID'),
-            'clientId' => env('CLIENT_ID'),
-            'clientSecret' => env('CLIENT_SECRET'),
+            'goid' => config('gopay.goid'),
+            'clientId' => config('gopay.client_id'),
+            'clientSecret' => config('gopay.client_secret'),
             'gatewayUrl' => 'https://gw.sandbox.gopay.com/',
             'scope' => GoPay\Definition\TokenScope::ALL,
             'language' => GoPay\Definition\Language::CZECH,
