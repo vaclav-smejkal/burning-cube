@@ -13,7 +13,6 @@ use App\Models\User;
 use App\Models\Order;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
@@ -213,8 +212,7 @@ class OrderController extends Controller
             'lang' => Language::CZECH
         ]);
 
-        // return redirect()->back()->with('message', 'Byla vytvořena objednávka.');
+        //return dd($response->json);
         return redirect($response->json["gw_url"]);
-        //return view('thanks');
     }
 }
