@@ -226,7 +226,7 @@ class OrderController extends Controller
             ],
             'callback' => [
                 'return_url' => 'https://after-life.cz/order/' . $package->sanitized_name,
-                'notification_url' => 'https://after-life.cz/thanks'
+                'notification_url' => 'https://after-life.cz/notify'
             ],
             'lang' => Language::CZECH
         ]);
