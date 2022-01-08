@@ -28,7 +28,7 @@ class PackageFactory extends Factory
             'name' => $name,
             'sanitized_name' => Helper::instance()->friendly_url($name),
             'comment' => $this->faker->paragraph(2),
-            'price' => $this->faker->randomFloat(2, 1, 20000),
+            'price' => $this->faker->randomFloat(2, 1, 75),
             'is_one_time' => rand(0, 1),
         ];
     }

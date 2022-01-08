@@ -6,6 +6,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HowToDoItController;
+use App\Http\Controllers\NotifyController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SeedController;
 use App\Http\Controllers\VerifyNicknameController;
@@ -41,9 +42,7 @@ Route::group(['middleware' => ['role:admin']], function () {
 });
 
 Route::resource('/order', OrderController::class)->except('create', 'destroy');
-Route::get('/thanks', function () {
-    return view('thanks');
-});
+Route::get('/notify', [NotifyController::class, 'index']);
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/vop', [VOPController::class, 'index']);
