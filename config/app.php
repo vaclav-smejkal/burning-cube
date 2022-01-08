@@ -163,7 +163,6 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
-
         /*
          * Package Service Providers...
          */
