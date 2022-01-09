@@ -292,7 +292,7 @@ section {
             transform: scale(1.15);
             width: 60px;
             height: 60px;
-            transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 500ms cubic-bezier(.4, 0, .2, 1);
         }
 
         &.active svg {
@@ -301,9 +301,9 @@ section {
 
         path {
             pointer-events: none;
-            transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1),
-                stroke-dasharray 500ms cubic-bezier(0.4, 0, 0.2, 1),
-                stroke-dashoffset 500ms cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 500ms cubic-bezier(.4, 0, .2, 1),
+                stroke-dasharray 500ms cubic-bezier(.4, 0, .2, 1),
+                stroke-dashoffset 500ms cubic-bezier(.4, 0, .2, 1);
         }
 
         path:nth-child(1) {
@@ -1467,7 +1467,7 @@ section {
         }
 
         &.is-selected {
-            box-shadow: 0px 10px 60px rgba(88, 200, 87, 0.4);
+            box-shadow: 0px 10px 60px rgba(88, 200, 87, .4);
         }
 
         &::after {
@@ -1486,14 +1486,14 @@ section {
             position: relative;
 
             &::after {
-                background-color: rgba(49, 49, 49, 0.7);
+                background-color: rgba(49, 49, 49, .7);
             }
         }
     }
 
     .flickity-button {
         border-radius: 0;
-        background-color: rgba(128, 128, 128, 0.7);
+        background-color: rgba(128, 128, 128, .7);
         background-image: url(/img/icons/arrow.svg);
         background-repeat: no-repeat;
         background-position: center;
@@ -1544,7 +1544,7 @@ section {
     }
 
     .faq-card {
-        box-shadow: 0px 10px 100px rgba(88, 200, 87, 0.4);
+        box-shadow: 0px 10px 100px rgba(88, 200, 87, .4);
         display: grid;
         grid-template-columns: 100px 1fr;
         padding: 4rem 6rem;
