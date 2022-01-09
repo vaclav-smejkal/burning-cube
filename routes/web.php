@@ -46,7 +46,7 @@ Route::get('/notify', [NotifyController::class, 'index']);
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/vop', [VOPController::class, 'index']);
-Route::get('/kontakt', [ContactController::class, 'index']);
+Route::get('/kontakt', [AboutController::class, 'index']);
 Route::get('/o-nas', [AboutController::class, 'index']);
 Route::get('/how-to-do-it', [HowToDoItController::class, 'index']);
 Route::group(['middleware' => ['auth']], function () {

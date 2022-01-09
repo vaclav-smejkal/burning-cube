@@ -6,16 +6,32 @@
     <section id="order-show">
         <div class="container">
             <h1 class="title">Objednávka</h1>
-            <div class="flex-group">
-                <div class="order-info">
-                    <h2 class="subtitle">Informace o nákupu</h2>
-                    <ul class="info-list">
-                        <li>Název: {{ $package->name }}</li>
-                        <li>Cena: {{ $package->price }} Kč</li>
-                    </ul>
-                    <article>
-                        {!! $package->comment !!}
-                    </article>
+            <div class="grid-group">
+                <div class="package">
+                    <button class="btn btn-collapse collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapse0" aria-expanded="false" aria-controls="collapse0">
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <div class="subtitle">{{ $package->name }}</div>
+                    <div class="block">
+                        <img src="{{ asset($package->image) }}" alt="Block">
+                    </div>
+                    <div class="price">
+                        {{ $package->price }}
+                        <span>Kč</span>
+                    </div>
+                    <span class="price-info">Měsíčně pro jednoho uživatele</span>
+                    <p class="desc">
+                        Přístup na server 5 dní před oficiálním spuštěním,
+                        <strong>Early Access během vývoje</strong>. Unikátní tag.
+                    </p>
+                    <a href="/order/{{ $package->sanitized_name }}" class="btn btn-primary btn-main">
+                        Koupit balíček
+                    </a>
+                    <div id="collapse0" class="collapse">
+                        <article class="desc">{!! $package->comment !!}</article>
+                    </div>
                 </div>
                 <form class="order-form" action="{{ route('order.store') }}" method="POST">
                     @csrf
