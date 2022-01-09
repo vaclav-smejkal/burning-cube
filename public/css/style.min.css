@@ -399,8 +399,8 @@ p {
 
 textarea:hover,
 textarea:focus,
-input:hover,
-input:focus {
+input:not([type=file]):hover,
+input:not([type=file]):focus {
   border-color: #fff !important;
   color: #fff !important;
 }
@@ -1558,6 +1558,11 @@ article #package-show .header h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+#not-found .container .btn-primary {
+  margin-top: auto;
+  padding: 0.5rem 3.5rem;
+  font-size: 1.1em;
 }
 
 #packages .container {

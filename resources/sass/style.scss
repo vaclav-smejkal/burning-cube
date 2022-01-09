@@ -79,8 +79,8 @@ p {
 
 textarea:hover,
 textarea:focus,
-input:hover,
-input:focus {
+input:not([type=file]):hover,
+input:not([type=file]):focus {
     border-color: $white !important;
     color: $white !important;
 }
@@ -1215,6 +1215,12 @@ section {
         display: flex;
         flex-direction: column;
         align-items: center;
+
+        .btn-primary {
+            margin-top: auto;
+            padding: .5rem 3.5rem;
+            font-size: 1.1em;
+        }
     }
 }
 
