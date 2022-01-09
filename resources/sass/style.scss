@@ -289,8 +289,11 @@ section {
         width: 45px;
         height: 45px;
         padding: .5rem;
-        margin-right: 1rem;
         transition: .2s ease-in-out;
+
+        &:first-child {
+            margin-right: 1rem;
+        }
 
         &:hover {
             background-color: darken($grey-2, 5%);

@@ -603,8 +603,10 @@ section {
   width: 45px;
   height: 45px;
   padding: 0.5rem;
-  margin-right: 1rem;
   transition: 0.2s ease-in-out;
+}
+.icons .icon:first-child {
+  margin-right: 1rem;
 }
 .icons .icon:hover {
   background-color: #414643;

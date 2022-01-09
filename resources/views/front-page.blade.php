@@ -135,7 +135,7 @@
                 <div class="title-desc">
                     Doporučujeme i nadále sledovat Discord a FB stránku, abyste byly vždy v obraze s aktuální situací.
                 </div>
-                <li class="icons dektop">
+                <li class="icons desktop">
                     <a href="/#" class="icon green">
                         <img src="{{ asset('img/icons/facebook.svg') }}" alt="Facebook">
                     </a>
