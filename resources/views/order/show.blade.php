@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Burning Cube | Objednávka')
+@section('title', 'After-Life | Objednávka')
 
 @section('content')
     <section id="order-show">

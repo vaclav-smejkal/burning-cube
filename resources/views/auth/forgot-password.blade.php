@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Burning cube | Zapomenuté heslo')
+@section('title', 'After-Life | Zapomenuté heslo')
 
 @section('content')
     <section id="forgot-password">

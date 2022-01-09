@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Burning cube | Stránka')
+@section('title', 'After-Life | Stránka')
 
 @section('content')
     <section id="admin-package">

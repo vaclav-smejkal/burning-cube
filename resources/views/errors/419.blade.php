@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Burning cube | Platnost stránky vypršela')
+@section('title', 'After-Life | Platnost stránky vypršela')
 
 @section('content')
     <section id="not-found">

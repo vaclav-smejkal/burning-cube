@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Burning Cube | Editování serverů')
+@section('title', 'After-Life | Editování serverů')
 
 @section('content')
     <section id="admin-package-edit" class="admin-edit-form">

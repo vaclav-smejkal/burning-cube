@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Burning cube | Administrace')
+@section('title', 'After-Life | Administrace')
 
 @section('content')
     <section id="admin-dashboard">

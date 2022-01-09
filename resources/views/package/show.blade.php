@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Burning Cube | ' . $package->name)
+@section('title', 'After-Life | ' . $package->name)
 
 @section('content')
     <section id="package-show">

@@ -11,6 +11,6 @@ class AboutController extends Controller
     {
         $pageText = PageTexts::where('name', 'ONas')->first();
 
-        return view('about', ['pageText' => $pageText]);
+        return view('about', ['pageText' => $pageText, 'title' =>  'O nás']);
     }
 }

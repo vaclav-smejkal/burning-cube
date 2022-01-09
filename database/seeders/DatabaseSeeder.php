@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory(10)->create();
         \App\Models\Question::factory(8)->create();
         \App\Models\Server::factory(8)->create();
-        \App\Models\Package::factory(6)->create();
+        \App\Models\Package::factory(2)->create();
 
         $this->faker = Faker::create();
         PageTexts::create([

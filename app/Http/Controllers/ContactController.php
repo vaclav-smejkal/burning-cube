@@ -11,6 +11,6 @@ class ContactController extends Controller
     {
         $pageText = PageTexts::where('name', 'Kontakty')->first();
 
-        return view('contact', ['pageText' => $pageText]);
+        return view('about', ['pageText' => $pageText, 'title' =>  'Kontakt']);
     }
 }

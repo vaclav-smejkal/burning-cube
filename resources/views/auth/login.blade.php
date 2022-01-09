@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Burning cube | Přihlášení')
+@section('title', 'After-Life | Přihlášení')
 
 @section('content')
     <section id="login">

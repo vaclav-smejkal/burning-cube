@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Burning cube | Všeobecné obchodní podmínky')
+@section('title', 'After-Life | Všeobecné obchodní podmínky')
 
 @section('content')
     <section id="verify-nick">
