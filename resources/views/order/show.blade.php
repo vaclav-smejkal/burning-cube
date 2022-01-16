@@ -8,28 +8,34 @@
             <h1 class="title">Objednávka</h1>
             <div class="grid-group">
                 <div class="package">
-                    <button class="btn btn-collapse collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapse0" aria-expanded="false" aria-controls="collapse0">
+                    <button class="btn btn-collapse collapsed" type="button" data-card-collapse="i-0">
                         <span></span>
                         <span></span>
                     </button>
-                    <div class="subtitle">{{ $package->name }}</div>
-                    <div class="block">
-                        <img src="{{ asset($package->image) }}" alt="Block">
+                    <div class="card-collapse mobile i-0">
+                        <div class="subtitle">{{ $package->name }}</div>
+                        <div class="block">
+                            <img src="{{ asset($package->image) }}" alt="Block">
+                        </div>
+                        <p class="desc">
+                            Přístup na server 5 dní před oficiálním spuštěním,
+                            <strong>Early Access během vývoje</strong>. Unikátní tag.
+                        </p>
                     </div>
-                    <div class="price">
-                        {{ $package->price }}
-                        <span>Kč</span>
-                    </div>
-                    <span class="price-info">Měsíčně pro jednoho uživatele</span>
-                    <p class="desc">
-                        Přístup na server 5 dní před oficiálním spuštěním,
-                        <strong>Early Access během vývoje</strong>. Unikátní tag.
-                    </p>
-                    <a href="/order/{{ $package->sanitized_name }}" class="btn btn-primary btn-main">
-                        Koupit balíček
-                    </a>
-                    <div id="collapse0" class="collapse">
+                    <div class="card-collapse i-0">
+                        <div class="subtitle">{{ $package->name }}</div>
+                        <div class="block">
+                            <img src="{{ asset($package->image) }}" alt="Block">
+                        </div>
+                        <div class="price">
+                            {{ $package->price }}
+                            <span>Kč</span>
+                        </div>
+                        <span class="price-info">Měsíčně pro jednoho uživatele</span>
+                        <p class="desc">
+                            Přístup na server 5 dní před oficiálním spuštěním,
+                            <strong>Early Access během vývoje</strong>. Unikátní tag.
+                        </p>
                         <article class="desc">{!! $package->comment !!}</article>
                     </div>
                 </div>

@@ -8,7 +8,7 @@
             <article class="desc">
                 {!! nl2br($pageText->text) !!}
             </article>
-            <a href="/#early-access" class="btn btn-primary btn-main">
+            <a href="#" class="btn btn-primary btn-main scroll-to-early-access">
                 Koupit Early Access
                 <div class="icon">
                     <img src="{{ asset('img/icons/bag.svg') }}" alt="Balíčky">
@@ -27,7 +27,7 @@
     <section id="packages">
         <div class="container">
             <h2 class="title">
-                Připoj se na server jako první!
+                Připoj se na server<br> jako první!
             </h2>
             <p class="title-desc">
                 Předplať si VIP balíček za výhodnější cenu a získej předběžný přístup na server.<br>
@@ -36,29 +36,37 @@
             <div class="grid-packages">
                 @foreach ($packages as $index => $package)
                     <div class="package">
-                        <button class="btn btn-collapse collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapse{{ $index }}" aria-expanded="false"
-                            aria-controls="collapse{{ $index }}">
+                        <button class="btn btn-collapse collapsed" type="button" data-card-collapse="i-{{ $index }}">
                             <span></span>
                             <span></span>
                         </button>
-                        <div class="subtitle">{{ $package->name }}</div>
-                        <div class="block">
-                            <img src="{{ asset($package->image) }}" alt="Block">
+                        <div class="card-collapse mobile i-{{ $index }}">
+                            <div class="subtitle">{{ $package->name }}</div>
+                            <div class="block">
+                                <img src="{{ asset($package->image) }}" alt="Block">
+                            </div>
+                            <p class="desc">
+                                Přístup na server 5 dní před oficiálním spuštěním,
+                                <strong>Early Access během vývoje</strong>. Unikátní tag.
+                            </p>
                         </div>
-                        <div class="price">
-                            {{ $package->price }}
-                            <span>Kč</span>
-                        </div>
-                        <span class="price-info">Měsíčně pro jednoho uživatele</span>
-                        <p class="desc">
-                            Přístup na server 5 dní před oficiálním spuštěním,
-                            <strong>Early Access během vývoje</strong>. Unikátní tag.
-                        </p>
-                        <a href="/order/{{ $package->sanitized_name }}" class="btn btn-primary btn-main">
-                            Koupit balíček
-                        </a>
-                        <div id="collapse{{ $index }}" class="collapse">
+                        <div class="card-collapse i-{{ $index }}">
+                            <div class="subtitle">{{ $package->name }}</div>
+                            <div class="block">
+                                <img src="{{ asset($package->image) }}" alt="Block">
+                            </div>
+                            <div class="price">
+                                {{ $package->price }}
+                                <span>Kč</span>
+                            </div>
+                            <span class="price-info">Měsíčně pro jednoho uživatele</span>
+                            <p class="desc">
+                                Přístup na server 5 dní před oficiálním spuštěním,
+                                <strong>Early Access během vývoje</strong>. Unikátní tag.
+                            </p>
+                            <a href="/order/{{ $package->sanitized_name }}" class="btn btn-primary btn-main">
+                                Koupit balíček
+                            </a>
                             <article class="desc">{!! $package->comment !!}</article>
                         </div>
                     </div>
@@ -90,7 +98,7 @@
                         kde můžou komunikovat s vývojáři a ovlivnit vývoj After-Life, nebo mít všechny horké novinky.
                     </li>
                 </ol>
-                <a href="#packages" class="btn btn-primary btn-main">
+                <a href="#" class="btn btn-primary btn-main scroll-to-packages">
                     Koupit Early Access
                     <div class="icon">
                         <img src="{{ asset('img/icons/bag.svg') }}" alt="Balíčky">
@@ -128,7 +136,7 @@
             </div>
         </div>
     </section>
-    <section id="info">
+    <section id="contact">
         <div class="container">
             <div class="content">
                 <h3 class="subtitle">Sledujte aktuální dění na sociálních sítích</h3>
@@ -137,10 +145,10 @@
                 </div>
                 <li class="icons desktop">
                     <a href="/#" class="icon green">
-                        <img src="{{ asset('img/icons/facebook.svg') }}" alt="Facebook">
+                        <img src="{{ asset('img/icons/discord.svg') }}" alt="Discord">
                     </a>
                     <a href="/#" class="icon green">
-                        <img src="{{ asset('img/icons/discord.svg') }}" alt="Discord">
+                        <img src="{{ asset('img/icons/facebook.svg') }}" alt="Facebook">
                     </a>
                 </li>
             </div>
@@ -156,8 +164,10 @@
                 </div>
                 <p>
                     Další informace k VIP platbě, reklamace atd. můžete řešit pomocí ticket sekce na
-                    <span>after-life.cz/discord</span>, případně napište na email: <a
-                        href="mainTo:reklamace@after-life.cz">reklamace@after-life.cz</a>, Děkujeme!
+                    <strong><span>after-life.cz/discord</span></strong>, případně napište na email:
+                    <strong>
+                        <a href="mainTo:reklamace@after-life.cz">reklamace@after-life.cz</a>
+                    </strong>, Děkujeme!
                 </p>
             </div>
         </div>

@@ -4,7 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#202824">
     <title>@yield('title')</title>
+    <link rel="shortcut icon" href="{{ asset('img/favicon/favicon-64x64.svg') }}" type="image/x-icon" />
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -95,17 +97,17 @@
             <div class="menu-wrapper">
                 <ul class="menu">
                     <li>
-                        <a href="/#packages">
+                        <a href="#" class="scroll-to-packages">
                             Balíčky
                         </a>
                     </li>
                     <li>
-                        <a href="/#early-access">
+                        <a href="#" class="scroll-to-early-access">
                             Early Access
                         </a>
                     </li>
                     <li>
-                        <a href="/kontakt">
+                        <a href="#" class="scroll-to-contact">
                             Kontakt
                         </a>
                     </li>
@@ -140,7 +142,7 @@
                     </li>
                 </ul>
             </div>
-            <a href="/#early-access" class="btn btn-primary">Koupit Early Access</a>
+            <a href="/#packages" class="btn btn-primary">Koupit Early Access</a>
             <div class="hamburger">
                 <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 200 200">
                     <g stroke-width="6.5" stroke-linecap="round">

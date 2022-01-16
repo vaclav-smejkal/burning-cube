@@ -35,7 +35,7 @@
                     </div>
                 </article>
                 <div class="img">
-                    <img src="{{ asset('img/about.png') }}" alt="After-Life">
+                    <img src="{{ asset('img/about.svg') }}" alt="After-Life">
                 </div>
             </div>
         </div>
