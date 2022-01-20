@@ -89,6 +89,17 @@
                         @endif
                     @endauth
                     <div class="form-floating">
+                        <input type="text" class="form-control @error('discord-tag') is-invalid @enderror"
+                            name="discord-tag" id="discord-tag" value="{{ old('discord-tag') }}"
+                            placeholder="Discord Tag">
+                        <label for="discord-tag">Discord Tag</label>
+                    </div>
+                    @error('discord-tag')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                    <div class="form-floating">
                         <textarea class="form-control" placeholder="Poznámka" name="comment" id="comment"
                             value="{{ old('comment') }}"></textarea>
                         <label for="comment">Poznámka</label>
@@ -98,7 +109,7 @@
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
-                    @error('name_surname')
+                    {{-- @error('name_surname')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -112,8 +123,8 @@
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
-                    @enderror
-                    {{-- <h2 class="subtitle">Fakturační údaje</h2>
+                    @enderror 
+                     <h2 class="subtitle">Fakturační údaje</h2>
                     <div class="form-floating">
                         <input type="text" class="form-control" name="name_surname" id="name_surname"
                             placeholder="Jméno a příjmení" value="{{ old('name_surname') }}">

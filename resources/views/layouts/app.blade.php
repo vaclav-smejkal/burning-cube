@@ -97,17 +97,17 @@
             <div class="menu-wrapper">
                 <ul class="menu">
                     <li>
-                        <a href="#" class="scroll-to-packages">
+                        <a href="/#packages">
                             Balíčky
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="scroll-to-early-access">
+                        <a href="/#early-access">
                             Early Access
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="scroll-to-contact">
+                        <a href="/#contact">
                             Kontakt
                         </a>
                     </li>
@@ -219,7 +219,7 @@
                     <ul class="list">
                         <li class="list-item">
                             <span>E-mail:</span>
-                            <a href="mainTo:kontakt@after-life.cz">kontakt@after-life.cz</a>
+                            <a href="mailTo:kontakt@after-life.cz">kontakt@after-life.cz</a>
                         </li>
                         <li class="list-item">
                             <span>Tel.:</span>

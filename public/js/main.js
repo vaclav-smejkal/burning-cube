@@ -26,6 +26,7 @@ var toggleMenu = function toggleMenu() {
   menuWrapper.classList.toggle("show");
   overlay.classList.toggle("show");
   document.querySelector("body").classList.toggle("scroll-lock");
+  document.querySelector("html").classList.toggle("scroll-lock");
 };
 
 var gallery = document.querySelector(".gallery-carousel");
@@ -37,6 +38,9 @@ if (gallery) {
     draggable: true,
     wrapAround: true,
     pageDots: false
+  });
+  flkty.on("staticClick", function (event, pointer, cellElement, cellIndex) {
+    flkty.selectCell(cellElement);
   });
 }
 
@@ -74,32 +78,10 @@ window.addEventListener("scroll", function () {
     navbar.classList.remove("scrolling");
   }
 });
-
-var scrollToElemOffset = function scrollToElemOffset(scrollToElems, offset, elementId) {
-  scrollToElems.forEach(function (btn) {
-    if (window.innerWidth <= 992) {
-      offset = 40;
-    }
-
-    var element = document.getElementById(elementId);
-    var elementPosition = element.getBoundingClientRect().top;
-    var offsetPosition = elementPosition + window.pageYOffset - offset;
-    btn.addEventListener("click", function (e) {
-      e.preventDefault();
-      window.scrollTo({
-        top: offsetPosition
-      });
-    });
+document.querySelectorAll("a").forEach(function (a) {
+  a.addEventListener("click", function () {
+    document.querySelector("html").classList.add("smooth-scroll");
   });
-};
-
-window.onload = function () {
-  var scrollToPackages = document.querySelectorAll(".scroll-to-packages");
-  scrollToElemOffset(scrollToPackages, 80, "packages");
-  var scrollToEarlyAccess = document.querySelectorAll(".scroll-to-early-access");
-  scrollToElemOffset(scrollToEarlyAccess, 80, "early-access");
-  var scrollToContact = document.querySelectorAll(".scroll-to-contact");
-  scrollToElemOffset(scrollToContact, 80, "contact");
-};
+});
 /******/ })()
 ;

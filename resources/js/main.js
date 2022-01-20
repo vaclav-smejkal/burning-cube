@@ -24,6 +24,7 @@ const toggleMenu = () => {
     menuWrapper.classList.toggle("show");
     overlay.classList.toggle("show");
     document.querySelector("body").classList.toggle("scroll-lock");
+    document.querySelector("html").classList.toggle("scroll-lock");
 };
 
 const gallery = document.querySelector(".gallery-carousel");
@@ -35,6 +36,10 @@ if (gallery) {
         draggable: true,
         wrapAround: true,
         pageDots: false,
+    });
+
+    flkty.on("staticClick", (event, pointer, cellElement, cellIndex) => {
+        flkty.selectCell(cellElement);
     });
 }
 
@@ -79,33 +84,8 @@ window.addEventListener("scroll", () => {
     }
 });
 
-const scrollToElemOffset = (scrollToElems, offset, elementId) => {
-    scrollToElems.forEach((btn) => {
-        if (window.innerWidth <= 992) {
-            offset = 40;
-        }
-        const element = document.getElementById(elementId);
-        const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-        btn.addEventListener("click", (e) => {
-            e.preventDefault();
-            window.scrollTo({
-                top: offsetPosition,
-            });
-        });
+document.querySelectorAll("a").forEach((a) => {
+    a.addEventListener("click", () => {
+        document.querySelector("html").classList.add("smooth-scroll");
     });
-};
-
-window.onload = () => {
-    const scrollToPackages = document.querySelectorAll(".scroll-to-packages");
-    scrollToElemOffset(scrollToPackages, 80, "packages");
-
-    const scrollToEarlyAccess = document.querySelectorAll(
-        ".scroll-to-early-access"
-    );
-    scrollToElemOffset(scrollToEarlyAccess, 80, "early-access");
-
-    const scrollToContact = document.querySelectorAll(".scroll-to-contact");
-    scrollToElemOffset(scrollToContact, 80, "contact");
-};
+});

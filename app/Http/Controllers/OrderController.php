@@ -195,6 +195,12 @@ class OrderController extends Controller
             throw ValidationException::withMessages(['package_sanitized_name' => "Tento balíček neexistuje."]);
         }
 
+        $order = Order::where([['nickname', $request->nickname], ['state', 'PAID']])->first();
+
+        if ($order) {
+            throw ValidationException::withMessages(['nickname' => "Tento nickname již někdo používá."]);
+        }
+
         $gopay =  GoPay\payments([
             'goid' => config('gopay.goid'),
             'clientId' => config('gopay.client_id'),
@@ -234,6 +240,7 @@ class OrderController extends Controller
         $newOrder = $this->order::create([
             'email' => $request->email,
             'nickname' => $request->nickname,
+            'discord_tag' => $request["discord-tag"],
             'comment' => $request->comment,
             'state' => $response->json['state'],
             // 'name_surname' => $request->name_surname,
@@ -246,7 +253,6 @@ class OrderController extends Controller
             'package_id' => $package->id
         ]);
 
-        //return dd($response->json);
         return redirect($response->json['gw_url']);
     }
 }

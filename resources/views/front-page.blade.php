@@ -8,7 +8,7 @@
             <article class="desc">
                 {!! nl2br($pageText->text) !!}
             </article>
-            <a href="#" class="btn btn-primary btn-main scroll-to-early-access">
+            <a href="/#packages" class="btn btn-primary btn-main">
                 Koupit Early Access
                 <div class="icon">
                     <img src="{{ asset('img/icons/bag.svg') }}" alt="Balíčky">
@@ -24,7 +24,8 @@
             </a>
         </div>
     </section>
-    <section id="packages">
+    <section id="packages-section">
+        <span id="packages"></span>
         <div class="container">
             <h2 class="title">
                 Připoj se na server<br> jako první!
@@ -74,7 +75,8 @@
             </div>
         </div>
     </section>
-    <section id="early-access">
+    <section id="early-access-section">
+        <span id="early-access"></span>
         <div class="container">
             <div class="grid">
                 <div class="group">
@@ -98,7 +100,7 @@
                         kde můžou komunikovat s vývojáři a ovlivnit vývoj After-Life, nebo mít všechny horké novinky.
                     </li>
                 </ol>
-                <a href="#" class="btn btn-primary btn-main scroll-to-packages">
+                <a href="/#packages" class="btn btn-primary btn-main">
                     Koupit Early Access
                     <div class="icon">
                         <img src="{{ asset('img/icons/bag.svg') }}" alt="Balíčky">
@@ -136,7 +138,8 @@
             </div>
         </div>
     </section>
-    <section id="contact">
+    <section id="contact-section">
+        <span id="contact"></span>
         <div class="container">
             <div class="content">
                 <h3 class="subtitle">Sledujte aktuální dění na sociálních sítích</h3>

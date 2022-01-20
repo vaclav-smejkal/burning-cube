@@ -10,6 +10,7 @@ class Order extends Model
     public $fillable = [
         'email',
         'nickname',
+        'discord_tag',
         'comment',
         'name_surname',
         'place',

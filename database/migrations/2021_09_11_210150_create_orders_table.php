@@ -17,6 +17,7 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->string('email', 100);
             $table->string('nickname');
+            $table->string('discord_tag')->nullable();
             $table->text('comment')->nullable();
             $table->string('name_surname', 200);
             $table->string('place');

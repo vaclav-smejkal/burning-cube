@@ -35,20 +35,19 @@ class NotifyController extends Controller
             $order->state = $json['state'];
             $order->save();
 
-            // $response = Http::withBasicAuth(env('FAKTUROID_EMAIL'), env('FAKTUROID_API_KEY'))->withHeaders([
-            //     'Content-Type' => 'application/json',
-            //     'User-Agent' => env('FAKTUROID_APP_CONTACT')
-            // ])->get('https://app.fakturoid.cz/api/v2/accounts/' . env('FAKTUROID_NAME') . '/invoices.json');
-            // $response = Http::withBasicAuth(env('FAKTUROID_EMAIL'), env('FAKTUROID_API_KEY'))->withHeaders([
-            //     'Content-Type' => 'application/json',
-            //     'User-Agent' => env('FAKTUROID_APP_CONTACT')
-            // ])->get('https://app.fakturoid.cz/api/v2/accounts/' . env('FAKTUROID_NAME') . '/subjects.json');
-            // dd($response->json());
+
+            $response = Http::withBasicAuth(env('FAKTUROID_EMAIL'), env('FAKTUROID_API_KEY'))->withHeaders([
+                'Content-Type' => 'application/json',
+                'User-Agent' => env('FAKTUROID_APP_CONTACT'),
+            ])->post('https://app.fakturoid.cz/api/v2/accounts/' . env('FAKTUROID_NAME')  . '/subjects.json', [
+                "name" => $order->email,
+            ]);
+
             $response = Http::withBasicAuth(env('FAKTUROID_EMAIL'), env('FAKTUROID_API_KEY'))->withHeaders([
                 'Content-Type' => 'application/json',
                 'User-Agent' => env('FAKTUROID_APP_CONTACT'),
             ])->post('https://app.fakturoid.cz/api/v2/accounts/' . env('FAKTUROID_NAME') . '/invoices.json', [
-                "subject_id" => "13442980",
+                "subject_id" => json_decode($response->body())->id,
                 "client_name" => env('FAKTUROID_NAME'),
                 "proforma" => true,
                 "invoice_paid" => true,
@@ -60,8 +59,10 @@ class NotifyController extends Controller
                 ],
             ]);
 
-
-            dd(json_decode($response->body()));
+            $response = Http::withBasicAuth(env('FAKTUROID_EMAIL'), env('FAKTUROID_API_KEY'))->withHeaders([
+                'Content-Type' => 'application/json',
+                'User-Agent' => env('FAKTUROID_APP_CONTACT'),
+            ])->post('https://app.fakturoid.cz/api/v2/accounts/' . env('FAKTUROID_NAME') . '/invoices/' . json_decode($response->body())->id . '/fire.json?event=pay_proforma');
         }
     }
 }
