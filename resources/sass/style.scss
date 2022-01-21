@@ -2038,6 +2038,13 @@ article {
 
     .alert {
         margin-top: .75rem;
+
+        #repeat-payment {
+            background-color: transparent;
+            padding: 0;
+            text-decoration: underline;
+            border: 0;
+        }
     }
 
     #password-confirm {

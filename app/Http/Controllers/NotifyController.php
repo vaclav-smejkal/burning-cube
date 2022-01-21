@@ -15,7 +15,6 @@ class NotifyController extends Controller
         $this->order = Order::class;
     }
 
-
     public function index(Request $request)
     {
         $gopay =  GoPay\payments([
@@ -35,12 +34,11 @@ class NotifyController extends Controller
             $order->state = $json['state'];
             $order->save();
 
-
             $response = Http::withBasicAuth(env('FAKTUROID_EMAIL'), env('FAKTUROID_API_KEY'))->withHeaders([
                 'Content-Type' => 'application/json',
                 'User-Agent' => env('FAKTUROID_APP_CONTACT'),
             ])->post('https://app.fakturoid.cz/api/v2/accounts/' . env('FAKTUROID_NAME')  . '/subjects.json', [
-                "name" => $order->email,
+                "name" => "Drobný prodej",
             ]);
 
             $response = Http::withBasicAuth(env('FAKTUROID_EMAIL'), env('FAKTUROID_API_KEY'))->withHeaders([

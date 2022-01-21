@@ -83,5 +83,13 @@ document.querySelectorAll("a").forEach(function (a) {
     document.querySelector("html").classList.add("smooth-scroll");
   });
 });
+var repeatPaymentBtn = document.querySelector("#repeat-payment");
+
+if (repeatPaymentBtn) {
+  repeatPaymentBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+    document.querySelector(".order-form").submit();
+  });
+}
 /******/ })()
 ;

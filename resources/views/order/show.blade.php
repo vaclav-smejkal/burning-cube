@@ -41,6 +41,8 @@
                 </div>
                 <form class="order-form" action="{{ route('order.store') }}" method="POST">
                     @csrf
+                    <input type="hidden" name="payment-uuid"
+                        value="@isset($paymentUUID) {{ $paymentUUID }} @endisset">
                     <h2 class="subtitle">Formulář</h2>
                     <input type="hidden" name="package_sanitized_name" value="{{ $package->sanitized_name }}">
                     @error('package_sanitized_name')
@@ -167,9 +169,10 @@
                         </span>
                     @enderror
                     <button type="submit" class="btn btn-primary">Objednat a zaplatit</button>
-                    @if (!empty($message))
+                    @if (!empty($gopayMessage))
                         <div class="alert @if ($success)alert-success @else alert-danger @endif" role="alert">
-                            {{ $message }}
+                            {{ $gopayMessage }}
+                            Pro opakování platby klikněte <button id="repeat-payment">zde</button>.
                         </div>
                     @endif
                     @if (session()->has('message'))

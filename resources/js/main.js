@@ -89,3 +89,12 @@ document.querySelectorAll("a").forEach((a) => {
         document.querySelector("html").classList.add("smooth-scroll");
     });
 });
+
+const repeatPaymentBtn = document.querySelector("#repeat-payment");
+
+if (repeatPaymentBtn) {
+    repeatPaymentBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        document.querySelector(".order-form").submit();
+    });
+}

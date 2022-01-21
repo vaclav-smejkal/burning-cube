@@ -2350,6 +2350,12 @@ article #order-show h1 {
 #order-show .alert {
   margin-top: 0.75rem;
 }
+#order-show .alert #repeat-payment {
+  background-color: transparent;
+  padding: 0;
+  text-decoration: underline;
+  border: 0;
+}
 #order-show #password-confirm {
   margin-bottom: 2rem;
 }
