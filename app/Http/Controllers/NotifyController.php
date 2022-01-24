@@ -49,11 +49,11 @@ class NotifyController extends Controller
                 "client_name" => env('FAKTUROID_NAME'),
                 "proforma" => true,
                 "invoice_paid" => true,
-                "paid_amount" => "200.0",
+                "paid_amount" => $order->package->price * $order->surcharge,
                 "lines" => [
-                    "name" => "test",
+                    "name" => $order->package->name,
                     "quantity" => "1",
-                    "unit_price" => "200.0",
+                    "unit_price" => $order->package->price * $order->surcharge,
                 ],
             ]);
 

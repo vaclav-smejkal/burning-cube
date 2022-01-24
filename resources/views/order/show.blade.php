@@ -178,7 +178,8 @@
                     @if (!empty($gopayMessage))
                         <div class="alert @if ($success)alert-success @else alert-danger @endif" role="alert">
                             {{ $gopayMessage }}
-                            Pro opakování platby klikněte <button id="repeat-payment">zde</button>.
+                            Pro opakování platby klikněte <button id="repeat-payment" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop">zde</button>.
                         </div>
                     @endif
                     @if (session()->has('message'))
@@ -205,7 +206,7 @@
                                             Zvolit
                                         </button>
                                     </div>
-                                    <div class="method">
+                                    {{-- <div class="method">
                                         <div class="payment">PaySafeCard</div>
                                         <div class="desc">
                                             +13% poplatek za platbu
@@ -213,7 +214,7 @@
                                         <button type="submit" class="btn btn-primary" name="payment-method" value="paysafe">
                                             Zvolit
                                         </button>
-                                    </div>
+                                    </div> --}}
                                     <div class="method">
                                         <div class="payment">Premium SMS</div>
                                         <div class="desc">

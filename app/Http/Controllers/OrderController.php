@@ -73,15 +73,18 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         $taxes = 1;
-
+        $methods = [];
         switch ($request["payment-method"]) {
             case "gopay":
+                $methods = [PaymentInstrument::PAYMENT_CARD, PaymentInstrument::BANK_ACCOUNT, PaymentInstrument::GPAY, PaymentInstrument::APPLE_PAY, PaymentInstrument::GOPAY, PaymentInstrument::MPAYMENT, PaymentInstrument::BITCOIN];
                 break;
-            case "paysafe":
-                $taxes = 1.13;
-                break;
+                // case "paysafe":
+                //     $taxes = 1.13;
+                //     $methods = [PaymentInstrument::PAYSAFECARD];
+                //     break;
             case "sms":
                 $taxes = 1.15;
+                $methods = [PaymentInstrument::PREMIUM_SMS];
                 break;
             default:
                 throw ValidationException::withMessages(['payment-method' => "Zadali jste špatnou platební metodu."]);
@@ -234,7 +237,7 @@ class OrderController extends Controller
 
             $response = $gopay->createPayment([
                 'payer' => [
-                    'allowed_payment_instruments' => [PaymentInstrument::PAYMENT_CARD, PaymentInstrument::BANK_ACCOUNT, PaymentInstrument::PREMIUM_SMS, PaymentInstrument::GPAY, PaymentInstrument::APPLE_PAY, PaymentInstrument::GOPAY, PaymentInstrument::MPAYMENT, PaymentInstrument::PAYSAFECARD, PaymentInstrument::BITCOIN],
+                    'allowed_payment_instruments' =>  $methods,
                     'contact' => [
                         'email' => $request->email,
                     ]
@@ -264,6 +267,7 @@ class OrderController extends Controller
                 'discord_tag' => $request["discord-tag"],
                 'comment' => $request->comment,
                 'state' => $response->json['state'],
+                'surcharge' => $taxes,
                 // 'name_surname' => $request->name_surname,
                 // 'place' => $request->place,
                 // 'psc' => $request->psc,
@@ -276,7 +280,7 @@ class OrderController extends Controller
         } else {
             $response = $gopay->createPayment([
                 'payer' => [
-                    'allowed_payment_instruments' => [PaymentInstrument::PAYMENT_CARD, PaymentInstrument::BANK_ACCOUNT, PaymentInstrument::PREMIUM_SMS, PaymentInstrument::GPAY, PaymentInstrument::APPLE_PAY, PaymentInstrument::GOPAY, PaymentInstrument::MPAYMENT, PaymentInstrument::PAYSAFECARD, PaymentInstrument::BITCOIN],
+                    'allowed_payment_instruments' => $methods,
                     'contact' => [
                         'email' => $request->email,
                     ]
@@ -299,6 +303,9 @@ class OrderController extends Controller
                 ],
                 'lang' => Language::CZECH
             ]);
+
+            $order->surcharge = $taxes;
+            $order->save();
         }
 
         return redirect($response->json['gw_url']);

@@ -243,8 +243,8 @@
             <div class="container">
                 <span>{{ date('Y') }} &copy; After-Life</span>
                 <div class="link-group">
-                    <a href="#">Podmínky užití</a>
-                    <a href="#">Obchodní informace</a>
+                    <a href="/vop">Podmínky užití</a>
+                    <a href="/o-nas">Obchodní informace</a>
                 </div>
             </div>
         </div>

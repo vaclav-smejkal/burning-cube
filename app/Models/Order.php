@@ -12,6 +12,7 @@ class Order extends Model
         'nickname',
         'discord_tag',
         'comment',
+        'surcharge',
         'name_surname',
         'place',
         'psc',
@@ -28,6 +29,6 @@ class Order extends Model
 
     public function package()
     {
-        return $this->hasOne(Package::class);
+        return $this->belongsTo(Package::class);
     }
 }
