@@ -168,7 +168,13 @@
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
-                    <button type="submit" class="btn btn-primary">Objednat a zaplatit</button>
+                    @error('payment-method')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop">Zvolit platební metodu</button>
                     @if (!empty($gopayMessage))
                         <div class="alert @if ($success)alert-success @else alert-danger @endif" role="alert">
                             {{ $gopayMessage }}
@@ -180,6 +186,47 @@
                             {{ session()->get('message') }}
                         </div>
                     @endif
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <div class="modal-title subtitle" id="staticBackdropLabel">Platební metody</div>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="method">
+                                        <div class="payment">Gopay</div>
+                                        <div class="desc">
+                                            Platba Kartou, Převodem, Bitcoin
+                                        </div>
+                                        <button type="submit" class="btn btn-primary" name="payment-method" value="gopay">
+                                            Zvolit
+                                        </button>
+                                    </div>
+                                    <div class="method">
+                                        <div class="payment">PaySafeCard</div>
+                                        <div class="desc">
+                                            +13% poplatek za platbu
+                                        </div>
+                                        <button type="submit" class="btn btn-primary" name="payment-method" value="paysafe">
+                                            Zvolit
+                                        </button>
+                                    </div>
+                                    <div class="method">
+                                        <div class="payment">Premium SMS</div>
+                                        <div class="desc">
+                                            +15% poplatek za platbu
+                                        </div>
+                                        <button type="submit" class="btn btn-primary" name="payment-method" value="sms">
+                                            Zvolit
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>

@@ -72,6 +72,22 @@ class OrderController extends Controller
 
     public function store(Request $request)
     {
+        $taxes = 1;
+
+        switch ($request["payment-method"]) {
+            case "gopay":
+                break;
+            case "paysafe":
+                $taxes = 1.13;
+                break;
+            case "sms":
+                $taxes = 1.15;
+                break;
+            default:
+                throw ValidationException::withMessages(['payment-method' => "Zadali jste špatnou platební metodu."]);
+                break;
+        }
+
         $gopay =  GoPay\payments([
             'goid' => config('gopay.goid'),
             'clientId' => config('gopay.client_id'),
@@ -223,14 +239,14 @@ class OrderController extends Controller
                         'email' => $request->email,
                     ]
                 ],
-                'amount' => $package->price * 100,
+                'amount' => $package->price * 100 * $taxes,
                 'currency' => Currency::CZECH_CROWNS,
                 'order_number' => Str::uuid(),
                 'items' => [
                     [
                         'type' => 'ITEM',
                         'name' => $package->name,
-                        'amount' => $package->price * 100,
+                        'amount' => $package->price * 100 * $taxes,
                         'count' => 1,
                         'vat_rate' => VatRate::RATE_4
                     ],
@@ -265,14 +281,14 @@ class OrderController extends Controller
                         'email' => $request->email,
                     ]
                 ],
-                'amount' => $package->price * 100,
+                'amount' => $package->price * 100 * $taxes,
                 'currency' => Currency::CZECH_CROWNS,
                 'order_number' => $order->uuid,
                 'items' => [
                     [
                         'type' => 'ITEM',
                         'name' => $package->name,
-                        'amount' => $package->price * 100,
+                        'amount' => $package->price * 100 * $taxes,
                         'count' => 1,
                         'vat_rate' => VatRate::RATE_4
                     ],

@@ -2377,6 +2377,68 @@ article #order-show h1 {
 #order-show .form-floating {
   margin-bottom: 0.75rem;
 }
+#order-show .modal-dialog {
+  max-width: 990px;
+}
+#order-show .modal-content {
+  background-color: #202824;
+  border-radius: 0;
+}
+#order-show .modal-title {
+  font-weight: bold;
+  margin: 0;
+}
+#order-show .modal-footer,
+#order-show .modal-header {
+  border: 0;
+  padding: 2rem 2.5rem;
+}
+#order-show .modal-footer .btn-primary,
+#order-show .modal-header .btn-primary {
+  margin: 0 auto 0 0;
+  max-width: 90px;
+  padding: 0.5rem 0.5rem;
+}
+#order-show .modal-body {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  padding: 0 2.5rem 2rem;
+}
+@media (max-width: 992px) {
+  #order-show .modal-body {
+    grid-template-columns: 1fr;
+  }
+}
+#order-show .btn-close {
+  filter: brightness(0) invert(1);
+  opacity: 1;
+  box-shadow: none !important;
+  background-size: 65%;
+}
+#order-show .method {
+  background-color: #2b302e;
+  padding: 2rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#order-show .method .btn-primary {
+  margin-top: auto;
+  max-width: 90px;
+  padding: 0.5rem;
+  margin-top: 1rem;
+}
+#order-show .payment {
+  text-transform: uppercase;
+  color: #dffecf;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.modal-backdrop.fade.show {
+  opacity: 0.75;
+}
 
 #about {
   overflow: hidden;
