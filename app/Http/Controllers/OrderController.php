@@ -36,7 +36,7 @@ class OrderController extends Controller
             'goid' => config('gopay.goid'),
             'clientId' => config('gopay.client_id'),
             'clientSecret' => config('gopay.client_secret'),
-            'gatewayUrl' => 'https://gw.sandbox.gopay.com/',
+            'gatewayUrl' => 'https://gate.gopay.cz/api',
             'scope' => GoPay\Definition\TokenScope::ALL,
             'language' => GoPay\Definition\Language::CZECH,
             'timeout' => 30
@@ -95,7 +95,7 @@ class OrderController extends Controller
             'goid' => config('gopay.goid'),
             'clientId' => config('gopay.client_id'),
             'clientSecret' => config('gopay.client_secret'),
-            'gatewayUrl' => 'https://gw.sandbox.gopay.com/',
+            'gatewayUrl' => 'https://gate.gopay.cz/api',
             'scope' => GoPay\Definition\TokenScope::ALL,
             'language' => GoPay\Definition\Language::CZECH,
             'timeout' => 30
