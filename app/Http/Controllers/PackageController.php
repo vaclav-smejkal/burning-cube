@@ -54,6 +54,10 @@ class PackageController extends Controller
                     'required',
                     'numeric'
                 ],
+                'smsprice' => [
+                    'required',
+                    'numeric'
+                ],
                 'image' => [
                     'required',
                     'mimes:jpg,png,jpeg',
@@ -62,6 +66,7 @@ class PackageController extends Controller
             ],
             $messages = [
                 "price.required" => "Zadejte cenu.",
+                "smsprice.required" => "Zadejte cenu sms.",
             ]
         )->validate();
 
@@ -88,6 +93,7 @@ class PackageController extends Controller
             'sanitized_name' => Helper::instance()->friendly_url($request->name),
             'comment' => $request->comment,
             'price' => $request->price,
+            'sms_price' => $request->smsprice,
             'is_one_time' => $isOneTime,
             'color' => $request->color,
             'image' =>  '/storage/' . $path,
@@ -145,6 +151,10 @@ class PackageController extends Controller
                     'required',
                     'numeric',
                 ],
+                'smsprice' => [
+                    'required',
+                    'numeric',
+                ],
                 'image' => [
                     'mimes:jpg,png,jpeg',
                     'max:5048'
@@ -152,6 +162,7 @@ class PackageController extends Controller
             ],
             $messages = [
                 "price.required" => "Zadejte cenu.",
+                "smsprice.required" => "Zadejte cenu SMS.",
             ]
         )->validate();
 
@@ -171,6 +182,7 @@ class PackageController extends Controller
             $package->sanitized_name = Helper::instance()->friendly_url($request->name);
             $package->comment = $request->comment;
             $package->price = $request->price;
+            $package->sms_price = $request->smsprice;
             $package->is_one_time = $isOneTime;
             $package->color = $request->color;
             if ($request->hasFile('image')) {

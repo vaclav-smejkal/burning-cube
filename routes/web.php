@@ -2,8 +2,8 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AddNicknameController;
-use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EmailController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HowToDoItController;
 use App\Http\Controllers\NotifyController;
@@ -39,6 +39,7 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::resource('/admin/question', QuestionController::class)->except('show', 'create');
     Route::resource('/admin/user', UserController::class)->except('show', 'create');
     Route::resource('/admin/page-texts', PageTextsController::class)->except('show', 'create', 'destroy', 'store');
+    Route::resource('/admin/email', EmailController::class)->except('show', 'create', 'destroy', 'store');
 });
 
 Route::resource('/order', OrderController::class)->except('create', 'destroy');

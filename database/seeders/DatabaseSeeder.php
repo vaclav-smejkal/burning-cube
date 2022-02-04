@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\PageTexts;
 use App\Models\User;
+use App\Models\Email;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Faker\Factory as Faker;
@@ -48,6 +49,12 @@ class DatabaseSeeder extends Seeder
             'name' => 'ONas',
             'text' => $this->faker->paragraph(2),
             'uuid' => Str::uuid(),
+        ]);
+
+        Email::create([
+            'template' => 'Objednavka',
+            'subject' => $this->faker->word(2),
+            'body' => $this->faker->paragraph(2),
         ]);
 
         // Only for testing

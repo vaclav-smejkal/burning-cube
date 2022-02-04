@@ -591,6 +591,13 @@ section {
     }
 }
 
+#admin-package-edit {
+    .form-container {
+        max-width: 800px;
+        padding-bottom: 3rem;
+    }
+}
+
 #add-nick,
 #reset-password,
 #verify-nick,
@@ -1009,6 +1016,16 @@ section {
         margin-bottom: .25rem;
         padding: .5rem 1rem;
         background-color: $black;
+
+        &.flex {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+
+            .btn-box {
+                margin: 0;
+            }
+        }
 
         @media (max-width: $sm) {
             flex-direction: column;

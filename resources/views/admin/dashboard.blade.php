@@ -41,6 +41,13 @@
                     </p>
                     <a href="/admin/page-texts" class="btn btn-primary">Editovat</a>
                 </div>
+                <div class="item">
+                    <div class="subtitle">E-maily</div>
+                    <p class="desc">
+                        Možnost změny zprávy a předmětu v e-mailu
+                    </p>
+                    <a href="/admin/email" class="btn btn-primary">Editovat</a>
+                </div>
             </div>
         </div>
     </section>

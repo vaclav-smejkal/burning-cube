@@ -218,7 +218,8 @@
                                     <div class="method">
                                         <div class="payment">Premium SMS</div>
                                         <div class="desc">
-                                            +15% poplatek za platbu
+                                            +{{ $package->sms_price - $package->price }} Kč
+                                            poplatek za platbu
                                         </div>
                                         <button type="submit" class="btn btn-primary" name="payment-method" value="sms">
                                             Zvolit

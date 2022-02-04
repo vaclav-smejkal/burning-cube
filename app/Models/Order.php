@@ -12,7 +12,7 @@ class Order extends Model
         'nickname',
         'discord_tag',
         'comment',
-        'surcharge',
+        'price',
         'name_surname',
         'place',
         'psc',

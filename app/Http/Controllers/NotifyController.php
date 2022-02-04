@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Email;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use DateTime;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Http;
 use GoPay;
 
@@ -34,33 +36,42 @@ class NotifyController extends Controller
             $order->state = $json['state'];
             $order->save();
 
-            $response = Http::withBasicAuth(env('FAKTUROID_EMAIL'), env('FAKTUROID_API_KEY'))->withHeaders([
-                'Content-Type' => 'application/json',
-                'User-Agent' => env('FAKTUROID_APP_CONTACT'),
-            ])->post('https://app.fakturoid.cz/api/v2/accounts/' . env('FAKTUROID_NAME')  . '/subjects.json', [
-                "name" => "Drobný prodej",
-            ]);
+            if ($order->state === ["PAID"]) {
+                $response = Http::withBasicAuth(env('FAKTUROID_EMAIL'), env('FAKTUROID_API_KEY'))->withHeaders([
+                    'Content-Type' => 'application/json',
+                    'User-Agent' => env('FAKTUROID_APP_CONTACT'),
+                ])->post('https://app.fakturoid.cz/api/v2/accounts/' . env('FAKTUROID_NAME')  . '/subjects.json', [
+                    "name" => "Drobný prodej",
+                ]);
 
-            $response = Http::withBasicAuth(env('FAKTUROID_EMAIL'), env('FAKTUROID_API_KEY'))->withHeaders([
-                'Content-Type' => 'application/json',
-                'User-Agent' => env('FAKTUROID_APP_CONTACT'),
-            ])->post('https://app.fakturoid.cz/api/v2/accounts/' . env('FAKTUROID_NAME') . '/invoices.json', [
-                "subject_id" => json_decode($response->body())->id,
-                "client_name" => env('FAKTUROID_NAME'),
-                "proforma" => true,
-                "invoice_paid" => true,
-                "paid_amount" => $order->package->price * $order->surcharge,
-                "lines" => [
-                    "name" => $order->package->name,
-                    "quantity" => "1",
-                    "unit_price" => $order->package->price * $order->surcharge,
-                ],
-            ]);
+                $response = Http::withBasicAuth(env('FAKTUROID_EMAIL'), env('FAKTUROID_API_KEY'))->withHeaders([
+                    'Content-Type' => 'application/json',
+                    'User-Agent' => env('FAKTUROID_APP_CONTACT'),
+                ])->post('https://app.fakturoid.cz/api/v2/accounts/' . env('FAKTUROID_NAME') . '/invoices.json', [
+                    "subject_id" => json_decode($response->body())->id,
+                    "client_name" => env('FAKTUROID_NAME'),
+                    "proforma" => true,
+                    "invoice_paid" => true,
+                    "paid_amount" => $order->price,
+                    "lines" => [
+                        "name" => $order->package->name,
+                        "quantity" => "1",
+                        "unit_price" => $order->price,
+                    ],
+                ]);
 
-            $response = Http::withBasicAuth(env('FAKTUROID_EMAIL'), env('FAKTUROID_API_KEY'))->withHeaders([
-                'Content-Type' => 'application/json',
-                'User-Agent' => env('FAKTUROID_APP_CONTACT'),
-            ])->post('https://app.fakturoid.cz/api/v2/accounts/' . env('FAKTUROID_NAME') . '/invoices/' . json_decode($response->body())->id . '/fire.json?event=pay_proforma');
+                $response = Http::withBasicAuth(env('FAKTUROID_EMAIL'), env('FAKTUROID_API_KEY'))->withHeaders([
+                    'Content-Type' => 'application/json',
+                    'User-Agent' => env('FAKTUROID_APP_CONTACT'),
+                ])->post('https://app.fakturoid.cz/api/v2/accounts/' . env('FAKTUROID_NAME') . '/invoices/' . json_decode($response->body())->id . '/fire.json?event=pay_proforma');
+
+                $emailTemplate = Email::where('template', 'Objednavka')->first();
+                Mail::send('email.email', ['body' => $emailTemplate->body], function ($message) use ($order, $emailTemplate) {
+                    $message->to($order->email);
+                    $message->subject($emailTemplate->subject);
+                    $message->from('kontakt@after-life.cz', 'After-life');
+                });
+            }
         }
     }
 }

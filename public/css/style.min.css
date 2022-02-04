@@ -874,6 +874,11 @@ section {
   }
 }
 
+#admin-package-edit .form-container {
+  max-width: 800px;
+  padding-bottom: 3rem;
+}
+
 #add-nick .container,
 #reset-password .container,
 #verify-nick .container,
@@ -1382,6 +1387,14 @@ article #package-show .header h1 {
   margin-bottom: 0.25rem;
   padding: 0.5rem 1rem;
   background-color: #202824;
+}
+#admin-package .grid-item.flex {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+#admin-package .grid-item.flex .btn-box {
+  margin: 0;
 }
 @media (max-width: 576px) {
   #admin-package .grid-item {

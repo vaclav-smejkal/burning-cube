@@ -19,6 +19,7 @@ class CreatePackagesTable extends Migration
             $table->string('sanitized_name', 100);
             $table->text('comment');
             $table->unsignedFloat("price");
+            $table->unsignedFloat("sms_price");
             $table->integer("is_one_time");
             $table->char("color")->default('#fd7e14');
             $table->string('image')->default("/img/grass-block.png");

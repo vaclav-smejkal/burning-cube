@@ -14,6 +14,7 @@ class Package extends Model
         'sanitized_name',
         'comment',
         'price',
+        'sms_price',
         'is_one_time',
         'color',
         'image'

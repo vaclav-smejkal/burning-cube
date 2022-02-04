@@ -39,6 +39,19 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
+                            <div class="form-floating">
+                                <input type="text" class="form-control" name="smsprice" id="smsprice"
+                                    value="{{ old('smsprice') }}" placeholder="Cena">
+                                <label for="smsprice">Cena SMS</label>
+                                <div class="currency">
+                                    Kč
+                                </div>
+                            </div>
+                            @error('smsprice')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                             <div id="editor">
                                 {!! old('comment') !!}
                             </div>
