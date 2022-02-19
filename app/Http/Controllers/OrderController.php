@@ -36,6 +36,7 @@ class OrderController extends Controller
             'goid' => config('gopay.goid'),
             'clientId' => config('gopay.client_id'),
             'clientSecret' => config('gopay.client_secret'),
+            //'gatewayUrl' => 'https://gw.sandbox.gopay.com/api',
             'gatewayUrl' => 'https://gate.gopay.cz/api',
             'scope' => GoPay\Definition\TokenScope::ALL,
             'language' => GoPay\Definition\Language::CZECH,
@@ -64,7 +65,7 @@ class OrderController extends Controller
                 }
             }
 
-            return view('order.show', ['package' => $package, 'gopayMessage' => $gopayMessage, 'success' => $success, 'paymentUUID' => $response->json["order_number"]]);
+            return view('order.show', ['package' => $package, 'gopayMessage' => $gopayMessage, 'success' => $success, 'state' => $response->json['state'], 'paymentUUID' => $response->json["order_number"]]);
         }
 
         return view('order.show', ['package' => $package]);
@@ -76,6 +77,7 @@ class OrderController extends Controller
             'goid' => config('gopay.goid'),
             'clientId' => config('gopay.client_id'),
             'clientSecret' => config('gopay.client_secret'),
+            //'gatewayUrl' => 'https://gw.sandbox.gopay.com/api',
             'gatewayUrl' => 'https://gate.gopay.cz/api',
             'scope' => GoPay\Definition\TokenScope::ALL,
             'language' => GoPay\Definition\Language::CZECH,

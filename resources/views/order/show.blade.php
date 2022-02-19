@@ -176,10 +176,15 @@
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                         data-bs-target="#staticBackdrop">Zvolit platební metodu</button>
                     @if (!empty($gopayMessage))
-                        <div class="alert @if ($success)alert-success @else alert-danger @endif" role="alert">
+                        <div class="alert @if ($success) alert-success @else alert-danger @endif"
+                            role="alert">
                             {{ $gopayMessage }}
-                            Pro opakování platby klikněte <button id="repeat-payment" data-bs-toggle="modal"
-                                data-bs-target="#staticBackdrop">zde</button>.
+                            @if ($state != 'PAID')
+                                Pro opakování platby klikněte <button id="repeat-payment" data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop">zde</button>.
+                            @else
+                                Děkujeme za podporu!
+                            @endif
                         </div>
                     @endif
                     @if (session()->has('message'))
