@@ -46,7 +46,7 @@ class NotifyController extends Controller
                 // ]);
                 // dd(json_decode($response->body()));
 
-                $subjectId = 13730500;
+                $subjectId = 14410877;
                 $response = Http::withBasicAuth(env('FAKTUROID_EMAIL'), env('FAKTUROID_API_KEY'))->withHeaders([
                     'Content-Type' => 'application/json',
                     'User-Agent' => env('FAKTUROID_APP_CONTACT'),
@@ -60,7 +60,7 @@ class NotifyController extends Controller
                 ])->post('https://app.fakturoid.cz/api/v2/accounts/' . env('FAKTUROID_NAME') . '/invoices.json', [
                     "subject_id" => $subjectId,
                     "client_name" => env('FAKTUROID_NAME'),
-                    "proforma" => true,
+                    "proforma" => false,
                     "invoice_paid" => true,
                     "paid_amount" => $order->price,
                     "lines" => [
@@ -80,12 +80,12 @@ class NotifyController extends Controller
                 $response = Http::withBasicAuth(env('FAKTUROID_EMAIL'), env('FAKTUROID_API_KEY'))->withHeaders([
                     'Content-Type' => 'application/json',
                     'User-Agent' => env('FAKTUROID_APP_CONTACT'),
-                ])->post('https://app.fakturoid.cz/api/v2/accounts/' . env('FAKTUROID_NAME') . '/invoices/' . $id . '/fire.json?event=pay_proforma');
+                ])->post('https://app.fakturoid.cz/api/v2/accounts/' . env('FAKTUROID_NAME') . '/invoices/' . $id . '/fire.json?event=deliver');
 
                 $response = Http::withBasicAuth(env('FAKTUROID_EMAIL'), env('FAKTUROID_API_KEY'))->withHeaders([
                     'Content-Type' => 'application/json',
                     'User-Agent' => env('FAKTUROID_APP_CONTACT'),
-                ])->post('https://app.fakturoid.cz/api/v2/accounts/' . env('FAKTUROID_NAME') . '/invoices/' . $id . '/fire.json?event=deliver');
+                ])->post('https://app.fakturoid.cz/api/v2/accounts/' . env('FAKTUROID_NAME') . '/invoices/' . $id . '/fire.json?event=pay');
 
                 $emailTemplate = Email::where('template', 'Objednavka')->first();
                 Mail::send('email.email', ['body' => $emailTemplate->body], function ($message) use ($order, $emailTemplate) {
